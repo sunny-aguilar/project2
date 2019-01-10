@@ -16,6 +16,7 @@ int main() {
     // add game control here
     Zoo zoo;
     Menu menu;
+    Animal animal;
 
     return 0;
 }

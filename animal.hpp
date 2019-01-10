@@ -11,7 +11,7 @@
 #define ANIMAL_HPP
 
 class Animal {
-    
+
 };
 
 #endif

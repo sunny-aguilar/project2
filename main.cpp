@@ -10,7 +10,7 @@
 #include "zoo.hpp"
 #include "menu.hpp"
 #include "animal.hpp"
-#include "animal.hpp"
+#include "tiger.hpp"
 #include <iostream>
 
 int main() {

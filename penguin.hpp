@@ -10,8 +10,10 @@
 #ifndef PENGUIN_HPP
 #define PENGUIN_HPP
 
+#include "animal.hpp"                   // base class header
+
 class Penguin {
-    
+
 };
 
 #endif

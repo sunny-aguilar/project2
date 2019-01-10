@@ -10,6 +10,8 @@
 #ifndef TURTLE_HPP
 #define TURTLE_HPP
 
+#include "animal.hpp"                   // base class header
+
 class Turtle {
 
 };

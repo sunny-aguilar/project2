@@ -19,5 +19,5 @@ void Zoo::addTigers() {
 }
 
 void Zoo::growArray() {
-    tigers =
+
 }

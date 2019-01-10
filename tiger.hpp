@@ -10,7 +10,10 @@
 #ifndef TIGER_HPP
 #define TIGER_HPP
 
+#include "animal.hpp"                   // base class header
+
 class Tiger : public Animal {
+public:
 
 };
 

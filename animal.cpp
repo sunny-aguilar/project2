@@ -8,3 +8,7 @@
 **
 *********************************************************************/
 #include "animal.hpp"
+
+void Animal::shout() {
+    std::cout << "Animal shouts\n";
+}

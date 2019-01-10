@@ -11,6 +11,7 @@
 #include "menu.hpp"
 #include "animal.hpp"
 #include "tiger.hpp"
+#include "turtle.hpp"
 #include <iostream>
 
 int main() {
@@ -19,6 +20,7 @@ int main() {
     Menu menu;
     Animal animal;
     Tiger tiger;
+    Turtle turtle;
 
     return 0;
 }

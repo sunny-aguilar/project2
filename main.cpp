@@ -7,10 +7,12 @@
 **                  a project each day.
 **
 *********************************************************************/
+#include "zoo.hpp"
 #include <iostream>
 
 int main() {
     // add game control here
+    Zoo zoo;
 
     return 0;
 }

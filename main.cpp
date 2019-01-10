@@ -8,11 +8,13 @@
 **
 *********************************************************************/
 #include "zoo.hpp"
+#include "menu.hpp"
 #include <iostream>
 
 int main() {
     // add game control here
     Zoo zoo;
+    Menu menu;
 
     return 0;
 }

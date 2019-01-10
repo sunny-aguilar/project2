@@ -12,6 +12,7 @@
 #include "animal.hpp"
 #include "tiger.hpp"
 #include "turtle.hpp"
+#include "penguin.hpp"
 #include <iostream>
 
 int main() {
@@ -21,6 +22,7 @@ int main() {
     Animal animal;
     Tiger tiger;
     Turtle turtle;
+    Penguin penguin;
 
     return 0;
 }

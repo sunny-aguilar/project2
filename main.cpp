@@ -24,5 +24,7 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
+    std::cout << "Say Hi!\n";
+
     return 0;
 }

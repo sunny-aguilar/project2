@@ -13,6 +13,9 @@
 #include "animal.hpp"
 class Zoo {
 public:
+    void addTigers();
+    void growArray();
+
 
 private:
     int bankBalance;

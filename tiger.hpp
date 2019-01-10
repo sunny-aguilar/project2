@@ -10,7 +10,7 @@
 #ifndef TIGER_HPP
 #define TIGER_HPP
 
-class Tiger {
+class Tiger : public Animal {
 
 };
 

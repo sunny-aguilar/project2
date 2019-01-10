@@ -9,6 +9,7 @@
 *********************************************************************/
 #include "zoo.hpp"
 #include "menu.hpp"
+#include "animal.hpp"
 #include <iostream>
 
 int main() {

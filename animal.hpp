@@ -7,11 +7,11 @@
 **
 **
 *********************************************************************/
-#ifndef MENU_HPP
-#define MENU_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-class Menu {
-
+class Animal {
+    
 };
 
 #endif

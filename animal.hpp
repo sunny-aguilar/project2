@@ -14,11 +14,7 @@ class Animal {
 public:
 
 private:
-    int bankBalance;
-    int baseFoodCost;
-    int days;
-    bool playAgain;
-    bool ateFood;
+
 
 };
 

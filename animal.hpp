@@ -11,6 +11,14 @@
 #define ANIMAL_HPP
 
 class Animal {
+public:
+
+private:
+    int bankBalance;
+    int baseFoodCost;
+    int days;
+    bool playAgain;
+    bool ateFood;
 
 };
 

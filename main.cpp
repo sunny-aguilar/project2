@@ -10,7 +10,7 @@
 #include <iostream>
 
 int main() {
-
+    // add game control here
 
     return 0;
 }

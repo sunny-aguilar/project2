@@ -23,7 +23,7 @@ private:
     int days;
     bool playAgain;
     bool ateFood;
-    Animal *tigers[10];
+    Animal *tigers;
     Animal *penguins[10];
     Animal *turtles[10];
 };

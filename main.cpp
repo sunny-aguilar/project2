@@ -24,8 +24,16 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
+//    Animal *tigers[1] = {nullptr};
+
+    Animal *t = new Tiger;
+    t[0].shout();
+    t[2].shout();
+    t[5].shout();
+    t[544445].shout();
+
 //    zoo.addTigers();
-    zoo.getTiger();
+//    zoo.getTiger();
 //    zoo.getTiger(1);
 //    zoo.getTiger(2);
 //    zoo.getTiger(3);

@@ -20,7 +20,7 @@ int main() {
     bool playAgain = true;
 
     // add game control here
-    Zoo zoo;
+    Zoo zoo(3);
     Menu menu;
     Animal animal;
     Tiger tiger;
@@ -45,10 +45,23 @@ int main() {
 //
 //    } while (playAgain);
 
+    Animal *testPtr1 = zoo.tigerArray;
+    cout << "Array size :" << sizeof(zoo.tigerArray) / sizeof(zoo.tigerArray[0]) << endl;
+    cout << "Address held by tigerArray: " << zoo.tigerArray << endl;
+    cout << "Address assigned to testPtr1: " << testPtr1 << endl;
+    cout << "Address &tigerArray: " << &zoo.tigerArray << endl;
+    cout << "Address &testPtr1: " << &testPtr1 << endl;
+//    cout << "Address tigerArray[0]: " << zoo.tigerArray[1] << endl;
+    if (&zoo.tigerArray[10] == nullptr) {
+        cout << "null pointer\n";
+    }
 
-    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(0) << endl;
-    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(1) << endl;
-    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(1) << endl;
+//    zoo.tigerArrayAddress();
+//    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(0) << endl;
+//    cout << "Address tigerArray[1]: " << zoo.gettigerArrayPtr(1) << endl;
+//    cout << "Address tigerArray[2]: " << zoo.gettigerArrayPtr(2) << endl;
+//    cout << "Address tigerArray[3]: " << zoo.gettigerArrayPtr(3) << endl;
+//    cout << "Address tigerArray[4]: " << zoo.gettigerArrayPtr(4) << endl;
 //    zoo.setTigerLegs();
 //    zoo.getTigerLegs();
 

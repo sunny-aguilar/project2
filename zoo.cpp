@@ -9,14 +9,32 @@
 *********************************************************************/
 #include "zoo.hpp"
 #include "tiger.hpp"
+#include <iostream>
+using std::cout;
+using std::endl;
 
 // initialize the tigerArray to hold ten animal pointers
 //Zoo::Zoo()
 //    : tigerArray( new Animal*[10] ), bankBalance{100000} {
 //}
 
-Zoo::Zoo()
-        : tigerArray{new Tiger[2]}, bankBalance{100000} {
+//Zoo::Zoo()
+//        : tigerArray{new Tiger[2]}, bankBalance{100000} {
+//}
+
+Zoo::Zoo() {
+    tigerArray = new Tiger[3];
+    bankBalance = 100000;
+//    tigerArray[0] = nullptr;
+
+    cout << "Array size :" << sizeof(tigerArray) / sizeof(tigerArray[0]) << endl;
+    cout << "constructor activated\n";
+}
+
+Zoo::Zoo(int size) {
+    tigerArray = new Animal[size];
+    cout << "tigerArray[0] " << tigerArray << endl;
+    cout << "1-arg constructor activated\n";
 }
 
 Zoo::~Zoo() { delete [] tigerArray; }
@@ -48,12 +66,9 @@ void Zoo::resizeTigerArray(int size) {
 
         // use this for debugging purposes
         // can also use to display total array capacity and usage
-        std::cout << sizeof(tigerArray) / sizeof(tigerArray[0]) << std::endl;
+        cout << sizeof(tigerArray) / sizeof(tigerArray[0]) << endl;
     }
 }
-
-
-
 
 
 
@@ -72,15 +87,31 @@ void Zoo::setTigerLegs() {
 *********************************************************************/
 void Zoo::getTigerLegs() {
     if (&tigerArray[0] == nullptr) {
-        std::cout << "Pointer is null\n";
+        cout << "Pointer is null\n";
     }
 
-    std::cout << "0 Tiger: " << tigerArray[0].legs << std::endl;
-    std::cout << "1 Tiger: " << tigerArray[1].legs << std::endl;
-    std::cout << "2 Tiger: " << tigerArray[2].legs << std::endl;
+    cout << "0 Tiger: " << tigerArray[0].legs << endl;
+    cout << "1 Tiger: " << tigerArray[1].legs << endl;
+    cout << "2 Tiger: " << tigerArray[2].legs << endl;
 }
 
 Animal *Zoo::gettigerArrayPtr(int elem) {
 //    return &tigerArray;
-    return &tigerArray[0];
+    return &tigerArray[elem];
+}
+
+void Zoo::tigerArrayAddress() {
+    cout << "*tigerArray address: " << tigerArray << endl;
+    cout << "*tigerArray[0] address: " << &tigerArray[0] << endl;
+//    cout << "*tigerArray[0] address held: " << tigerArray[0] << endl;
+
+    if (&tigerArray[0] == nullptr) {
+        cout << "null pointer!\n";
+    }
+    cout << "Array size :" << sizeof(tigerArray) / sizeof(tigerArray[0]) << endl;
+
+//    if (tigerArray[0] == nullptr) {
+//        std::cout << "null pointer!\n";
+//    }
+
 }

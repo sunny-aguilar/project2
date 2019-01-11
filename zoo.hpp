@@ -14,11 +14,15 @@
 class Zoo {
 public:
     Zoo();
+    Zoo(int size);
     ~Zoo();
     void addTigers();
     Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);
+    Animal *tigerArray;
 
+    // testing methods
+    void tigerArrayAddress();
 
     void setTigerLegs();
     void getTigerLegs();
@@ -37,7 +41,7 @@ private:
     int turtleArrayCapacity;
     int *intPtr;
 //    Animal **tigerArray;      // pointer to a pointer
-    Animal *tigerArray;
+
     Animal *penguinArray;
     Animal *turtleArray[10];
 };

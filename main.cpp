@@ -27,33 +27,6 @@ int main() {
     zoo.setTigerLegs();
     zoo.getTigerLegs();
 
-//    Animal *tigPtr = nullptr;
-//    tigPtr = new Tiger;
-//    tigPtr->shout();
-//    Animal *tigerPtr[10] = {nullptr};
-//    tigerPtr[0] = new Tiger;
-//    tigerPtr[0]->shout();
-//    tigerPtr[2]->shout();
-
-//    Animal *tigerPtr[2] = {nullptr};
-//    tigerPtr[0]->shout();
-//    tigerPtr[1]->shout();
-//    tigerPtr[2]->shout();
-
-//    Animal *tPtr = new Tiger[2];
-//    tPtr[0].shout();
-//    tPtr[2].shout();
-//    tPtr[5].shout();
-//    tPtr[55].shout();
-
-//    zoo.addTigers();
-//    zoo.getTiger();
-//    zoo.getTiger(1);
-//    zoo.getTiger(2);
-//    zoo.getTiger(3);
-//    zoo.getTiger(4);
-//    zoo.getTiger(5);
-//    zoo.getTiger(6);
 
 
     return 0;

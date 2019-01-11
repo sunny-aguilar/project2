@@ -29,7 +29,7 @@ private:
     bool ateFood;
     int *intPtr;
     Animal *tigerArray;
-    Animal *penguinArray[10];
+    Animal *penguinArray;
     Animal *turtlesArray[10];
 };
 

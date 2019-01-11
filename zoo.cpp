@@ -10,7 +10,7 @@
 #include "zoo.hpp"
 #include "tiger.hpp"
 
-Zoo::Zoo() : tigerArray( new Tiger[10] ) {}
+Zoo::Zoo() : tigerArray( new Tiger[10] ) { }
 
 Zoo::~Zoo() { delete [] tigerArray; }
 
@@ -34,6 +34,9 @@ void Zoo::setTigerLegs() {
     tigerArray[2].legs = 6;
 }
 
+/*********************************************************************
+** Description:    testing objects in array
+*********************************************************************/
 void Zoo::getTigerLegs() {
     std::cout << "0 Tiger: " << tigerArray[0].legs << std::endl;
     std::cout << "1 Tiger: " << tigerArray[1].legs << std::endl;

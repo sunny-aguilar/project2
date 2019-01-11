@@ -24,6 +24,8 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
+    menu.mainMenu();
+
     zoo.setTigerLegs();
     zoo.getTigerLegs();
 

@@ -11,7 +11,7 @@
 #include "tiger.hpp"
 
 Zoo::Zoo()
-    : tigerArray( new Tiger[10] ), bankBalance{100000} {
+    : tigerArray( new Animal*[10] ), bankBalance{100000} {
 }
 
 Zoo::~Zoo() { delete [] tigerArray; }
@@ -22,13 +22,19 @@ void Zoo::addTigers() {
 
 void Zoo::resizeTigerArray(int size) {
     if (tigerQty > tigerArrayCapacity) {
-        Animal *newTigerArray = new Tiger[size];
+        Animal **tigerPtrArr = new Animal*[size];
         for (int i = 0; i < 10; i++) {
-            newTigerArray[i] = tigerArray[i];
+            tigerPtrArr[i] = tigerArray[i];
         }
+
+//        Animal *newTigerArray = new Tiger[size];
+//        for (int i = 0; i < 10; i++) {
+//            newTigerArray[i] = tigerArray[i];
+//        }
+
         tigerArrayCapacity *= 2;
         delete [] tigerArray;
-        tigerArray = newTigerArray;
+        tigerArray = tigerPtrArr;
     }
 }
 

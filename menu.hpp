@@ -11,7 +11,11 @@
 #define MENU_HPP
 
 class Menu {
+public:
+    void mainMenu() ;
 
+private:
+    int selection;
 };
 
 #endif

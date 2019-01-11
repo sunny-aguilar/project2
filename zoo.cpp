@@ -28,6 +28,16 @@ void Zoo::resizeArray(int size) {
     tigerArray = newTigerArray;
 }
 
+
+
+
+
+
+
+/*********************************************************************
+** Description:    testing objects in array
+*********************************************************************/
+
 void Zoo::setTigerLegs() {
     tigerArray[0].legs = 4;
     tigerArray[1].legs = 5;

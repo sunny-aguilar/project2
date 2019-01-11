@@ -18,6 +18,8 @@ public:
     void addTigers();
     void getTiger();
     void resizeArray(int size);
+
+
     void setTigerLegs();
     void getTigerLegs();
 

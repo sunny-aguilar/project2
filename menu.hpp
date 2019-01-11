@@ -11,12 +11,18 @@
 #define MENU_HPP
 
 #include <iostream>
+#include <cstring>
+#include <sstream>
+using std::cin;
 using std::cout;
 using std::endl;
 
 class Menu {
 public:
-    void mainMenu() ;
+    void mainMenu();
+    void setSelection(int sel);
+    int getSelection();
+    int validateNumber(int min, int max);
 
 private:
     int selection;

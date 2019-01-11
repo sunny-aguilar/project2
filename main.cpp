@@ -16,6 +16,9 @@
 #include <iostream>
 
 int main() {
+    // game variables
+    bool playAgain;
+
     // add game control here
     Zoo zoo;
     Menu menu;
@@ -25,9 +28,17 @@ int main() {
     Penguin penguin;
 
     menu.mainMenu();
+    menu.setSelection( menu.validateNumber(1,2) );
 
-    zoo.setTigerLegs();
-    zoo.getTigerLegs();
+    do {
+
+
+
+        
+    } while (playAgain);
+
+//    zoo.setTigerLegs();
+//    zoo.getTigerLegs();
 
 
 

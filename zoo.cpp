@@ -10,7 +10,9 @@
 #include "zoo.hpp"
 #include "tiger.hpp"
 
-Zoo::Zoo() : tigerArray( new Tiger[10] ) { }
+Zoo::Zoo()
+    : tigerArray( new Tiger[10] ), bankBalance{100000} {
+}
 
 Zoo::~Zoo() { delete [] tigerArray; }
 

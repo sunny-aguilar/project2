@@ -17,7 +17,7 @@
 
 int main() {
     // game variables
-    bool playAgain;
+    bool playAgain = true;
 
     // add game control here
     Zoo zoo;
@@ -34,7 +34,12 @@ int main() {
         menu.mainMenu();
         menu.setSelection( menu.validateNumber(1,2) );
 
-        
+        if (menu.getSelection() == 1) {
+
+        }
+        else if (menu.getSelection() == 2) {
+            playAgain = false;
+        }
 
 
 

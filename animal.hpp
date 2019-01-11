@@ -14,6 +14,7 @@
 
 class Animal {
 public:
+    int legs;
 
 private:
 public:

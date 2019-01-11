@@ -12,6 +12,8 @@
 
 Zoo::Zoo() : tigerArray( new Tiger[10] ) {}
 
+Zoo::~Zoo() { delete [] tigerArray; }
+
 void Zoo::addTigers() {
 
 
@@ -26,8 +28,14 @@ void Zoo::resizeArray(int size) {
     tigerArray = newTigerArray;
 }
 
-void Zoo::getTiger() {
-//    tigers[0]->shout();
-//    tigers[1]->shout();
-    std::cout << std::endl;
+void Zoo::setTigerLegs() {
+    tigerArray[0].legs = 4;
+    tigerArray[1].legs = 5;
+    tigerArray[2].legs = 6;
+}
+
+void Zoo::getTigerLegs() {
+    std::cout << "0 Tiger: " << tigerArray[0].legs << std::endl;
+    std::cout << "1 Tiger: " << tigerArray[1].legs << std::endl;
+    std::cout << "2 Tiger: " << tigerArray[2].legs << std::endl;
 }

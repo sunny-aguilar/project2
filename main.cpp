@@ -45,8 +45,8 @@ int main() {
 
     } while (playAgain);
 
-//    zoo.setTigerLegs();
-//    zoo.getTigerLegs();
+    zoo.setTigerLegs();
+    zoo.getTigerLegs();
 
 
 

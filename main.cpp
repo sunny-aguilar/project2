@@ -27,14 +27,17 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
-    menu.mainMenu();
-    menu.setSelection( menu.validateNumber(1,2) );
+
 
     do {
-
-
+        // show main menu, validate & set selection
+        menu.mainMenu();
+        menu.setSelection( menu.validateNumber(1,2) );
 
         
+
+
+
     } while (playAgain);
 
 //    zoo.setTigerLegs();

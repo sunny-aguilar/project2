@@ -20,7 +20,7 @@ void Zoo::addTigers() {
 
 }
 
-void Zoo::resizeArray(int size) {
+void Zoo::resizeTigerArray(int size) {
     if (tigerQty > tigerArrayCapacity) {
         Animal *newTigerArray = new Tiger[size];
         for (int i = 0; i < 10; i++) {

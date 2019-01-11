@@ -17,7 +17,7 @@ public:
     ~Zoo();
     void addTigers();
     void getTiger();
-    void resizeArray(int size);
+    void resizeTigerArray(int size);
 
 
     void setTigerLegs();

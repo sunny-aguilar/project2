@@ -16,7 +16,7 @@ public:
     Zoo();
     ~Zoo();
     void addTigers();
-    void getTiger();
+    Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);
 
 
@@ -36,7 +36,7 @@ private:
     int penguinArrayCapacity;
     int turtleArrayCapacity;
     int *intPtr;
-//    Animal **tigerArray;
+//    Animal **tigerArray;      // pointer to a pointer
     Animal *tigerArray;
     Animal *penguinArray;
     Animal *turtleArray[10];

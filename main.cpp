@@ -29,24 +29,28 @@ int main() {
 
 
 
-    do {
-        // show main menu, validate & set selection
-        menu.mainMenu();
-        menu.setSelection( menu.validateNumber(1,2) );
+//    do {
+//        // show main menu, validate & set selection
+//        menu.mainMenu();
+//        menu.setSelection( menu.validateNumber(1,2) );
+//
+//        if (menu.getSelection() == 1) {
+//
+//        }
+//        else if (menu.getSelection() == 2) {
+//            playAgain = false;
+//        }
+//
+//
+//
+//    } while (playAgain);
 
-        if (menu.getSelection() == 1) {
 
-        }
-        else if (menu.getSelection() == 2) {
-            playAgain = false;
-        }
-
-
-
-    } while (playAgain);
-
-    zoo.setTigerLegs();
-    zoo.getTigerLegs();
+    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(0) << endl;
+    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(1) << endl;
+    cout << "Address tigerArray[0]: " << zoo.gettigerArrayPtr(1) << endl;
+//    zoo.setTigerLegs();
+//    zoo.getTigerLegs();
 
 
 

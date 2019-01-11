@@ -16,7 +16,7 @@ void Menu::mainMenu() {
     cout << " c(\")(\")       (\")(\")_/    ( uu )\n";
     cout << "----------------------------------\n";
     cout << "--- Welcome To Zoo Tycoon ---\n\n";
-    cout << "1. Play the Game\n";
-    cout << "2. Exit the Game\n";
+    cout << "1. Enter 1 to Play the Game\n";
+    cout << "2. Enter 2 to Exit the Game\n";
     cout << ">> \n";
 }

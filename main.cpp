@@ -24,13 +24,27 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
-//    Animal *tigers[1] = {nullptr};
+    zoo.addTigers();
 
-    Animal *t = new Tiger;
-    t[0].shout();
-    t[2].shout();
-    t[5].shout();
-    t[544445].shout();
+
+//    Animal *tigPtr = nullptr;
+//    tigPtr = new Tiger;
+//    tigPtr->shout();
+//    Animal *tigerPtr[10] = {nullptr};
+//    tigerPtr[0] = new Tiger;
+//    tigerPtr[0]->shout();
+//    tigerPtr[2]->shout();
+
+//    Animal *tigerPtr[2] = {nullptr};
+//    tigerPtr[0]->shout();
+//    tigerPtr[1]->shout();
+//    tigerPtr[2]->shout();
+
+//    Animal *tPtr = new Tiger[2];
+//    tPtr[0].shout();
+//    tPtr[2].shout();
+//    tPtr[5].shout();
+//    tPtr[55].shout();
 
 //    zoo.addTigers();
 //    zoo.getTiger();

@@ -10,15 +10,20 @@
 #include "zoo.hpp"
 #include "tiger.hpp"
 
+Zoo::Zoo() : tigerArray( new Tiger[10] ) {}
+
 void Zoo::addTigers() {
-//    for (int x = 0; x < 2; x++) {
-        tigers = new Tiger[2];
-//    }
-//    tigers[0] = new Tiger;
-//    tigers[0]->shout();
-//    tigers[1]->shout();
-//    tigers[25]->shout();
-//    tigers[0] = new Tiger;
+
+
+}
+
+void Zoo::resizeArray(int size) {
+    Animal *newTigerArray = new Tiger[size];
+    for (int i = 0; i < 10; i++) {
+        newTigerArray[i] = tigerArray[i];
+    }
+    delete [] tigerArray;
+    tigerArray = newTigerArray;
 }
 
 void Zoo::getTiger() {

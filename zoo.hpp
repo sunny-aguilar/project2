@@ -13,9 +13,10 @@
 #include "animal.hpp"
 class Zoo {
 public:
+    Zoo();
     void addTigers();
-//    void growArray();
     void getTiger();
+    void resizeArray(int size);
 
 private:
     int bankBalance;
@@ -23,9 +24,10 @@ private:
     int days;
     bool playAgain;
     bool ateFood;
-    Animal *tigers;
-    Animal *penguins[10];
-    Animal *turtles[10];
+    int *intPtr;
+    Animal *tigerArray;
+    Animal *penguinArray[10];
+    Animal *turtlesArray[10];
 };
 
 #endif

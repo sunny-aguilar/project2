@@ -36,7 +36,8 @@ private:
     int penguinArrayCapacity;
     int turtleArrayCapacity;
     int *intPtr;
-    Animal **tigerArray;
+//    Animal **tigerArray;
+    Animal *tigerArray;
     Animal *penguinArray;
     Animal *turtleArray[10];
 };

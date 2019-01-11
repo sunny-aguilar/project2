@@ -18,7 +18,6 @@ Zoo::~Zoo() { delete [] tigerArray; }
 
 void Zoo::addTigers() {
 
-
 }
 
 void Zoo::resizeArray(int size) {

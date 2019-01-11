@@ -14,8 +14,8 @@
 class Zoo {
 public:
     void addTigers();
-    void growArray();
-
+//    void growArray();
+    void getTiger();
 
 private:
     int bankBalance;

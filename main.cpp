@@ -24,7 +24,15 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
-    std::cout << "Say Hi!\n";
+//    zoo.addTigers();
+    zoo.getTiger();
+//    zoo.getTiger(1);
+//    zoo.getTiger(2);
+//    zoo.getTiger(3);
+//    zoo.getTiger(4);
+//    zoo.getTiger(5);
+//    zoo.getTiger(6);
+
 
     return 0;
 }

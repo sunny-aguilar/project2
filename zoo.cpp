@@ -18,6 +18,8 @@ void Zoo::addTigers() {
 //    tigers[0] = new Tiger;
 }
 
-void Zoo::growArray() {
-
+void Zoo::getTiger() {
+    tigers[0]->shout();
+    tigers[1]->shout();
+    std::cout << std::endl;
 }

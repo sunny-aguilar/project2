@@ -25,7 +25,7 @@ int main() {
     Penguin penguin;
 
     zoo.setTigerLegs();
-    zoo.
+    zoo.getTigerLegs();
 
 //    Animal *tigPtr = nullptr;
 //    tigPtr = new Tiger;

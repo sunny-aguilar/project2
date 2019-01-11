@@ -21,6 +21,9 @@ void Zoo::addTigers() {
 }
 
 void Zoo::resizeArray(int size) {
+    if () {
+        
+    }
     Animal *newTigerArray = new Tiger[size];
     for (int i = 0; i < 10; i++) {
         newTigerArray[i] = tigerArray[i];

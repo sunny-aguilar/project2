@@ -29,10 +29,16 @@ private:
     int days;
     bool playAgain;
     bool ateFood;
+    int tigerQty;
+    int penguinQty;
+    int turtleQty;
+    int tigerArrayCapacity;
+    int penguinArrayCapacity;
+    int turtleArrayCapacity;
     int *intPtr;
     Animal *tigerArray;
     Animal *penguinArray;
-    Animal *turtlesArray[10];
+    Animal *turtleArray[10];
 };
 
 #endif

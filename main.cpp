@@ -27,8 +27,6 @@ int main() {
     Turtle turtle;
     Penguin penguin;
 
-
-
 //    do {
 //        // show main menu, validate & set selection
 //        menu.mainMenu();
@@ -45,13 +43,14 @@ int main() {
 //
 //    } while (playAgain);
 
-    zoo.resizeArray();
+    zoo.setTigerLegs();
+    zoo.getTigerLegs();
+//    zoo.resizeArray();
 
-//    Animal *testPtr1 = zoo.tigerArray;
 //    cout << "Array size :" << sizeof(zoo.tigerArray) / sizeof(zoo.tigerArray[0]) << endl;
-    cout << "Address held by zoo.tigerArray: " << zoo.tigerArray << endl;
+//    cout << "Address held by zoo.tigerArray: " << zoo.tigerArray << endl;
 //    cout << "Address assigned to testPtr1: " << testPtr1 << endl;
-    cout << "Address &zoo.tigerArray: " << &zoo.tigerArray << endl;
+//    cout << "Address &zoo.tigerArray: " << &zoo.tigerArray << endl;
 //    cout << "Address &testPtr1: " << &testPtr1 << endl;
 //    cout << "Address tigerArray[0]: " << zoo.tigerArray[1] << endl;
 //    if (zoo.tigerArray[10] == nullptr) {

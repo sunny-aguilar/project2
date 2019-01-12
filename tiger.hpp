@@ -14,7 +14,7 @@
 
 class Tiger : public Animal {
 public:
-
+    int legs;
 };
 
 #endif

@@ -14,12 +14,9 @@
 class Zoo {
 public:
     Zoo();
-    Zoo(int size);
-    ~Zoo();
     void addTigers();
-    Animal *gettigerArrayPtr(int elem);
+//    Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);
-    Animal **tigerArray;
 
     // testing methods
     void tigerArrayAddress();
@@ -41,10 +38,9 @@ private:
     int penguinArrayCapacity;
     int turtleArrayCapacity;
     int *intPtr;
-//    Animal **tigerArray;      // pointer to a pointer
-
-    Animal *penguinArray;
-    Animal *turtleArray[10];
+    Animal **tigerArray;      // pointer to a pointer
+    Animal **penguinArray;
+    Animal **turtleArray;
 };
 
 #endif

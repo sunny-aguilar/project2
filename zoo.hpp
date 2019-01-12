@@ -19,10 +19,11 @@ public:
     void addTigers();
     Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);
-    Animal *tigerArray;
+    Animal **tigerArray;
 
     // testing methods
     void tigerArrayAddress();
+    void resizeArray();
 
     void setTigerLegs();
     void getTigerLegs();

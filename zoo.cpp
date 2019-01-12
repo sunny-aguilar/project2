@@ -14,30 +14,48 @@ using std::cout;
 using std::endl;
 
 // initialize the tigerArray to hold ten animal pointers
-//Zoo::Zoo()
-//    : tigerArray( new Animal*[10] ), bankBalance{100000} {
-//}
-
-//Zoo::Zoo()
-//        : tigerArray{new Tiger[2]}, bankBalance{100000} {
-//}
-
-Zoo::Zoo() {
-    tigerArray = new Tiger[3];
-    bankBalance = 100000;
-//    tigerArray[0] = nullptr;
-
-    cout << "Array size :" << sizeof(tigerArray) / sizeof(tigerArray[0]) << endl;
-    cout << "constructor activated\n";
+Zoo::Zoo()
+    : tigerArray( new Animal*[10]{new Animal} ), bankBalance{100000} {
 }
 
-Zoo::Zoo(int size) {
-    tigerArray = new Animal[size];
-    cout << "tigerArray[0] " << tigerArray << endl;
-    cout << "1-arg constructor activated\n";
+//Zoo::Zoo()
+//        : tigerArray{new Tiger[3]}, bankBalance{100000} {
+//}
+
+//Zoo::Zoo() {
+//    tigerArray = new Animal*[10];
+//    for (int i = 0; i < 10; i++) {
+//        tigerArray[0] = new Animal;
+//    }
+//}
+
+void Zoo::resizeArray() {
+    Animal **newTigerArray = new Animal*[6];
+    for (int i = 0; i < 6; i++) {
+        newTigerArray[i] = new Tiger;
+    }
+
+    for (int i = 0; i < 6; i++) {
+        delete tigerArray[i];
+    }
+    delete [] tigerArray;
+    tigerArray = newTigerArray;
+
+    newTigerArray[0] = nullptr;
+    if (newTigerArray[0] == nullptr) {
+        cout << "Null ptr\n";
+    }
+    cout << "Address of newTigerArray " << newTigerArray << endl;
+    cout << "Address of newTigerArray[7] " << newTigerArray[7] << endl;
 }
 
-Zoo::~Zoo() { delete [] tigerArray; }
+//Zoo::Zoo(int size) {
+//    tigerArray = new Animal[size];
+//    cout << "tigerArray[0] " << tigerArray << endl;
+//    cout << "1-arg constructor activated\n";
+//}
+
+Zoo::~Zoo() { }
 
 void Zoo::addTigers() {
 
@@ -57,12 +75,12 @@ void Zoo::resizeTigerArray(int size) {
         // assigned that is holding
         Animal *newTigerArray = new Tiger[size];
         for (int i = 0; i < 10; i++) {
-            newTigerArray[i] = tigerArray[i];
+//            newTigerArray[i] = tigerArray[i];
         }
 
         tigerArrayCapacity *= 2;
-        delete [] tigerArray;
-        tigerArray = newTigerArray;
+        delete tigerArray[0];
+        tigerArray[0] = newTigerArray;
 
         // use this for debugging purposes
         // can also use to display total array capacity and usage
@@ -77,9 +95,9 @@ void Zoo::resizeTigerArray(int size) {
 ** Description:    testing objects in array
 *********************************************************************/
 void Zoo::setTigerLegs() {
-    tigerArray[0].legs = 4;
-    tigerArray[1].legs = 5;
-    tigerArray[2].legs = 6;
+    tigerArray[0]->legs = 4;
+    tigerArray[1]->legs = 5;
+    tigerArray[2]->legs = 6;
 }
 
 /*********************************************************************
@@ -90,15 +108,15 @@ void Zoo::getTigerLegs() {
         cout << "Pointer is null\n";
     }
 
-    cout << "0 Tiger: " << tigerArray[0].legs << endl;
-    cout << "1 Tiger: " << tigerArray[1].legs << endl;
-    cout << "2 Tiger: " << tigerArray[2].legs << endl;
+    cout << "0 Tiger: " << tigerArray[0]->legs << endl;
+    cout << "1 Tiger: " << tigerArray[1]->legs << endl;
+    cout << "2 Tiger: " << tigerArray[2]->legs << endl;
 }
 
-Animal *Zoo::gettigerArrayPtr(int elem) {
-//    return &tigerArray;
-    return &tigerArray[elem];
-}
+//Animal *Zoo::gettigerArrayPtr(int elem) {
+////    return &tigerArray;
+//    return &tigerArray[elem];
+//}
 
 void Zoo::tigerArrayAddress() {
     cout << "*tigerArray address: " << tigerArray << endl;

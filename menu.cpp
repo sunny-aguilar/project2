@@ -10,15 +10,24 @@
 #include "menu.hpp"
 
 void Menu::mainMenu() {
-    cout << "----------------------------------\n";
-    cout << " (\\ _ /)       /\\__/\\       ^---^\n";
-    cout << " (' x ')      (=^.^=)      ( `o`)\n";
-    cout << " c(\")(\")       (\")(\")_/    ( uu )\n";
-    cout << "----------------------------------\n";
-    cout << "--- Welcome To Zoo Tycoon ---\n\n";
-    cout << "1. Enter 1 to Play the Game\n";
-    cout << "2. Enter 2 to Exit the Game\n";
-    cout << ">> \n";
+    cout << "-----------------------------------------\n"
+         << "   (\\ _ /)       /\\__/\\        ^---^\n"
+         << "   (' x ')      (=^.^=)       ( `o`)\n"
+         << "   c(\")(\")       (\")(\")_/     ( uu )\n"
+         << "-----------------------------------------\n"
+         << "--------- Welcome to Zoo Tycoon ---------\n\n"
+         << "Game Rules:\n"
+         << "- You are the owner of a zoo!\n"
+         << "- Each turn counts as 1 day\n"
+         << "- You start the game with $100,000 \n"
+         << "- you will need to buy 3 different animals,\n"
+         << "  1 or 2 of each kind\n"
+         << "- buying an animal cost money\n"
+         << "- animals must be fed each day at a cost\n"
+         << "- animals can spawn babies\n"
+         << "- animals can die\n"
+         << "- if you balance goes below $0, game ends!\n"
+         << "  GET READY, BEGIN!";
 }
 
 /*********************************************************************

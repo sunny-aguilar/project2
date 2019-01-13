@@ -10,37 +10,37 @@
 #ifndef ZOO_HPP
 #define ZOO_HPP
 
+#include "menu.hpp"
 #include "animal.hpp"
+
 class Zoo {
 public:
+    // menu class
+    Menu menu;
+    // zoo class
     Zoo();
+    void playGame();
     void addTigers();
-//    Animal *gettigerArrayPtr(int elem);
+    Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);
 
     // testing methods
-    void tigerArrayAddress();
     void resizeArray();
+    void setNull(int val);
 
-    void setTigerLegs();
-    void getTigerLegs();
 
 private:
-    int bankBalance;
-    int baseFoodCost;
-    int days;
-    bool playAgain;
-    bool ateFood;
+    Animal **animals;      // array of pointers
     int tigerQty;
     int penguinQty;
     int turtleQty;
-    int tigerArrayCapacity;
-    int penguinArrayCapacity;
-    int turtleArrayCapacity;
-    int *intPtr;
-    Animal **tigerArray;      // pointer to a pointer
-    Animal **penguinArray;
-    Animal **turtleArray;
+    int orcaQty;
+
+    int bankBalance;
+    int dailyBudget;
+    int baseFoodCost;
+    bool randomEvent;
+    int days;
 };
 
 #endif

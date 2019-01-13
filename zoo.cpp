@@ -15,11 +15,15 @@ using std::endl;
 
 // initialize the tigerArray to hold ten animal pointers
 Zoo::Zoo()
-    : animals(new Animal*[4]), bankBalance{100000} {
+    : animals(new Animal*[4]), bankBalance{100000}, randomEvent{false} {
 }
 
 void Zoo::playGame() {
     menu.mainMenu();
+}
+
+void Zoo::start() {
+
 }
 
 void Zoo::resizeArray() {

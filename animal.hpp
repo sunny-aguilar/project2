@@ -15,10 +15,10 @@
 class Animal {
 public:
     int legs;
+    Animal(const Animal &obj);
 
 private:
-public:
-    void shout();
+
 
 };
 

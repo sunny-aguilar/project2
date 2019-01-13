@@ -16,11 +16,12 @@
 #include <iostream>
 
 int main() {
-    // game variables
-
+    // create random number seed
+    auto seed = static_cast<unsigned int>(time(nullptr));
+    srand(seed);
+    // create game object
     Zoo zoo;
+    // play the game
     zoo.playGame();
-
-
     return 0;
 }

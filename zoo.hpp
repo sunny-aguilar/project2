@@ -10,6 +10,7 @@
 #ifndef ZOO_HPP
 #define ZOO_HPP
 
+#include <ctime>
 #include "menu.hpp"
 #include "animal.hpp"
 
@@ -20,6 +21,7 @@ public:
     // zoo class
     Zoo();
     void playGame();
+    void start();
     void addTigers();
     Animal *gettigerArrayPtr(int elem);
     void resizeTigerArray(int size);

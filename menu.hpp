@@ -19,10 +19,13 @@ using std::endl;
 
 class Menu {
 public:
+    int validateNumber(int min, int max);
     void mainMenu();
     void setSelection(int sel);
     int getSelection();
-    int validateNumber(int min, int max);
+    void initialTigers();
+    void initialPenguins();
+    void initialTurtles();
 
 private:
     int selection;

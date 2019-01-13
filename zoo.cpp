@@ -20,37 +20,37 @@ Zoo::Zoo()
 
 void Zoo::playGame() {
     menu.mainMenu();
+    start();
+    menu.initialTigers();
+    tigerQty = menu.validateNumber(1,2);
+    menu.initialPenguins();
+    penguinQty = menu.validateNumber(1,2);
+    menu.initialTurtles();
+    turtleQty = menu.validateNumber(1,2);
 }
 
 void Zoo::start() {
 
 }
 
-void Zoo::resizeArray() {
-    Animal **newTigerArray = new Animal*[10];
-    for (int i = 0; i < 20; i++) {
-        newTigerArray[i] = new Tiger;
-    }
-
-    // deallocate prior memory
-    for (int i = 0; i < 6; i++) {
-        delete animals[i];
-    }
-    delete [] animals;
-    // assign new pointer address to old pointer
-    animals = newTigerArray;
-}
-
-void Zoo::setNull(int val) {
-    animals[0] = nullptr;
-}
+//void Zoo::resizeArray() {
+//    Animal **newTigerArray = new Animal*[10];
+//    for (int i = 0; i < 20; i++) {
+//        newTigerArray[i] = new Tiger;
+//    }
+//
+//    // deallocate prior memory
+//    for (int i = 0; i < 6; i++) {
+//        delete animals[i];
+//    }
+//    delete [] animals;
+//    // assign new pointer address to old pointer
+//    animals = newTigerArray;
+//}
 
 
-void Zoo::addTigers() {
 
-}
-
-void Zoo::resizeTigerArray(int size) {
+//void Zoo::resizeTigerArray(int size) {
 //    if (tigerQty > tigerArrayCapacity) {
 //        // this is a pointer to a pointer of type Animal that
 //        // holds an array of animal pointers - too much for
@@ -82,10 +82,5 @@ void Zoo::resizeTigerArray(int size) {
 //        // use this for debugging purposes
 //        // can also use to display total array capacity and usage
 //    }
-}
+//}
 
-
-Animal *Zoo::gettigerArrayPtr(int elem) {
-//    return &tigerArray;
-    return animals [elem];
-}

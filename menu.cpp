@@ -27,7 +27,7 @@ void Menu::mainMenu() {
          << "- animals can spawn babies\n"
          << "- animals can die\n"
          << "- if you balance goes below $0, game ends!\n"
-         << "  GET READY, BEGIN!";
+         << "  GET READY, BEGIN!\n\n";
 }
 
 /*********************************************************************
@@ -44,9 +44,35 @@ int Menu::getSelection() {
     return selection;
 }
 
+/*********************************************************************
+** Description:     mask how many initial tigers to start with
+*********************************************************************/
+void Menu::initialTigers() {
+    cout << "-+TIGERS+-\n"
+         << "How many tigers do you want to start out with?\n"
+         << "enter 1 or 2\n"
+         << ">> ";
+}
 
+/*********************************************************************
+** Description:     ask how many initial penguins to start with
+*********************************************************************/
+void Menu::initialPenguins() {
+    cout << "-+Penguins+-\n"
+         << "How many penguins do you want to start out with?\n"
+         << "enter 1 or 2\n"
+         << ">> ";
+}
 
-
+/*********************************************************************
+** Description:     ask how many initial penguins to start with
+*********************************************************************/
+void Menu::initialTurtles() {
+    cout << "-+Penguins+-\n"
+         << "How many turtles do you want to start out with?\n"
+         << "enter 1 or 2\n"
+         << ">> ";
+}
 
 
 

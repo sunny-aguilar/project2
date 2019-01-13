@@ -22,13 +22,7 @@ public:
     Zoo();
     void playGame();
     void start();
-    void addTigers();
-    Animal *gettigerArrayPtr(int elem);
-    void resizeTigerArray(int size);
 
-    // testing methods
-    void resizeArray();
-    void setNull(int val);
 
 
 private:

@@ -27,6 +27,9 @@ public:
     void initialPenguins();
     void initialTurtles();
 
+
+    void gameOverMssg();
+
 private:
     int selection;
 };

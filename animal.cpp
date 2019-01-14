@@ -9,6 +9,5 @@
 *********************************************************************/
 #include "animal.hpp"
 
-Animal::Animal(const Animal &obj) {
+Animal::Animal() {};
 
-}

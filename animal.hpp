@@ -14,11 +14,11 @@
 
 class Animal {
 public:
-    int legs;
-    Animal(const Animal &obj);
+    Animal();
 
 private:
-
+    int age;
+    int cost;
 
 };
 

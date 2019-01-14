@@ -13,25 +13,56 @@
 using std::cout;
 using std::endl;
 
-// initialize the tigerArray to hold ten animal pointers
-Zoo::Zoo()
-    : animals(new Animal*[4]), bankBalance{100000}, randomEvent{false} {
+// initialize starting variable amounts
+Zoo::Zoo() :
+    animals(new Animal*[3]),
+    bankBalance{100000},
+    randomEvent{false},
+    tigerQty{0},
+    penguinQty{0},
+    turtleQty{0} {
 }
 
 void Zoo::playGame() {
+    // show main menu
     menu.mainMenu();
-    start();
+    // display menus to purchase initial animals
     menu.initialTigers();
     tigerQty = menu.validateNumber(1,2);
     menu.initialPenguins();
     penguinQty = menu.validateNumber(1,2);
     menu.initialTurtles();
     turtleQty = menu.validateNumber(1,2);
+    //
+    initializeAnimals();
 }
 
-void Zoo::start() {
+/*********************************************************************
+** Description:     initialize starting animal amount
+*********************************************************************/
+void Zoo::initializeAnimals() {
+    // initialize starting animals
+    animals[0] = new Animal[tigerQty];
+    animals[1] = new Animal[penguinQty];
+    animals[2] = new Animal[turtleQty];
 
+    startUpCosts();
 }
+
+/*********************************************************************
+** Description:     purchase animals and
+*********************************************************************/
+void Zoo::startUpCosts() {
+    int startCosts -= (tigerQty      * 10000)
+                   + (penguinQty    * 1000)
+                   + (turtleQty     * 100);
+
+    bankBalance -= startCosts;
+
+    cout << "Total start up costs $" << startCosts << endl;
+    cout << "Remaining Bank Balance $" << bankBalance << endl;
+}
+
 
 //void Zoo::resizeArray() {
 //    Animal **newTigerArray = new Animal*[10];

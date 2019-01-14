@@ -21,8 +21,8 @@ public:
     // zoo class
     Zoo();
     void playGame();
-    void start();
-
+    void initializeAnimals();
+    void startUpCosts();
 
 
 private:
@@ -30,13 +30,11 @@ private:
     int tigerQty;
     int penguinQty;
     int turtleQty;
-    int orcaQty;
-
+    int bearQty;
     int bankBalance;
     int dailyBudget;
     int baseFoodCost;
     bool randomEvent;
-    int days;
 };
 
 #endif

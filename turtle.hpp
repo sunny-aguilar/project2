@@ -12,7 +12,7 @@
 
 #include "animal.hpp"                   // base class header
 
-class Turtle {
+class Turtle : public Animal {
 
 };
 

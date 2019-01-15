@@ -26,6 +26,7 @@ Zoo::Zoo() :
 void Zoo::playGame() {
     // show main menu
     menu.mainMenu();
+
     // display menus to purchase initial animals
     menu.initialTigers();
     tigerQty = menu.validateNumber(1,2);
@@ -33,8 +34,11 @@ void Zoo::playGame() {
     penguinQty = menu.validateNumber(1,2);
     menu.initialTurtles();
     turtleQty = menu.validateNumber(1,2);
-    //
+
+    // dynamically allocate animals
     initializeAnimals();
+
+    //
     while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game

@@ -81,7 +81,7 @@ void Menu::starDayMessage(int day) {
 
 void Menu::animalSick() {
     cout << "One of your animals has a disease!\n";
-    
+
 }
 
 

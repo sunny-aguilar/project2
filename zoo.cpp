@@ -217,8 +217,11 @@ void Zoo::randomEvents() {
 }
 
 void Zoo::animalSickness() {
+    menu.animalSick();
 
 }
+
+
 
 
 

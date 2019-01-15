@@ -310,6 +310,7 @@ void Zoo::animalBorn() {
 
     // select a random animal to have babies
     if (adultTiger || adultPenguin || adultTurtle) {
+        // generate random number from 0 - 2
         animalBorn = rand() % 2;
 
         do {

@@ -20,7 +20,8 @@ Zoo::Zoo() :
     randomEvent{false},
     tigerQty{0},
     penguinQty{0},
-    turtleQty{0} {
+    turtleQty{0},
+    baseFoodCost{10} {
 }
 
 void Zoo::playGame() {
@@ -157,7 +158,9 @@ void Zoo::countAnimals() {
 }
 
 void Zoo::dailyBudget() {
-    
+    cout << "Daily Revenues:\n";
+    cout << "Tiger Revenues: $" << 10000 * .20 << endl;
+    cout << "Penguin Revenues: $"
 }
 
 

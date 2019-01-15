@@ -224,6 +224,10 @@ void Zoo::animalSickness() {
         case 0:
             int remaining = tigerQty--;
             Animal *tempAnimal = new Tiger[remaining];
+            for (int index = 0; index < remaining; index++) {
+
+            }
+            
             break;
         case 1:
             break;

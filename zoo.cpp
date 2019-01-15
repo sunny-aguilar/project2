@@ -221,7 +221,9 @@ void Zoo::animalSickness() {
 
 }
 
+void Zoo::attendanceBoom() {
 
+}
 
 
 

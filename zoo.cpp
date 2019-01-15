@@ -38,11 +38,13 @@ void Zoo::playGame() {
     // dynamically allocate animals
     initializeAnimals();
 
-    //
+    // check if game shoudl continue
     while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game
     }
+
+    // game over message
     menu.gameOverMssg();
 }
 
@@ -73,6 +75,9 @@ void Zoo::startUpCosts() {
     cout << "Remaining Bank Balance $" << bankBalance << endl;
 }
 
+/*********************************************************************
+** Description:     start each day and repeat
+*********************************************************************/
 bool Zoo::startDay() {
     int day = 1;
     menu.starDayMessage(day);
@@ -88,6 +93,7 @@ bool Zoo::startDay() {
         ageAnimals();
 
         // feed the animals and pay feeding costs
+        
 
         // subtract feeding costs form bank
 

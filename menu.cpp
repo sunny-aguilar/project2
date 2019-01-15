@@ -93,7 +93,7 @@ void Menu::menuAttendanceBoom() {
 }
 
 void Menu::menuNoRandomEvent() {
-    cout << "No random event happed today\n";
+    cout << "No random event happened today\n";
 }
 
 

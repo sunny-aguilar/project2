@@ -215,6 +215,13 @@ void Zoo::randomEvents() {
     }
 }
 
+/*********************************************************************
+** Description:     this function creates randomly chooses which
+**                  animals gets sick and dies. Animal quantity is
+ *                  first reduced by one. A temporary penguin
+ *                  object is then created from the remaining animals
+ *                  
+*********************************************************************/
 void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die

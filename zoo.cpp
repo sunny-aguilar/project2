@@ -224,15 +224,15 @@ void Zoo::randomEvents() {
 }
 
 /*********************************************************************
-** Description:     this function creates randomly chooses which
-**                  animals gets sick and dies. Animal quantity is
-**                  first reduced by one. A temporary animal pointer
-**                  to an array of animals is then dynamically created
-**                  from the remaining animals. The temporary array
-**                  is then assigned the animal objects in the old
-**                  array (except for the one that dies). The old
-**                  array is then de-allocated and assigned the
-**                  memory location of the temporary animal pointer.
+** Description:     this function randomly chooses which animals gets
+**                  sick and dies. Animal quantity is first reduced
+**                  by one. A temporary animal pointer to an array of
+**                  animals is then dynamically created from the
+**                  remaining animals. The temporary array is then
+**                  assigned the animal objects in the old array
+**                  (except for the one that dies). The old array
+**                  is then de-allocated and assigned the memory
+**                  location of the temporary animal pointer.
 *********************************************************************/
 void Zoo::animalSickness() {
     menu.animalSick();
@@ -355,13 +355,24 @@ bool Zoo::adultCheck() {
     }
 }
 
+/*********************************************************************
+** Description:     this function randomly chooses which animals gets
+**                  sick and dies. Animal quantity is first reduced
+**                  by one. A temporary animal pointer to an array of
+**                  animals is then dynamically created from the
+**                  remaining animals. The temporary array is then
+**                  assigned the animal objects in the old array
+**                  (except for the one that dies). The old array
+**                  is then de-allocated and assigned the memory
+**                  location of the temporary animal pointer.
+*********************************************************************/
 void Zoo::spawnAnimal(int num) {
     menu.menuBabyBorn(num);
     switch(num) {
         case 0:
         {
             tigerQty++;
-            
+
         }
             break;
         case 1:

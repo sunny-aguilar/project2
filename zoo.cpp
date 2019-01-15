@@ -288,31 +288,21 @@ void Zoo::animalBorn() {
     bool adultPenguin = false;
     bool adultTurtle = false;
     bool selectAnimal = true;
+    bool babiesAvailable = false;
     int animalBorn;
 
     // first check if there are any adults before randomly choosing
     // which animal to have babies
-    for (int index = 0; index < tigerQty; index++) {
-        if (animals[0][index].getAge() >= 3) {
-            adultTiger = true;
-        }
-    }
-    for (int index = 0; index < penguinQty; index++) {
-        if (animals[1][index].getAge() >= 3) {
-            adultPenguin = true;
-        }
-    }
-    for (int index = 0; index < turtleQty; index++) {
-        if (animals[2][index].getAge() >= 3) {
-            adultTurtle = true;
-        }
-    }
+    babiesAvailable = adultCheck();
 
-    // select a random animal to have babies
-    if (adultTiger || adultPenguin || adultTurtle) {
+    // babies are available
+    if (babiesAvailable) {
         // generate random number from 0 - 2
         animalBorn = rand() % 2;
 
+        // select a random animal to have babies. Not all animal types
+        // may have adults therefore do while loop will keep checking
+        // until it finds animals with adults
         do {
             if (animalBorn == 0) {
                 for (int index = 0; index < tigerQty; index++) {
@@ -344,6 +334,24 @@ void Zoo::animalBorn() {
     else {
         cout << "Spring is in the air however there are no adult "
              << "animals to have babies\n";
+    }
+}
+
+bool Zoo::adultCheck() {
+    for (int index = 0; index < tigerQty; index++) {
+        if (animals[0][index].getAge() >= 3) {
+            return true;
+        }
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        if (animals[1][index].getAge() >= 3) {
+            return true;
+        }
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        if (animals[2][index].getAge() >= 3) {
+            return true;
+        }
     }
 }
 

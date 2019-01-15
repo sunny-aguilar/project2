@@ -47,7 +47,7 @@ void Zoo::playGame() {
 }
 
 /*********************************************************************
-** Description:     initialize starting animal amount
+** Description:     dynamically allocate starting animal amount
 *********************************************************************/
 void Zoo::initializeAnimals() {
     // initialize starting animals

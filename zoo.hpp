@@ -23,6 +23,7 @@ public:
     Menu menu;
     // zoo class
     Zoo();
+    ~Zoo();
     void playGame();
     void initializeAnimals();
     void startUpCosts();
@@ -35,6 +36,7 @@ public:
     void animalSickness();
     void attendanceBoom();
     void animalBorn();
+    void calculateDailyProfit();
 
 private:
     Animal **animals;      // array of pointers

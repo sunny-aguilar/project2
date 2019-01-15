@@ -24,6 +24,13 @@ Zoo::Zoo() :
     baseFoodCost{10} {
 }
 
+Zoo::~Zoo() {
+    for (int index = 0; index < 3; index++) {
+        delete [] animals[index];
+    }
+    delete []  animals;
+}
+
 void Zoo::playGame() {
     // show main menu
     menu.mainMenu();
@@ -106,6 +113,7 @@ bool Zoo::startDay() {
         randomEvents();
 
         // calculate daily profit including bonus
+
 
         // ask user to purchase an adult animal
 
@@ -218,9 +226,13 @@ void Zoo::randomEvents() {
 /*********************************************************************
 ** Description:     this function creates randomly chooses which
 **                  animals gets sick and dies. Animal quantity is
- *                  first reduced by one. A temporary penguin
- *                  object is then created from the remaining animals
- *                  
+**                  first reduced by one. A temporary animal pointer
+**                  to an array of animals is then dynamically created
+**                  from the remaining animals. The temporary array
+**                  is then assigned the animal objects in the old
+**                  array (except for the one that dies). The old
+**                  array is then de-allocated and assigned the
+**                  memory location of the temporary animal pointer.
 *********************************************************************/
 void Zoo::animalSickness() {
     menu.animalSick();
@@ -267,15 +279,77 @@ void Zoo::animalSickness() {
 
 void Zoo::attendanceBoom() {
     menu.menuAttendanceBoom();
-
+    double bonus = (rand() % (500 - 250 + 1)) + 250;
+    bankBalance += bonus;
 }
 
 void Zoo::animalBorn() {
     menu.menuAnimalBorn();
+    bool adultTiger = false;
+    bool adultPenguin = false;
+    bool adultTurtle = false;
+    int animalBorn;
+
+    // check if the animal chosen has any adults
+    do {
+        animalBorn = rand() % 2;
+        if (animalBorn == 0) {
+            for (int index = 0; index < tigerQty; index++) {
+                if (animals[0][index].getAge() >= 3) {
+                    adultTiger = true;
+                }
+            }
+        }
+        else if (animalBorn == 1) {
+            for (int index = 0; index < penguinQty; index++) {
+                if (animals[1][index].getAge() >= 3) {
+                    adultPenguin = true;
+                }
+            }
+        }
+        else if (animalBorn == 2) {
+            for (int index = 0; index < turtleQty; index++) {
+                if (animals[2][index].getAge() >= 3) {
+                    adultTurtle = true;
+                }
+            }
+        }
+
+        if (!adultTiger && !adultPenguin && !adultTurtle) {
+
+        }
+
+    } while ();
+
+    menu.menuBabyBorn(animalBorn);
+
+    switch(animalBorn) {
+        case 0:
+            {
+                tigerQty++;
+            }
+            break;
+        case 1:
+            {
+                penguinQty++;
+            }
+            break;
+        case 2:
+            {
+                turtleQty++;
+            }
+            break;
+        default:
+            cout << "Unable to create a new baby!\n";
+    }
+
+
 
 }
 
+void Zoo::calculateDailyProfit() {
 
+}
 
 
 

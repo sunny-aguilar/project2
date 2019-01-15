@@ -96,7 +96,23 @@ void Menu::menuNoRandomEvent() {
     cout << "No random event happened today\n";
 }
 
-
+void Menu::menuBabyBorn(int num) {
+    std::string animalType;
+    switch (num) {
+        case 0:
+            animalType = "tiger";
+            break;
+        case 1:
+            animalType = "penguin";
+            break;
+        case 2:
+            animalType = "turtle";
+            break;
+        default:
+            cout << "Unable to determine the type of animal born!\n";
+    }
+    cout << "Congrats! A baby " << animalType << " has been born!";
+}
 
 
 

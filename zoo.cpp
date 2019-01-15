@@ -227,11 +227,14 @@ void Zoo::animalSickness() {
             for (int index = 0; index < remaining; index++) {
                 tempAnimal[index] = animals[0][index];
             }
-
+            delete [] animals[0];
+            animals[0] = tempAnimal;
             break;
         case 1:
+            int remaining = penguinQty - 1;
             break;
         case 2:
+            int remaining = turtleQty - 1;
             break;
         default:
             cout << "Unable to randomly choose an animal to die!\n";

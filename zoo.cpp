@@ -161,9 +161,9 @@ void Zoo::dailyBudget() {
     double tigerRevenues = (10000 * .20) * tigerQty;
     double penguinRevenues = (1000 * .10 ) * penguinQty;
     double turtleRevenues = (100 * 0.05) * turtleQty;
-    double tigerCosts = 0;
-    double penguinCosts = 0;
-    double turtleCosts = 0;
+    double tigerCosts = (10 * 5);
+    double penguinCosts = 10;
+    double turtleCosts = (10 * 0.5);
 
     cout << "Daily Revenues:\n";
     cout << "Tiger Revenues: $" << tigerRevenues << endl;

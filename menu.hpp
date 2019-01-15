@@ -28,10 +28,9 @@ public:
     void initialTurtles();
     void starDayMessage(int day);
     void animalSick();
-    void menuAnimalBorn();
+    void menuBabyBorn(int num);
     void menuAttendanceBoom();
     void menuNoRandomEvent();
-    void menuBabyBorn(int num);
 
     void gameOverMssg();
 

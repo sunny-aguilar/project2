@@ -284,7 +284,6 @@ void Zoo::attendanceBoom() {
 }
 
 void Zoo::animalBorn() {
-    menu.menuAnimalBorn();
     bool adultTiger = false;
     bool adultPenguin = false;
     bool adultTurtle = false;
@@ -308,24 +307,28 @@ void Zoo::animalBorn() {
         }
     }
 
+    // select a random animal to have babies
     if (adultTiger || adultPenguin || adultTurtle) {
-        // check if the animal chosen has any adults
         animalBorn = rand() % 2;
         if (animalBorn == 0) {
-            spawnAnimal();
+            spawnAnimal(animalBorn);
         }
         else if (animalBorn == 1) {
-            spawnAnimal();
+            spawnAnimal(animalBorn);
         }
         else if (animalBorn == 2) {
-            spawnAnimal();
+            spawnAnimal(animalBorn);
         }
+    }
+    else {
+        cout << "Spring is in the air however there are no adult "
+             << "animals to have babies\n";
     }
 }
 
-void Zoo::spawnAnimal() {
-    menu.menuBabyBorn(animalBorn);
-    switch(animalBorn) {
+void Zoo::spawnAnimal(int num) {
+    menu.menuBabyBorn(num);
+    switch(num) {
         case 0:
         {
             tigerQty++;

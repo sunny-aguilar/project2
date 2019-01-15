@@ -84,11 +84,17 @@ void Menu::animalSick() {
 
 }
 
+void Menu::menuAnimalBorn() {
+    cout << "Congrats! An animal has been born!\n";
+}
 
+void Menu::menuAttendanceBoom() {
+    cout << "Your recent advertisements have caused an attendance boom!\n";
+}
 
-
-
-
+void Menu::menuNoRandomEvent() {
+    cout << "No random event happed today\n";
+}
 
 
 

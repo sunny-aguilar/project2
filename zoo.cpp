@@ -203,13 +203,13 @@ void Zoo::randomEvents() {
             animalSickness();
             break;
         case 2:
-
+            attendanceBoom();
             break;
         case 3:
-
+            animalBorn();
             break;
         case 4:
-
+            menu.menuNoRandomEvent();
             break;
         default:
             cout << "error! unable to generate a random event!\n";
@@ -222,11 +222,11 @@ void Zoo::animalSickness() {
 }
 
 void Zoo::attendanceBoom() {
-
+    menu.menuAttendanceBoom();
 }
 
 void Zoo::animalBorn() {
-    
+    menu.menuAnimalBorn();
 }
 
 

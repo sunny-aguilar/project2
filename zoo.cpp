@@ -285,6 +285,7 @@ void Zoo::attendanceBoom() {
 
 void Zoo::animalBorn() {
     menu.menuAnimalBorn();
+    bool noAdults = true;
     bool adultTiger = false;
     bool adultPenguin = false;
     bool adultTurtle = false;
@@ -316,10 +317,10 @@ void Zoo::animalBorn() {
         }
 
         if (!adultTiger && !adultPenguin && !adultTurtle) {
-
+            noAdults = false;
         }
 
-    } while ();
+    } while (noAdults);
 
     menu.menuBabyBorn(animalBorn);
 

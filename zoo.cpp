@@ -245,7 +245,7 @@ void Zoo::animalSickness() {
         case 2:
             {
                 int remaining = turtleQty - 1;
-                
+                Animal*tempAnimal = new Turtle[remaining];
                 break;
             }
         default:

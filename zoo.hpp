@@ -15,6 +15,7 @@
 #include "animal.hpp"
 #include "tiger.hpp"
 #include "penguin.hpp"
+#include "turtle.hpp"
 
 class Zoo {
 public:

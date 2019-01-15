@@ -26,7 +26,7 @@ public:
     void initialTigers();
     void initialPenguins();
     void initialTurtles();
-
+    void starDayMessage(int day);
 
     void gameOverMssg();
 

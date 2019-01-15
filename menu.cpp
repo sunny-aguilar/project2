@@ -74,7 +74,10 @@ void Menu::initialTurtles() {
          << ">> ";
 }
 
-
+void Menu::starDayMessage(int day) {
+    cout << "\n################  IT'S A NEW DAY!  ################\n";
+    cout << "################  ---- DAY " << day << " ----  ################\n";
+}
 
 
 

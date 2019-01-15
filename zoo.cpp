@@ -35,6 +35,7 @@ void Zoo::playGame() {
     turtleQty = menu.validateNumber(1,2);
     //
     initializeAnimals();
+    startDay();
 }
 
 /*********************************************************************
@@ -63,6 +64,38 @@ void Zoo::startUpCosts() {
     cout << "Total start up costs $" << startCosts << endl;
     cout << "Remaining Bank Balance $" << bankBalance << endl;
 }
+
+void Zoo::startDay() {
+    int day = 1;
+    menu.starDayMessage(day);
+
+    do {
+        // increase animal age by 1 day
+        // feed the animals and pay feeding costs
+        // subtract feeding costs form bank
+        // random event
+        // calculate daily profit including bonus
+        // ask user to purchase an adult animal
+        // prompt user if keep playing
+        day++;
+    } while ();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //void Zoo::resizeArray() {

@@ -19,9 +19,7 @@ int main() {
     // create random number seed
     auto seed = static_cast<unsigned int>(time(nullptr));
     srand(seed);
-    // create game object
-    Zoo zoo;
-    // play the game
-    zoo.playGame();
+    Zoo zoo;            // create game object
+    zoo.playGame();     // play the game
     return 0;
 }

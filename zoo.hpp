@@ -23,7 +23,7 @@ public:
     void playGame();
     void initializeAnimals();
     void startUpCosts();
-    void startDay();
+    bool startDay();
 
 private:
     Animal **animals;      // array of pointers
@@ -32,6 +32,7 @@ private:
     int turtleQty;
     int bearQty;
     int bankBalance;
+    int gameOver;
     int dailyProfit;
     int dailyBudget;
     int baseFoodCost;

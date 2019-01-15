@@ -104,7 +104,8 @@ bool Zoo::startDay() {
         feedAnimals();
 
         // random event
-        void 
+
+
         // calculate daily profit including bonus
 
         // ask user to purchase an adult animal
@@ -193,6 +194,32 @@ void Zoo::feedAnimals() {
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
+
+void Zoo::randomEvents() {
+    // generate a random number 1 - 4
+    int randomNumber = rand() % 4 + 1;
+    switch (randomNumber) {
+        case 1:
+            animalSickness();
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        default:
+            cout << "error! unable to generate a random event!\n";
+    }
+}
+
+void Zoo::animalSickness() {
+
+}
+
 
 
 

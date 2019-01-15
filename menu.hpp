@@ -27,6 +27,7 @@ public:
     void initialPenguins();
     void initialTurtles();
     void starDayMessage(int day);
+    void animalSick();
 
     void gameOverMssg();
 

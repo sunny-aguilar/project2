@@ -29,6 +29,7 @@ public:
     void dailyBudget();
     void feedAnimals();
     void randomEvents();
+    void animalSickness();
 
 private:
     Animal **animals;      // array of pointers

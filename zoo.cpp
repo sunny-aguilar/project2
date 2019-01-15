@@ -249,7 +249,8 @@ void Zoo::animalSickness() {
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[2][remaining];
                 }
-                
+                delete [] animals[2];
+                animals[2] = tempAnimal;
                 break;
             }
         default:

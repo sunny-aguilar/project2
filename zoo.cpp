@@ -317,7 +317,7 @@ void Zoo::animalBorn() {
                 spawnAnimal();
             }
             else if (animalBorn == 1) {
-
+                spawnAnimal();
             }
             else if (animalBorn == 2) {
 

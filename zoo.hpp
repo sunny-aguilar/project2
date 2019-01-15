@@ -32,7 +32,7 @@ private:
     int turtleQty;
     int bearQty;
     int bankBalance;
-    int gameOver;
+    bool gameOver;
     int dailyProfit;
     int dailyBudget;
     int baseFoodCost;

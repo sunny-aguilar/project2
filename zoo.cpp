@@ -169,7 +169,7 @@ void Zoo::dailyBudget() {
     cout << "Tiger Revenues: $" << tigerRevenues << endl;
     cout << "Penguin Revenues: $" << penguinRevenues << endl;
     cout << "Turtle Revenues: $" << turtleRevenues << endl;
-    cout << "Total Revenues: $" <<  << endl;
+    cout << "Total Revenues: $" << tigerRevenues+penguinRevenues+turtleRevenues << endl;
 
     cout << "Daily Expenses:\n";
     cout << "Tiger Feeding Costs: $" << (10 * 5) * << endl;

@@ -218,7 +218,19 @@ void Zoo::randomEvents() {
 
 void Zoo::animalSickness() {
     menu.animalSick();
+    // randomly pick an animal to die
+    int randomAnimal = rand() % 2;
 
+    switch (randomAnimal) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            cout << "Unable to randomly choose an animal to die!\n";
+    }
 }
 
 void Zoo::attendanceBoom() {

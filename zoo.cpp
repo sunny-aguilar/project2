@@ -106,10 +106,10 @@ void Zoo::ageAnimals() {
         animals[0][index].increaseAnimalAge();
     }
     for (int index = 0; index < penguinQty; index++) {
-        
+        animals[1][index].increaseAnimalAge();
     }
     for (int index = 0; index < turtleQty; index++) {
-
+        animals[0][index].increaseAnimalAge();
     }
 }
 

@@ -104,7 +104,7 @@ bool Zoo::startDay() {
         feedAnimals();
 
         // random event
-
+        randomEvents();
 
         // calculate daily profit including bonus
 
@@ -228,7 +228,7 @@ void Zoo::attendanceBoom() {
 
 void Zoo::animalBorn() {
     menu.menuAnimalBorn();
-    
+
 }
 
 

@@ -75,7 +75,6 @@ bool Zoo::startDay() {
 
     do {
         // check bank balance
-        bankBalance = -1;
         if (bankBalance < 0) {
             gameOver = true;
             continueDay = false;

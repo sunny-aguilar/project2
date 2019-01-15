@@ -102,16 +102,35 @@ bool Zoo::startDay() {
 
 }
 
+/*********************************************************************
+** Description:     increase animal age by 1 day each time this
+**                  function is called
+*********************************************************************/
 void Zoo::ageAnimals() {
+//    for (int index = 0; index < tigerQty; index++) {
+//        animals[0][index].increaseAnimalAge();
+//    }
+//    for (int index = 0; index < penguinQty; index++) {
+//        animals[1][index].increaseAnimalAge();
+//    }
+//    for (int index = 0; index < turtleQty; index++) {
+//        animals[2][index].increaseAnimalAge();
+//    }
+
+    int index = 0;
+    int animalArr[] = {tigerQty, penguinQty, turtleQty};
+
+    for (int type = 0; type < 3; type++) {
+        for (int num = 0; num < animalArr[index]; num++) {
+            animals[type][num].increaseAnimalAge();
+        }
+        index++;
+    }
+
     for (int index = 0; index < tigerQty; index++) {
-        animals[0][index].increaseAnimalAge();
+        cout << "Tiger Ages: " << animals[0][index].getAge() << " ";
     }
-    for (int index = 0; index < penguinQty; index++) {
-        animals[1][index].increaseAnimalAge();
-    }
-    for (int index = 0; index < turtleQty; index++) {
-        animals[2][index].increaseAnimalAge();
-    }
+
 }
 
 

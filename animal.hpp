@@ -15,6 +15,7 @@
 class Animal {
 public:
     Animal();
+    int getAge();
     void increaseAnimalAge();
 
 private:

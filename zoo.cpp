@@ -81,6 +81,7 @@ bool Zoo::startDay() {
             return gameOver;
         }
         // increase animal age by 1 day
+        ageAnimals();
 
         // feed the animals and pay feeding costs
 
@@ -109,7 +110,7 @@ void Zoo::ageAnimals() {
         animals[1][index].increaseAnimalAge();
     }
     for (int index = 0; index < turtleQty; index++) {
-        animals[0][index].increaseAnimalAge();
+        animals[2][index].increaseAnimalAge();
     }
 }
 

@@ -97,6 +97,7 @@ bool Zoo::startDay() {
         countAnimals();
 
         // display daily budget
+        dailyBudget();
 
         // feed the animals and pay feeding costs
 

@@ -13,6 +13,8 @@
 #include <ctime>
 #include "menu.hpp"
 #include "animal.hpp"
+#include "tiger.hpp"
+#include "penguin.hpp"
 
 class Zoo {
 public:

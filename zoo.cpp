@@ -8,7 +8,6 @@
 **
 *********************************************************************/
 #include "zoo.hpp"
-#include "tiger.hpp"
 #include <iostream>
 #include <iomanip>
 using std::cout;
@@ -222,20 +221,30 @@ void Zoo::animalSickness() {
     int randomAnimal = rand() % 2;
     switch (randomAnimal) {
         case 0:
-            int remaining = tigerQty--;
-            Animal *tempAnimal = new Tiger[remaining];
-            for (int index = 0; index < remaining; index++) {
-                tempAnimal[index] = animals[0][index];
+            {
+                int remaining = tigerQty--;
+                Animal *tempAnimal = new Tiger[remaining];
+                for (int index = 0; index < remaining; index++) {
+                    tempAnimal[index] = animals[0][index];
+                }
+                delete [] animals[0];
+                animals[0] = tempAnimal;
+                break;
             }
-            delete [] animals[0];
-            animals[0] = tempAnimal;
-            break;
         case 1:
-            int remaining = penguinQty - 1;
-            break;
+            {
+                int remaining = penguinQty - 1;
+                Animal *tempAnimal = new Penguin[remaining];
+                for (int index = 0; index < remaining; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                break;
+            }
         case 2:
-            int remaining = turtleQty - 1;
-            break;
+            {
+                int remaining = turtleQty - 1;
+                break;
+            }
         default:
             cout << "Unable to randomly choose an animal to die!\n";
     }

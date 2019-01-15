@@ -316,7 +316,7 @@ void Zoo::animalBorn() {
             if (animalBorn == 0) {
                 for (int index = 0; index < tigerQty; index++) {
                     if (animals[0][index].getAge() >= 3) {
-                        adultTiger = true;
+                        stopLoop = false;
                         spawnAnimal(animalBorn);
                     }
                 }
@@ -324,7 +324,7 @@ void Zoo::animalBorn() {
             else if (animalBorn == 1) {
                 for (int index = 0; index < penguinQty; index++) {
                     if (animals[1][index].getAge() >= 3) {
-                        adultPenguin = true;
+                        stopLoop = false;
                         spawnAnimal(animalBorn);
                     }
                 }
@@ -332,12 +332,12 @@ void Zoo::animalBorn() {
             else if (animalBorn == 2) {
                 for (int index = 0; index < turtleQty; index++) {
                     if (animals[2][index].getAge() >= 3) {
-                        adultTurtle = true;
+                        stopLoop = false;
                         spawnAnimal(animalBorn);
                     }
                 }
             }
-        } while ();
+        } while (stopLoop);
 
     }
     else {

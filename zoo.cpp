@@ -176,13 +176,15 @@ void Zoo::dailyBudget() {
     cout << "Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
     cout << "Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
     cout << "Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
-    cout << "Total Revenues: $" << std::setw(10) << tigerRevenues+penguinRevenues+turtleRevenues << endl;
+    cout << "Total Revenues: $" << std::setw(10) << totalRevenues << endl;
 
     cout << "\nDaily Expenses:\n";
     cout << "Tiger Feeding Costs: $" << tigerCosts << endl;
     cout << "Penguin Feeding Costs: $" << penguinCosts << endl;
     cout << "Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "Total Expenses: $" << tigerCosts+penguinCosts+turtleCosts << endl << endl;
+    cout << "Total Expenses: $" << totalExpenses << endl << endl;
+
+    
 }
 
 

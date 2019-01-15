@@ -32,6 +32,7 @@ private:
     int turtleQty;
     int bearQty;
     int bankBalance;
+    int dailyProfitLoss;
     int dailyBudget;
     int baseFoodCost;
     bool randomEvent;

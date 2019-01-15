@@ -35,7 +35,7 @@ void Zoo::playGame() {
     turtleQty = menu.validateNumber(1,2);
     //
     initializeAnimals();
-    while (startDay()) {
+    while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game
     }

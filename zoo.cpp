@@ -223,6 +223,7 @@ void Zoo::animalSickness() {
 
 void Zoo::attendanceBoom() {
     menu.menuAttendanceBoom();
+    
 }
 
 void Zoo::animalBorn() {

@@ -36,8 +36,10 @@ void Zoo::playGame() {
     //
     initializeAnimals();
     while (startDay()) {
-        
+        // while startDay() returns true, game continues
+        // if startDay() returns false, end game
     }
+    menu.gameOverMssg();
 }
 
 /*********************************************************************

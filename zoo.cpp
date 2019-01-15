@@ -320,7 +320,7 @@ void Zoo::animalBorn() {
                 spawnAnimal();
             }
             else if (animalBorn == 2) {
-
+                spawnAnimal();
             }
         } while (noAdults);
     }

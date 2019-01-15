@@ -82,12 +82,19 @@ bool Zoo::startDay() {
             return gameOver;
         }
         // increase animal age by 1 day
+        
         // feed the animals and pay feeding costs
+
         // subtract feeding costs form bank
+
         // random event
+
         // calculate daily profit including bonus
+
         // ask user to purchase an adult animal
+
         // prompt user if keep playing
+
         day++;
     } while (continueDay);
 

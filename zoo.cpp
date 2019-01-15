@@ -170,6 +170,7 @@ void Zoo::dailyBudget() {
     double turtleCosts = (10 * 0.5) * turtleQty;
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
     double totalExpenses = tigerCosts+penguinCosts+turtleCosts;
+    double netIncome = totalRevenues - totalExpenses;
 
     cout << std::fixed << std::setprecision(2);
     cout << "Daily Revenues:\n";
@@ -184,7 +185,7 @@ void Zoo::dailyBudget() {
     cout << "Turtle Feeding Costs: $" << turtleCosts << endl;
     cout << "Total Expenses: $" << totalExpenses << endl << endl;
 
-    
+    cout << "Net Profit/(Loss): $" << netIncome << endl << endl;
 }
 
 

@@ -14,7 +14,9 @@
 
 class Tiger : public Animal {
 public:
-    int legs;
+    Tiger();
+
+private:
 };
 
 #endif

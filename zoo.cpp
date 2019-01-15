@@ -92,8 +92,11 @@ bool Zoo::startDay() {
         // increase animal age by 1 day
         ageAnimals();
 
+        // display animals
+        countAnimals();
+
         // feed the animals and pay feeding costs
-        
+
 
         // subtract feeding costs form bank
 
@@ -107,6 +110,9 @@ bool Zoo::startDay() {
 
         // show daily profit
 
+        cout << "press ENTER to continue\n";
+        cin.get();
+
         day++;
     } while (continueDay);
 
@@ -117,35 +123,42 @@ bool Zoo::startDay() {
 **                  function is called
 *********************************************************************/
 void Zoo::ageAnimals() {
-//    for (int index = 0; index < tigerQty; index++) {
-//        animals[0][index].increaseAnimalAge();
-//    }
-//    for (int index = 0; index < penguinQty; index++) {
-//        animals[1][index].increaseAnimalAge();
-//    }
-//    for (int index = 0; index < turtleQty; index++) {
-//        animals[2][index].increaseAnimalAge();
-//    }
-
-    int index = 0;
-    int animalArr[] = {tigerQty, penguinQty, turtleQty};
-
-    for (int type = 0; type < 3; type++) {
-        for (int num = 0; num < animalArr[index]; num++) {
-            animals[type][num].increaseAnimalAge();
-        }
-        index++;
-    }
-
     for (int index = 0; index < tigerQty; index++) {
-        cout << "Tiger Ages: " << animals[0][index].getAge() << " ";
+        animals[0][index].increaseAnimalAge();
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        animals[1][index].increaseAnimalAge();
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        animals[2][index].increaseAnimalAge();
     }
 
+//    int index = 0;
+//    int animalArr[] = {tigerQty, penguinQty, turtleQty};
+//
+//    for (int type = 0; type < 3; type++) {
+//        for (int num = 0; num < animalArr[index]; num++) {
+//            animals[type][num].increaseAnimalAge();
+//        }
+//        index++;
+//    }
+
+    cout << "Tiger Ages: ";
+    for (int index = 0; index < tigerQty; index++) {
+        cout << animals[0][index].getAge() << " ";
+    }
+    cout << endl;
 }
 
+void Zoo::countAnimals() {
+    cout << tigerQty << endl;
+    cout << penguinQty << endl;
+    cout << turtleQty << endl;
+}
 
-
-
+void Zoo::dailyBudget() {
+    
+}
 
 
 

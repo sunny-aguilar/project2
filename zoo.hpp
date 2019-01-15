@@ -25,6 +25,8 @@ public:
     void startUpCosts();
     bool startDay();
     void ageAnimals();
+    void countAnimals();
+    void dailyBudget();
 
 private:
     Animal **animals;      // array of pointers

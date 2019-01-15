@@ -13,7 +13,10 @@
 #include "animal.hpp"                   // base class header
 
 class Turtle : public Animal {
+public:
+    Turtle();
 
+private:
 };
 
 #endif

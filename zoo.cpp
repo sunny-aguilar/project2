@@ -158,18 +158,18 @@ void Zoo::countAnimals() {
 }
 
 void Zoo::dailyBudget() {
-    int tigerRevenues = (10000 * .20) * tigerQty;
-    int penguinRevenues = (1000 * .10 ) * penguinQty;
-    int turtleRevenues = (100 * 0.05) * turtleQty;
-    int tigerCosts = 0;
-    int penguinCosts = 0;
-    int turtleCosts = 0;
+    double tigerRevenues = (10000 * .20) * tigerQty;
+    double penguinRevenues = (1000 * .10 ) * penguinQty;
+    double turtleRevenues = (100 * 0.05) * turtleQty;
+    double tigerCosts = 0;
+    double penguinCosts = 0;
+    double turtleCosts = 0;
 
     cout << "Daily Revenues:\n";
-    cout << "Tiger Revenues: $" << 10000 * .20 << endl;
-    cout << "Penguin Revenues: $" << 1000 * .10 << endl;
-    cout << "Turtle Revenues: $" << 100 * 0.05 << endl;
-    cout << "Total Revenues: $" << (10000 * .20)+(1000 * .10)+(100 * 0.05) << endl;
+    cout << "Tiger Revenues: $" << tigerRevenues << endl;
+    cout << "Penguin Revenues: $" << penguinRevenues << endl;
+    cout << "Turtle Revenues: $" << turtleRevenues << endl;
+    cout << "Total Revenues: $" <<  << endl;
 
     cout << "Daily Expenses:\n";
     cout << "Tiger Feeding Costs: $" << (10 * 5) * << endl;

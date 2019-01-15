@@ -101,7 +101,17 @@ bool Zoo::startDay() {
 
 }
 
+void Zoo::ageAnimals() {
+    for (int index = 0; index < tigerQty; index++) {
+        animals[0][index].increaseAnimalAge();
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        
+    }
+    for (int index = 0; index < turtleQty; index++) {
 
+    }
+}
 
 
 

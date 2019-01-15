@@ -11,3 +11,6 @@
 
 Animal::Animal() {};
 
+void Animal::increaseAnimalAge() {
+    age++;
+}

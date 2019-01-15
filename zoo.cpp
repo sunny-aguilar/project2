@@ -310,15 +310,19 @@ void Zoo::animalBorn() {
     // select a random animal to have babies
     if (adultTiger || adultPenguin || adultTurtle) {
         animalBorn = rand() % 2;
-        if (animalBorn == 0) {
-            spawnAnimal(animalBorn);
-        }
-        else if (animalBorn == 1) {
-            spawnAnimal(animalBorn);
-        }
-        else if (animalBorn == 2) {
-            spawnAnimal(animalBorn);
-        }
+
+        do {
+            if (animalBorn == 0) {
+                spawnAnimal(animalBorn);
+            }
+            else if (animalBorn == 1) {
+                spawnAnimal(animalBorn);
+            }
+            else if (animalBorn == 2) {
+                spawnAnimal(animalBorn);
+            }
+        } while ();
+
     }
     else {
         cout << "Spring is in the air however there are no adult "

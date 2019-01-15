@@ -287,7 +287,7 @@ void Zoo::animalBorn() {
     bool adultTiger = false;
     bool adultPenguin = false;
     bool adultTurtle = false;
-    bool stopLoop = true;
+    bool selectAnimal = true;
     int animalBorn;
 
     // first check if there are any adults before randomly choosing
@@ -317,7 +317,7 @@ void Zoo::animalBorn() {
             if (animalBorn == 0) {
                 for (int index = 0; index < tigerQty; index++) {
                     if (animals[0][index].getAge() >= 3) {
-                        stopLoop = false;
+                        selectAnimal = false;
                         spawnAnimal(animalBorn);
                     }
                 }
@@ -325,7 +325,7 @@ void Zoo::animalBorn() {
             else if (animalBorn == 1) {
                 for (int index = 0; index < penguinQty; index++) {
                     if (animals[1][index].getAge() >= 3) {
-                        stopLoop = false;
+                        selectAnimal = false;
                         spawnAnimal(animalBorn);
                     }
                 }
@@ -333,12 +333,12 @@ void Zoo::animalBorn() {
             else if (animalBorn == 2) {
                 for (int index = 0; index < turtleQty; index++) {
                     if (animals[2][index].getAge() >= 3) {
-                        stopLoop = false;
+                        selectAnimal = false;
                         spawnAnimal(animalBorn);
                     }
                 }
             }
-        } while (stopLoop);
+        } while (selectAnimal);
 
     }
     else {

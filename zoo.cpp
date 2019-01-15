@@ -53,9 +53,10 @@ void Zoo::initializeAnimals() {
 ** Description:     purchase animals and
 *********************************************************************/
 void Zoo::startUpCosts() {
-    int startCosts -= (tigerQty      * 10000)
-                   + (penguinQty    * 1000)
-                   + (turtleQty     * 100);
+    int startCosts = 0;
+    startCosts = (tigerQty      * 10000)
+               + (penguinQty    * 1000)
+               + (turtleQty     * 100);
 
     bankBalance -= startCosts;
 

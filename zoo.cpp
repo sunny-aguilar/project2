@@ -361,16 +361,19 @@ void Zoo::spawnAnimal(int num) {
         case 0:
         {
             tigerQty++;
+            
         }
             break;
         case 1:
         {
-            penguinQty++;
+            penguinQty += 5;
+
         }
             break;
         case 2:
         {
-            turtleQty++;
+            turtleQty += 10;
+
         }
             break;
         default:

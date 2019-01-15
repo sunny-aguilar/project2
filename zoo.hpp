@@ -32,6 +32,7 @@ private:
     int turtleQty;
     int bearQty;
     int bankBalance;
+    bool continueDay;
     bool gameOver;
     int dailyProfit;
     int dailyBudget;

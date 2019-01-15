@@ -75,8 +75,10 @@ bool Zoo::startDay() {
 
     do {
         // check bank balance
+        bankBalance = -1;
         if (bankBalance < 0) {
             gameOver = true;
+            continueDay = false;
             return gameOver;
         }
         // increase animal age by 1 day
@@ -87,7 +89,7 @@ bool Zoo::startDay() {
         // ask user to purchase an adult animal
         // prompt user if keep playing
         day++;
-    } while ();
+    } while (continueDay);
 
 }
 

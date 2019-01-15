@@ -101,12 +101,10 @@ bool Zoo::startDay() {
         dailyBudget();
 
         // feed the animals and pay feeding costs
-
-
-        // subtract feeding costs form bank
+        feedAnimals();
 
         // random event
-
+        void 
         // calculate daily profit including bonus
 
         // ask user to purchase an adult animal
@@ -169,8 +167,8 @@ void Zoo::dailyBudget() {
     double penguinCosts = 10 * penguinQty;
     double turtleCosts = (10 * 0.5) * turtleQty;
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-    double totalExpenses = tigerCosts+penguinCosts+turtleCosts;
-    double netIncome = totalRevenues - totalExpenses;
+    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    double netIncome = totalRevenues - totalFeedExpenses;
 
     cout << std::fixed << std::setprecision(2);
     cout << "Daily Revenues:\n";
@@ -183,12 +181,18 @@ void Zoo::dailyBudget() {
     cout << "Tiger Feeding Costs: $" << tigerCosts << endl;
     cout << "Penguin Feeding Costs: $" << penguinCosts << endl;
     cout << "Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "Total Expenses: $" << totalExpenses << endl << endl;
+    cout << "Total Expenses: $" << totalFeedExpenses << endl << endl;
 
     cout << "Net Profit/(Loss): $" << netIncome << endl << endl;
 }
 
-
+void Zoo::feedAnimals() {
+    double tigerCosts = (10 * 5) * tigerQty;
+    double penguinCosts = 10 * penguinQty;
+    double turtleCosts = (10 * 0.5) * turtleQty;
+    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    bankBalance -= totalFeedExpenses;
+}
 
 
 

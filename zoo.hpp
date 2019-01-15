@@ -27,6 +27,8 @@ public:
     void ageAnimals();
     void countAnimals();
     void dailyBudget();
+    void feedAnimals();
+    void randomEvents();
 
 private:
     Animal **animals;      // array of pointers
@@ -34,7 +36,7 @@ private:
     int penguinQty;
     int turtleQty;
     int bearQty;
-    int bankBalance;
+    double bankBalance;
     bool continueDay;
     bool gameOver;
     int dailyProfit;

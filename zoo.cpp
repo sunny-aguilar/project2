@@ -285,7 +285,6 @@ void Zoo::attendanceBoom() {
 
 void Zoo::animalBorn() {
     menu.menuAnimalBorn();
-    bool noAdults = true;
     bool adultTiger = false;
     bool adultPenguin = false;
     bool adultTurtle = false;
@@ -311,48 +310,40 @@ void Zoo::animalBorn() {
 
     if (adultTiger || adultPenguin || adultTurtle) {
         // check if the animal chosen has any adults
-        do {
-            animalBorn = rand() % 2;
-            if (animalBorn == 0) {
-                spawnAnimal();
-            }
-            else if (animalBorn == 1) {
-                spawnAnimal();
-            }
-            else if (animalBorn == 2) {
-                spawnAnimal();
-            }
-        } while (noAdults);
+        animalBorn = rand() % 2;
+        if (animalBorn == 0) {
+            spawnAnimal();
+        }
+        else if (animalBorn == 1) {
+            spawnAnimal();
+        }
+        else if (animalBorn == 2) {
+            spawnAnimal();
+        }
     }
+}
 
-
-
+void Zoo::spawnAnimal() {
     menu.menuBabyBorn(animalBorn);
-
     switch(animalBorn) {
         case 0:
-            {
-                tigerQty++;
-            }
+        {
+            tigerQty++;
+        }
             break;
         case 1:
-            {
-                penguinQty++;
-            }
+        {
+            penguinQty++;
+        }
             break;
         case 2:
-            {
-                turtleQty++;
-            }
+        {
+            turtleQty++;
+        }
             break;
         default:
             cout << "Unable to create a new baby!\n";
     }
-
-}
-
-void Zoo::spawnAnimal() {
-
 }
 
 

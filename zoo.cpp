@@ -225,7 +225,9 @@ void Zoo::attendanceBoom() {
 
 }
 
-
+void Zoo::animalBorn() {
+    
+}
 
 
 

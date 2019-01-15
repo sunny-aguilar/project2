@@ -36,6 +36,7 @@ public:
     void animalSickness();
     void attendanceBoom();
     void animalBorn();
+    void spawnAnimal();
     void calculateDailyProfit();
 
 private:

@@ -291,36 +291,41 @@ void Zoo::animalBorn() {
     bool adultTurtle = false;
     int animalBorn;
 
-    // check if the animal chosen has any adults
-    do {
-        animalBorn = rand() % 2;
-        if (animalBorn == 0) {
-            for (int index = 0; index < tigerQty; index++) {
-                if (animals[0][index].getAge() >= 3) {
-                    adultTiger = true;
-                }
-            }
+    // first check if there are any adults before randomly choosing
+    // which animal to have babies
+    for (int index = 0; index < tigerQty; index++) {
+        if (animals[0][index].getAge() >= 3) {
+            adultTiger = true;
         }
-        else if (animalBorn == 1) {
-            for (int index = 0; index < penguinQty; index++) {
-                if (animals[1][index].getAge() >= 3) {
-                    adultPenguin = true;
-                }
-            }
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        if (animals[1][index].getAge() >= 3) {
+            adultPenguin = true;
         }
-        else if (animalBorn == 2) {
-            for (int index = 0; index < turtleQty; index++) {
-                if (animals[2][index].getAge() >= 3) {
-                    adultTurtle = true;
-                }
-            }
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        if (animals[2][index].getAge() >= 3) {
+            adultTurtle = true;
         }
+    }
 
-        if (!adultTiger && !adultPenguin && !adultTurtle) {
-            noAdults = false;
-        }
+    if (adultTiger || adultPenguin || adultTurtle) {
+        // check if the animal chosen has any adults
+        do {
+            animalBorn = rand() % 2;
+            if (animalBorn == 0) {
+                spawnAnimal();
+            }
+            else if (animalBorn == 1) {
 
-    } while (noAdults);
+            }
+            else if (animalBorn == 2) {
+
+            }
+        } while (noAdults);
+    }
+
+
 
     menu.menuBabyBorn(animalBorn);
 
@@ -344,9 +349,12 @@ void Zoo::animalBorn() {
             cout << "Unable to create a new baby!\n";
     }
 
+}
 
+void Zoo::spawnAnimal() {
 
 }
+
 
 void Zoo::calculateDailyProfit() {
 

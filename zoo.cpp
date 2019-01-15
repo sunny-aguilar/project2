@@ -160,7 +160,7 @@ void Zoo::countAnimals() {
 void Zoo::dailyBudget() {
     int tigerRevenues = (10000 * .20) * tigerQty;
     int penguinRevenues = (1000 * .10 ) * penguinQty;
-    int turtleRevenues = (100 * 0.05) * ;
+    int turtleRevenues = (100 * 0.05) * turtleQty;
     int tigerCosts = 0;
     int penguinCosts = 0;
     int turtleCosts = 0;

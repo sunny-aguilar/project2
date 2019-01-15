@@ -222,8 +222,8 @@ void Zoo::animalSickness() {
     int randomAnimal = rand() % 2;
     switch (randomAnimal) {
         case 0:
-            tigerQty--;
-            Animal *tempAnimal = new Tiger[];
+            int remaining = tigerQty--;
+            Animal *tempAnimal = new Tiger[remaining];
             break;
         case 1:
             break;

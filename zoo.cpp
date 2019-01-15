@@ -10,6 +10,7 @@
 #include "zoo.hpp"
 #include "tiger.hpp"
 #include <iostream>
+#include <iomanip>
 using std::cout;
 using std::endl;
 
@@ -167,18 +168,21 @@ void Zoo::dailyBudget() {
     double tigerCosts = (10 * 5) * tigerQty;
     double penguinCosts = 10 * penguinQty;
     double turtleCosts = (10 * 0.5) * turtleQty;
+    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
+    double totalExpenses = tigerCosts+penguinCosts+turtleCosts;
 
+    cout << std::fixed << std::setprecision(2);
     cout << "Daily Revenues:\n";
-    cout << "Tiger Revenues: $" << tigerRevenues << endl;
-    cout << "Penguin Revenues: $" << penguinRevenues << endl;
-    cout << "Turtle Revenues: $" << turtleRevenues << endl;
-    cout << "Total Revenues: $" << tigerRevenues+penguinRevenues+turtleRevenues << endl;
+    cout << "Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
+    cout << "Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
+    cout << "Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
+    cout << "Total Revenues: $" << std::setw(10) << tigerRevenues+penguinRevenues+turtleRevenues << endl;
 
-    cout << "Daily Expenses:\n";
+    cout << "\nDaily Expenses:\n";
     cout << "Tiger Feeding Costs: $" << tigerCosts << endl;
     cout << "Penguin Feeding Costs: $" << penguinCosts << endl;
     cout << "Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "Total Expenses: $" << tigerCosts+penguinCosts+turtleCosts;
+    cout << "Total Expenses: $" << tigerCosts+penguinCosts+turtleCosts << endl << endl;
 }
 
 

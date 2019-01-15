@@ -220,9 +220,10 @@ void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
     int randomAnimal = rand() % 2;
-
     switch (randomAnimal) {
         case 0:
+            tigerQty--;
+            Animal *tempAnimal = new Tiger[];
             break;
         case 1:
             break;

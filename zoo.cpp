@@ -113,6 +113,7 @@ bool Zoo::startDay() {
         randomEvents();
 
         // calculate daily profit including bonus
+        // possibly cout the daily profits here
         calculateDailyProfit();
 
         // ask user to purchase an adult animal

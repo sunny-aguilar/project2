@@ -441,6 +441,10 @@ void Zoo::calculateDailyProfit() {
     dailyProfit = netIncome;
 }
 
+/*********************************************************************
+** Description:     a
+**                  function is called
+*********************************************************************/
 void Zoo::purchaseAdultAnimal() {
     int selection;
     menu.menuBuyNewAnimal();
@@ -456,9 +460,14 @@ void Zoo::purchaseAdultAnimal() {
     }
 }
 
+/*********************************************************************
+** Description:     functions takes an int parameter that is used to
+**                  select the type of animal to add and dynamically
+ *                  adds the animal to the right category
+*********************************************************************/
 void Zoo::addPurchasedAnimal(int selection) {
     switch (selection) {
-        case 1:
+        case 1: // add one adult tiger
             {
                 tigerQty++;
                 Animal *tempAnimal = new Tiger[tigerQty];
@@ -473,7 +482,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                 }
             }
             break;
-        case 2:
+        case 2: // add one adult penguin
             {
                 penguinQty++;
                 Animal *tempAnimal = new Penguin[penguinQty];
@@ -487,7 +496,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                 }
             }
             break;
-        case 3:
+        case 3: // add one adult turtle
             {
                 turtleQty++;
                 Animal *tempAnimal = new Turtle[turtleQty];

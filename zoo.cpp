@@ -372,13 +372,13 @@ void Zoo::spawnAnimal(int num) {
         case 0:
         {
             tigerQty++;
-
+            Animal *tempAnimal = new Tiger[tigerQty];
         }
             break;
         case 1:
         {
             penguinQty += 5;
-
+            Animal *tempAnimal = new Penguin[penguinQty];
         }
             break;
         case 2:

@@ -15,6 +15,7 @@ Animal::Animal(int age, double animalCost, int babies, int foodCost, double payO
     age{age},
     animalCost{animalCost},
     babyPotential{babies},
+    baseFoodCost{foodCost},
     payOff {payOff} {}
 
 int Animal::getAge() {

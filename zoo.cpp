@@ -491,7 +491,14 @@ void Zoo::addPurchasedAnimal(int selection) {
             {
                 turtleQty++;
                 Animal *tempAnimal = new Turtle[turtleQty];
+                for (int index = 0; index < turtleQty - 1; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                delete [] animals[1];
 
+                for (int index = 0; index < 1; index++) {
+                    animals[0][turtleQty - 1] = Turtle(3);
+                }
             }
             break;
         default:

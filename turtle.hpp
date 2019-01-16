@@ -15,6 +15,7 @@
 class Turtle : public Animal {
 public:
     Turtle();
+    Turtle(int age);
 
 private:
 };

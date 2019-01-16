@@ -403,11 +403,15 @@ void Zoo::spawnAnimal(int num) {
         {
             turtleQty += 10;
             Animal *tempAnimal = new Turtle[turtleQty];
-            for (int index = 0; index < 10; index++) {
+            for (int index = 0; index < turtleQty - 10; index++) {
                 tempAnimal[index] = animals[2][index];
             }
             delete [] animals[2];
             animals[2] = tempAnimal;
+
+            for (int index = 0; index < 10; index++) {
+                animals[0][index - 10 + index] = Turtle{0};
+            }
         }
             break;
         default:

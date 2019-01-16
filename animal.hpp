@@ -15,7 +15,7 @@
 class Animal {
 public:
     Animal();
-    Animal(int age, double animalCost, int babies, double payOff);
+    Animal(int age, double animalCost, int babies, int foodCost, double payOff);
     int getAge();
     void increaseAnimalAge();
 

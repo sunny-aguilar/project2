@@ -11,8 +11,10 @@
 
 Animal::Animal() {};
 
-Animal::Animal(int age, double animalCost, int babies, double payOff) :
+Animal::Animal(int age, double animalCost, int babies, int foodCost, double payOff) :
     age{age},
+    animalCost{animalCost},
+    babyPotential{babies},
     payOff {payOff} {}
 
 int Animal::getAge() {

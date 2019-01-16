@@ -114,6 +114,7 @@ bool Zoo::startDay() {
 
         // calculate daily profit including bonus
         // possibly cout the daily profits here
+        // boom revenues, if chosen, are added in randomEvents();
         calculateDailyProfit();
 
         // ask user to purchase an adult animal
@@ -422,23 +423,17 @@ void Zoo::spawnAnimal(int num) {
 }
 
 void Zoo::calculateDailyProfit() {
-    // Tiger Revenues 20% of 10,000/tiger
-    for (int index = 0; index < tigerQty; index++) {
-        animals[0][index].getFoodCost();
-    }
+    // calculate revenues for all animals
+    double tigerRevenues = animals[0]->getPayOff() * tigerQty;
+    double penguinRevenues = animals[1]->getPayOff() * penguinQty;
+    double turtleRevenues = animals[2]->getPayOff() * turtleQty;
 
-
-    // Penguin Revenues 10% of 1,000/penguin
-    // Turtle Revenues 5% of 100/turtle
-    double tigerRevenues = animals[0]->getFoodCost() * tigerQty;
-    double penguinRevenues = animals[1]->getFoodCost() * penguinQty;
-    double turtleRevenues = animals[2]->getFoodCost() * turtleQty;
-
-    // base food costs is $10
+    // calculate feed expenses for all animals
     double tigerCosts = animals[0]->getFoodCost() * tigerQty;
     double penguinCosts = animals[1]->getFoodCost() * penguinQty;
     double turtleCosts = animals[2]->getFoodCost() * turtleQty;
 
+    // calculate net income for the day
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
     double netIncome = totalRevenues - totalFeedExpenses;

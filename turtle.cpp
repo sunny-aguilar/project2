@@ -11,4 +11,4 @@
 
 Turtle::Turtle() {}
 
-Turtle::Turtle(int age) : age{age} {}
+Turtle::Turtle(int age) : Animal{age, 5} {}

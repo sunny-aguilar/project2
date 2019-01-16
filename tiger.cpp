@@ -11,4 +11,4 @@
 
 Tiger::Tiger() {}
 
-Tiger::Tiger(int age) : Animal{age} {}
+Tiger::Tiger(int age) : Animal{age, 2000} {}

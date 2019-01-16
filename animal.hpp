@@ -15,13 +15,16 @@
 class Animal {
 public:
     Animal();
-    Animal(int age);
+    Animal(int age, double payOff);
     int getAge();
     void increaseAnimalAge();
 
 private:
     int age;
     int cost;
+    int babyPotential;
+    int baseFoodCost;
+    double payOff;
 
 };
 

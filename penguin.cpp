@@ -11,4 +11,4 @@
 
 Penguin::Penguin() {}
 
-Penguin::Penguin(int age) : Animal{age} {}
+Penguin::Penguin(int age) : Animal{age, 100} {}

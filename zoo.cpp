@@ -469,7 +469,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                 animals[0] = tempAnimal;
 
                 for (int index = 0; index < 1; index++) {
-                    animals[0][tigerQty -1] = Tiger(3);
+                    animals[0][tigerQty - 1] = Tiger(3);
                 }
             }
             break;
@@ -478,7 +478,12 @@ void Zoo::addPurchasedAnimal(int selection) {
                 penguinQty++;
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 1; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                delete [] animals[1];
 
+                for (int index = 0; index < 1; index++) {
+                    animals[1][penguinQty - 1] = Penguin(3);
                 }
             }
             break;

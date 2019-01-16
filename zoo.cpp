@@ -122,6 +122,7 @@ bool Zoo::startDay() {
 
         // prompt user if keep playing
 
+
         // show daily profit
 
         cout << "press ENTER to continue\n";
@@ -515,7 +516,9 @@ void Zoo::addPurchasedAnimal(int selection) {
     }
 }
 
-
+void Zoo::purchaseAdultAnimal() {
+    
+}
 
 
 

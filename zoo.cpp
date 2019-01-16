@@ -388,6 +388,9 @@ void Zoo::spawnAnimal(int num) {
         {
             penguinQty += 5;
             Animal *tempAnimal = new Penguin[penguinQty];
+            for (int index = 0; index < penguinQty - 5; index++) {
+                tempAnimal[index] = animals[1][index];
+            }
         }
             break;
         case 2:

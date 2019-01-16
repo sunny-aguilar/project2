@@ -11,7 +11,7 @@
 
 Animal::Animal() {};
 
-Animal::Animal(int age, double payOff) :
+Animal::Animal(int age, double animalCost, int babies, double payOff) :
     age{age},
     payOff {payOff} {}
 

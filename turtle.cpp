@@ -10,3 +10,5 @@
 #include "turtle.hpp"
 
 Turtle::Turtle() {}
+
+Turtle::Turtle(int age) : age{age} {}

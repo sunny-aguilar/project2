@@ -423,6 +423,9 @@ void Zoo::spawnAnimal(int num) {
 
 void Zoo::calculateDailyProfit() {
     // Tiger Revenues 20% of 10,000/tiger
+    
+
+
     // Penguin Revenues 10% of 1,000/penguin
     // Turtle Revenues 5% of 100/turtle
     double tigerRevenues = (10000 * .20) * tigerQty;

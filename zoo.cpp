@@ -424,20 +424,20 @@ void Zoo::spawnAnimal(int num) {
 void Zoo::calculateDailyProfit() {
     // Tiger Revenues 20% of 10,000/tiger
     for (int index = 0; index < tigerQty; index++) {
-        animals[0][]
+        animals[0][index].getFoodCost();
     }
 
 
     // Penguin Revenues 10% of 1,000/penguin
     // Turtle Revenues 5% of 100/turtle
-    double tigerRevenues = (10000 * .20) * tigerQty;
-    double penguinRevenues = (1000 * .10 ) * penguinQty;
-    double turtleRevenues = (100 * 0.05) * turtleQty;
+    double tigerRevenues = animals[0]->getFoodCost() * tigerQty;
+    double penguinRevenues = animals[1]->getFoodCost() * penguinQty;
+    double turtleRevenues = animals[2]->getFoodCost() * turtleQty;
 
     // base food costs is $10
-    double tigerCosts = (10 * 5) * tigerQty;
-    double penguinCosts = 10 * penguinQty;
-    double turtleCosts = (10 * 0.5) * turtleQty;
+    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
+    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
+    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
 
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;

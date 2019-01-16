@@ -19,6 +19,7 @@ public:
     int getAge();
     void increaseAnimalAge();
     double getFoodCost();
+    double getPayOff();
 
 private:
     int age;

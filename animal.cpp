@@ -29,3 +29,7 @@ void Animal::increaseAnimalAge() {
 double Animal::getFoodCost() {
     return baseFoodCost;
 }
+
+double Animal::getPayOff() {
+    return payOff;
+}

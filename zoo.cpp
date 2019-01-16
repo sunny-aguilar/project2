@@ -248,8 +248,8 @@ void Zoo::animalSickness() {
                 }
                 delete [] animals[0];
                 animals[0] = tempAnimal;
-                break;
             }
+            break;
         case 1:
             {
                 int remaining = penguinQty - 1;
@@ -259,8 +259,8 @@ void Zoo::animalSickness() {
                 }
                 delete [] animals[1];
                 animals[1] = tempAnimal;
-                break;
             }
+            break;
         case 2:
             {
                 int remaining = turtleQty - 1;
@@ -270,8 +270,8 @@ void Zoo::animalSickness() {
                 }
                 delete [] animals[2];
                 animals[2] = tempAnimal;
-                break;
             }
+            break;
         default:
             cout << "Unable to randomly choose an animal to die!\n";
     }
@@ -370,49 +370,49 @@ void Zoo::spawnAnimal(int num) {
     menu.menuBabyBorn(num);
     switch(num) {
         case 0:
-        {
-            tigerQty++;
-            Animal *tempAnimal = new Tiger[tigerQty];
-            for (int index = 0; index < tigerQty - 1; index++) {
-                tempAnimal[index] = animals[0][index];
-            }
-            delete [] animals[0];
-            animals[0] = tempAnimal;
+            {
+                tigerQty++;
+                Animal *tempAnimal = new Tiger[tigerQty];
+                for (int index = 0; index < tigerQty - 1; index++) {
+                    tempAnimal[index] = animals[0][index];
+                }
+                delete [] animals[0];
+                animals[0] = tempAnimal;
 
-            for (int index = 0; index < 1; index++) {
-                animals[0][tigerQty - 1 + index] = Tiger(0);
+                for (int index = 0; index < 1; index++) {
+                    animals[0][tigerQty - 1 + index] = Tiger(0);
+                }
             }
-        }
             break;
         case 1:
-        {
-            penguinQty += 5;
-            Animal *tempAnimal = new Penguin[penguinQty];
-            for (int index = 0; index < penguinQty - 5; index++) {
-                tempAnimal[index] = animals[1][index];
-            }
-            delete [] animals[2];
-            animals[1] = tempAnimal;
+            {
+                penguinQty += 5;
+                Animal *tempAnimal = new Penguin[penguinQty];
+                for (int index = 0; index < penguinQty - 5; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                delete [] animals[2];
+                animals[1] = tempAnimal;
 
-            for (int index = 0; index < 5; index++) {
-                animals[0][penguinQty - 5 + index] = Penguin(0);
+                for (int index = 0; index < 5; index++) {
+                    animals[0][penguinQty - 5 + index] = Penguin(0);
+                }
             }
-        }
             break;
         case 2:
-        {
-            turtleQty += 10;
-            Animal *tempAnimal = new Turtle[turtleQty];
-            for (int index = 0; index < turtleQty - 10; index++) {
-                tempAnimal[index] = animals[2][index];
-            }
-            delete [] animals[2];
-            animals[2] = tempAnimal;
+            {
+                turtleQty += 10;
+                Animal *tempAnimal = new Turtle[turtleQty];
+                for (int index = 0; index < turtleQty - 10; index++) {
+                    tempAnimal[index] = animals[2][index];
+                }
+                delete [] animals[2];
+                animals[2] = tempAnimal;
 
-            for (int index = 0; index < 10; index++) {
-                animals[0][index - 10 + index] = Turtle{0};
+                for (int index = 0; index < 10; index++) {
+                    animals[0][index - 10 + index] = Turtle{0};
+                }
             }
-        }
             break;
         default:
             cout << "Unable to create a new baby!\n";

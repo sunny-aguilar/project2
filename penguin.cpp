@@ -10,3 +10,5 @@
 #include "penguin.hpp"
 
 Penguin::Penguin() {}
+
+Penguin::Penguin(int age) : Animal{age} {}

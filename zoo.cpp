@@ -297,13 +297,15 @@ void Zoo::animalBorn() {
 
     // babies are available
     if (babiesAvailable) {
-        // generate random number from 0 - 2
-        animalBorn = rand() % 2;
+
 
         // select a random animal to have babies. Not all animal types
         // may have adults therefore do while loop will keep checking
         // until it finds animals with adults
         do {
+            // generate random number from 0 - 2
+            animalBorn = rand() % 2;
+
             if (animalBorn == 0) {
                 for (int index = 0; index < tigerQty; index++) {
                     if (animals[0][index].getAge() >= 3) {

@@ -110,6 +110,31 @@ void Menu::menuNoRandomEvent() {
     cout << "No random event happened today\n";
 }
 
+void Menu::menuBuyNewAnimal() {
+    cout << "Before the day is over, would you like to buy an adult animal?\n"
+         << "1. Yes\n"
+         << "2. No\n"
+         << ">> ";
+}
+
+void Menu::menuBuyAnimalSelectionMade(int select) {
+    switch (select) {
+        case 1:
+            cout << "Great, what kind of animal do you want?\n"
+                 << "1. Adult tiger\n"
+                 << "2. Adult penguin\n"
+                 << "3. Adult turtle\n"
+                 << ">> ";
+            break;
+        case 2:
+            cout << "Ok, no animals have been purchased\n"
+            break;
+        default:
+            cout << "Unable to determine selection made!\n";
+    }
+}
+
+
 
 
 

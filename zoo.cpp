@@ -118,7 +118,7 @@ bool Zoo::startDay() {
         calculateDailyProfit();
 
         // ask user to purchase an adult animal
-
+        purchaseAdultAnimal();
 
         // prompt user if keep playing
 
@@ -441,8 +441,19 @@ void Zoo::calculateDailyProfit() {
     dailyProfit = netIncome;
 }
 
-void Zoo::purchaseAdultAnimals() {
+void Zoo::purchaseAdultAnimal() {
+    int selection;
+    menu.menuBuyNewAnimal();
+    selection = menu.validateNumber(1,2);
 
+    if (selection == 1) {
+        menu.menuBuyAnimalSelectionMade(selection);
+        selection = menu.validateNumber(1,3);
+
+    }
+    else if (selection == 2) {
+        menu.menuBuyAnimalSelectionMade(selection);
+    }
 }
 
 

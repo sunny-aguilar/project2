@@ -31,6 +31,8 @@ public:
     void menuBabyBorn(int num);
     void menuAttendanceBoom();
     void menuNoRandomEvent();
+    void menuBuyNewAnimal();
+    void menuBuyAnimalSelectionMade(int select);
 
     void gameOverMssg();
 

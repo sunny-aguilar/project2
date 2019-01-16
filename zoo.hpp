@@ -49,7 +49,7 @@ private:
     double bankBalance;
     bool continueDay;
     bool gameOver;
-    int dailyProfit;
+    double dailyProfit;
     int baseFoodCost;
     bool randomEvent;
 };

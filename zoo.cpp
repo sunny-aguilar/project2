@@ -391,8 +391,8 @@ void Zoo::spawnAnimal(int num) {
             for (int index = 0; index < penguinQty - 5; index++) {
                 tempAnimal[index] = animals[1][index];
             }
-            delete [] animals[0];
-            animals[0] = tempAnimal;
+            delete [] animals[2];
+            animals[1] = tempAnimal;
 
             for (int index = 0; index < 5; index++) {
                 animals[0][penguinQty - 5 + index] = Penguin(0);
@@ -403,6 +403,11 @@ void Zoo::spawnAnimal(int num) {
         {
             turtleQty += 10;
             Animal *tempAnimal = new Turtle[turtleQty];
+            for (int index = 0; index < 10; index++) {
+                tempAnimal[index] = animals[2][index];
+            }
+            delete [] animals[2];
+            animals[2] = tempAnimal;
         }
             break;
         default:

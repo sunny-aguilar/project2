@@ -449,13 +449,34 @@ void Zoo::purchaseAdultAnimal() {
     if (selection == 1) {
         menu.menuBuyAnimalSelectionMade(selection);
         selection = menu.validateNumber(1,3);
-
+        addPurchasedAnimal(selection);
     }
     else if (selection == 2) {
         menu.menuBuyAnimalSelectionMade(selection);
     }
 }
 
+void Zoo::addPurchasedAnimal(int selection) {
+    switch (selection) {
+        case 1:
+            {
+
+            }
+            break;
+        case 2:
+            {
+
+            }
+            break;
+        case 3:
+            {
+
+            }
+            break;
+        default:
+            cout << "Unable to add an animal!\n";
+    }
+}
 
 
 

@@ -40,6 +40,7 @@ public:
     void spawnAnimal(int num);
     void calculateDailyProfit();
     void purchaseAdultAnimal();
+    void addPurchasedAnimal(int selection);
 
 private:
     Animal **animals;      // array of pointers

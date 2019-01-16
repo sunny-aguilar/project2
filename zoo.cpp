@@ -297,8 +297,6 @@ void Zoo::animalBorn() {
 
     // babies are available
     if (babiesAvailable) {
-
-
         // select a random animal to have babies. Not all animal types
         // may have adults therefore do while loop will keep checking
         // until it finds animals with adults

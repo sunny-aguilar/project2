@@ -50,7 +50,7 @@ private:
     bool continueDay;
     bool gameOver;
     double dailyProfit;
-    int baseFoodCost;
+    double baseFoodCost;
     bool randomEvent;
 };
 

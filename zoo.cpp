@@ -380,7 +380,7 @@ void Zoo::spawnAnimal(int num) {
             animals[0] = tempAnimal;
 
             for (int index = 0; index < 1; index++) {
-                animals[0][tigerQty - 1 + index] = Tiger();
+                animals[0][tigerQty - 1 + index] = Tiger(0);
             }
         }
             break;

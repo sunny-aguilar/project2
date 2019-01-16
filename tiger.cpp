@@ -10,3 +10,5 @@
 #include "tiger.hpp"
 
 Tiger::Tiger() {}
+
+Tiger::Tiger(int age) : Animal{age} {}

@@ -378,7 +378,10 @@ void Zoo::spawnAnimal(int num) {
             }
             delete [] animals[0];
             animals[0] = tempAnimal;
-            
+
+            for (int index = 0; index < 1; index++) {
+                animals[0][tigerQty - 1 + index] = Tiger();
+            }
         }
             break;
         case 1:

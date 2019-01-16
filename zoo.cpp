@@ -384,7 +384,7 @@ void Zoo::spawnAnimal(int num) {
         case 2:
         {
             turtleQty += 10;
-
+            Animal *tempAnimal = new Turtle[turtleQty];
         }
             break;
         default:

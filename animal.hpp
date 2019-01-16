@@ -21,9 +21,9 @@ public:
 
 private:
     int age;
-    int cost;
+    double animalCost;
     int babyPotential;
-    int baseFoodCost;
+    double baseFoodCost;
     double payOff;
 
 };

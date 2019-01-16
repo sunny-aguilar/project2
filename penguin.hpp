@@ -15,6 +15,7 @@
 class Penguin : public Animal {
 public:
     Penguin();
+    Penguin(int age);
 
 private:
 

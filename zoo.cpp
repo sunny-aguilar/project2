@@ -441,6 +441,13 @@ void Zoo::calculateDailyProfit() {
     dailyProfit = netIncome;
 }
 
+void Zoo::purchaseAdultAnimals() {
+
+}
+
+
+
+
 
 
 

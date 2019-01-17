@@ -55,5 +55,4 @@ Animal &Animal::operator=(const Animal &right) {
         payOff = right.payOff;
         return *this;
     }
-
 }

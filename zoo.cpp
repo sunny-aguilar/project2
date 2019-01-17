@@ -46,7 +46,7 @@ void Zoo::playGame() {
     // dynamically allocate animals
     initializeAnimals();
 
-    // check if game shoudl continue
+    // check if game should continue
     while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game
@@ -339,20 +339,12 @@ void Zoo::animalBorn() {
 
 bool Zoo::adultCheck(bool adultAnimals[]) {
     bool adultsPresent = false;
-
-    for (int index = 0; index < tigerQty; index++) {
-        if (animals[0][index].getAge() >= 3) {
-            adultsPresent = adultAnimals[0] = true;
-        }
-    }
-    for (int index = 0; index < penguinQty; index++) {
-        if (animals[1][index].getAge() >= 3) {
-            adultsPresent = adultAnimals[1] = true;
-        }
-    }
-    for (int index = 0; index < turtleQty; index++) {
-        if (animals[2][index].getAge() >= 3) {
-            adultsPresent = adultAnimals[2] = true;
+    int animalArr[] = {tigerQty, penguinQty, turtleQty};
+    for (int type = 0; type < 3; type++) {
+        for (int total = 0; total < animalArr[type]; total++) {
+            if (animals[type][total].getAge() >= 3) {
+                adultsPresent = adultAnimals[type] = true;
+            }
         }
     }
     return adultsPresent;

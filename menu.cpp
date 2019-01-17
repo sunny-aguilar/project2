@@ -147,10 +147,13 @@ void Menu::menuKeepPlaying() {
          << ">> ";
 }
 
+void Menu::menuBankrupt(double balance) {
+    cout << "YOU HAVE GONE BANKRUPT! YOUR ACCOUNT BALANCE IS $" << balance
+         << endl << "It was a good run while it lasted\n";
+}
 
-void Menu::gameOverMssg() {
-    cout << "YOU ARE BANKRUPT!\n"
-         << "GAME OVER!!!!\n";
+void Menu::quitGameMssg() {
+    cout << "Thanks for playing Zoo Tycoon!\n";
 }
 
 

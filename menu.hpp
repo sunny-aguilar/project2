@@ -35,8 +35,8 @@ public:
     void menuBuyNewAnimal();
     void menuBuyAnimalSelectionMade(int select);
     void menuKeepPlaying();
-
-    void gameOverMssg();
+    void menuBankrupt(double balance);
+    void quitGameMssg();
 
 private:
     int selection;

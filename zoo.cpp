@@ -50,10 +50,11 @@ void Zoo::playGame() {
     while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game
+        cout << "while loop in playGame is being activated still\n";
     }
 
-    // game over message
-    menu.gameOverMssg();
+    // quit game message
+    menu.quitGameMssg();
 }
 
 /*********************************************************************
@@ -107,6 +108,7 @@ bool Zoo::startDay() {
         if (bankBalance < 0) {
             gameOver = true;
             continueDay = false;
+            menu.menuBankrupt(bankBalance);
             return gameOver;
         }
         // increase animal age by 1 day
@@ -140,6 +142,10 @@ bool Zoo::startDay() {
 
         day++;
     } while (continueDay);
+
+    if (!continueDay) {
+        return true;
+    }
 
 }
 

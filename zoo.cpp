@@ -447,9 +447,8 @@ void Zoo::calculateDailyProfit() {
 **                  function is called
 *********************************************************************/
 void Zoo::purchaseAdultAnimal() {
-    int selection;
     menu.menuBuyNewAnimal();
-    selection = menu.validateNumber(1,2);
+    int selection = menu.validateNumber(1,2);
 
     if (selection == 1) {
         menu.menuBuyAnimalSelectionMade(selection);
@@ -533,8 +532,8 @@ void Zoo::puchaseBalanceUpdate(int selection) {
 
 void Zoo::keepPlaying() {
     menu.menuKeepPlaying();
-    menu.validateNumber(1,2);
-    
+    int selection = menu.validateNumber(1,2);
+
 }
 
 

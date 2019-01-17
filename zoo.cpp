@@ -534,6 +534,7 @@ void Zoo::puchaseBalanceUpdate(int selection) {
 void Zoo::keepPlaying() {
     menu.menuKeepPlaying();
     menu.validateNumber(1,2);
+    
 }
 
 

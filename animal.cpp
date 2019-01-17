@@ -46,10 +46,14 @@ Animal::Animal(const Animal &obj) {
     payOff = obj.payOff;
 }
 
-Animal &Animal::operator=(const Animal &obj) {
-    age = obj.age;
-    animalCost = obj.animalCost;
-    babyPotential = obj.babyPotential;
-    baseFoodCost = obj.baseFoodCost;
-    payOff = obj.payOff;
+Animal &Animal::operator=(const Animal &right) {
+    if (this != &right) {
+        age = right.age;
+        animalCost = right.animalCost;
+        babyPotential = right.babyPotential;
+        baseFoodCost = right.baseFoodCost;
+        payOff = right.payOff;
+        return *this;
+    }
+
 }

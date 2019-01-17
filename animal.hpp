@@ -22,7 +22,7 @@ public:
     double getFoodCost();
     double getPayOff();
     Animal(const Animal &obj);
-    Animal &operator=(const Animal &obj);
+    Animal &operator=(const Animal &rigth);
 
 private:
     int age;

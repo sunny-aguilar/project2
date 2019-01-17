@@ -271,6 +271,9 @@ void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
     int randomAnimal = rand() % 2;
+    // ADD LOGIC HERE SKIP OVER ANIMALS WHERE QTY = 0 AND IT SHOULD
+    // FLOW DOWN BELOW TO THE SWITCH STATEMENT
+
     menu.menuAnimalDead(randomAnimal);
     switch (randomAnimal) {
         case 0:

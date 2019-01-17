@@ -121,7 +121,7 @@ bool Zoo::startDay() {
         purchaseAdultAnimal();
 
         // prompt user if keep playing
-
+        keepPlaying();
 
         // show daily profit
 

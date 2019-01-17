@@ -42,6 +42,7 @@ public:
     void purchaseAdultAnimal();
     void addPurchasedAnimal(int selection);
     void puchaseBalanceUpdate(int selection);
+    void keepPlaying();
 
 private:
     Animal **animals;      // array of pointers

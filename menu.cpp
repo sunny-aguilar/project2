@@ -134,7 +134,12 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
     }
 }
 
-
+void Menu::menuKeepPlaying() {
+    cout << "The day is now over, wouldyou like to continue playing?\n"
+         << "1. Yes, keep playing\n"
+         << "2. No, stop playing\n"
+         << ">> ";
+}
 
 
 

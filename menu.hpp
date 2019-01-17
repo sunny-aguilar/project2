@@ -33,6 +33,7 @@ public:
     void menuNoRandomEvent();
     void menuBuyNewAnimal();
     void menuBuyAnimalSelectionMade(int select);
+    void menuKeepPlaying();
 
     void gameOverMssg();
 

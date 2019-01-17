@@ -535,8 +535,10 @@ void Zoo::keepPlaying() {
     int selection = menu.validateNumber(1,2);
     switch (selection) {
         case 1:
+
             break;
         case 2:
+
             break;
         default:
             cout << "Unable to determine whether to keep playing!\n";

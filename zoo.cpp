@@ -152,39 +152,24 @@ bool Zoo::startDay() {
 **                  function is called
 *********************************************************************/
 void Zoo::ageAnimals() {
-    for (int index = 0; index < tigerQty; index++) {
-        animals[0][index].increaseAnimalAge();
-    }
-    for (int index = 0; index < penguinQty; index++) {
-        animals[1][index].increaseAnimalAge();
-    }
-    for (int index = 0; index < turtleQty; index++) {
-        animals[2][index].increaseAnimalAge();
+    // loop through all animal array and increase their ages
+    int animalArr[] = {tigerQty, penguinQty, turtleQty};
+    for (int type = 0; type < 3; type++) {
+        for (int total = 0; total < animalArr[type]; total++) {
+            animals[type][total].increaseAnimalAge();
+        }
     }
 
-//    int index = 0;
-//    int animalArr[] = {tigerQty, penguinQty, turtleQty};
-//
-//    for (int type = 0; type < 3; type++) {
-//        for (int num = 0; num < animalArr[index]; num++) {
-//            animals[type][num].increaseAnimalAge();
-//        }
-//        index++;
-//    }
-
-    cout << "Tiger Ages: ";
     for (int index = 0; index < tigerQty; index++) {
-        cout << animals[0][index].getAge() << " ";
+        cout << "Tiger Age: " << animals[0][index].getAge() << " ";
     }
     cout << endl;
-    cout << "Penguin Ages: ";
     for (int index = 0; index < penguinQty; index++) {
-        cout << animals[1][index].getAge() << " ";
+        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
     }
     cout << endl;
-    cout << "Turtle Ages: ";
     for (int index = 0; index < turtleQty; index++) {
-        cout << animals[2][index].getAge() << " ";
+        cout << "Turtle Age: " << animals[2][index].getAge() << " ";
     }
     cout << endl;
 }

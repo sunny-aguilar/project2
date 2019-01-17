@@ -127,7 +127,7 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
                  << ">> ";
             break;
         case 2:
-            cout << "Ok, no animals have been purchased\n"
+            cout << "Ok, no animals have been purchased\n";
             break;
         default:
             cout << "Unable to determine selection made!\n";

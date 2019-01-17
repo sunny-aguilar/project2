@@ -167,9 +167,9 @@ void Zoo::ageAnimals() {
 }
 
 void Zoo::countAnimals() {
-    cout << tigerQty << endl;
-    cout << penguinQty << endl;
-    cout << turtleQty << endl;
+    cout << "Total Tigers: " << tigerQty << endl;
+    cout << "Total Penguins: " <<  penguinQty << endl;
+    cout << "Total Turtles: " <<  turtleQty << endl;
 }
 
 void Zoo::dailyBudget() {

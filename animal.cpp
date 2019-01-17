@@ -37,3 +37,19 @@ double Animal::getFoodCost() {
 double Animal::getPayOff() {
     return payOff;
 }
+
+Animal::Animal(const Animal &obj) {
+    age = obj.age;
+    animalCost = obj.animalCost;
+    babyPotential = obj.babyPotential;
+    baseFoodCost = obj. baseFoodCost;
+    payOff = obj.payOff;
+}
+
+Animal &Animal::operator=(const Animal &obj) {
+    age = obj.age;
+    animalCost = obj.animalCost;
+    babyPotential = obj.babyPotential;
+    baseFoodCost = obj.baseFoodCost;
+    payOff = obj.payOff;
+}

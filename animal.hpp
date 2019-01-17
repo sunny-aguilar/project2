@@ -21,6 +21,8 @@ public:
     double getAnimalCost();
     double getFoodCost();
     double getPayOff();
+    Animal(const Animal &obj);
+    Animal &operator=(const Animal &obj);
 
 private:
     int age;

@@ -331,52 +331,21 @@ void Zoo::animalBorn() {
 
     // babies are available
     if (babiesAvailable) {
-        // select a random animal to have babies. Not all animal types
-        // may have adults therefore do while loop will keep checking
-        // until it finds animals with adults
-//        do {
+        // if adultAnimals[n] array has any adults, randomly select
+        // a value in the array until one selected is true
+        bool findAnimal = true;
+        do {
             // generate random number from 0 - 2
             animalBorn = rand() % 2;
-            bool findAnimal = true;
-
-            do {
-                if (adultAnimals[animalBorn]) {
-                    spawnAnimal(animalBorn);
-                    findAnimal = false;
-                }
-            } while (findAnimal);
-
-
-//            if (animalBorn == 0) {
-//                for (int index = 0; index < tigerQty; index++) {
-//                    if (animals[0][index].getAge() >= 3) {
-//                        selectAnimal = false;
-//                        spawnAnimal(animalBorn);
-//                    }
-//                }
-//            }
-//            else if (animalBorn == 1) {
-//                for (int index = 0; index < penguinQty; index++) {
-//                    if (animals[1][index].getAge() >= 3) {
-//                        selectAnimal = false;
-//                        spawnAnimal(animalBorn);
-//                    }
-//                }
-//            }
-//            else if (animalBorn == 2) {
-//                for (int index = 0; index < turtleQty; index++) {
-//                    if (animals[2][index].getAge() >= 3) {
-//                        selectAnimal = false;
-//                        spawnAnimal(animalBorn);
-//                    }
-//                }
-//            }
-//        } while (selectAnimal);
-
+            if (adultAnimals[animalBorn]) {
+                spawnAnimal(animalBorn);
+                findAnimal = false;
+            }
+        } while (findAnimal);
     }
     else {
-        cout << "Spring is in the air however there are no adult "
-             << "animals to have babies\n";
+        cout << "Spring has come however there are no adult "
+             << "animals to have babies\n\n";
     }
 }
 

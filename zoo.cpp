@@ -101,9 +101,9 @@ void Zoo::startUpCosts() {
 *********************************************************************/
 bool Zoo::startDay() {
     int day = 1;
-    menu.starDayMessage(day);
 
     do {
+        menu.starDayMessage(day);
         // check bank balance
         if (bankBalance < 0) {
             gameOver = true;
@@ -212,6 +212,7 @@ void Zoo::dailyBudget() {
          << "  Net Profit/(Loss): $" << netIncome << endl << endl;
 
     cout << "Bank Balance $" << bankBalance + netIncome << endl << endl;
+    bankBalance += netIncome;
 }
 
 void Zoo::feedAnimals() {
@@ -473,7 +474,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[0][tigerQty - 1] = Tiger(3);
                 }
             }
-            purchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection - 1);
             break;
         case 2: // add one adult penguin
             {
@@ -489,7 +490,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[1][penguinQty - 1] = Penguin(3);
                 }
             }
-            purchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection - 1);
             break;
         case 3: // add one adult turtle
             {
@@ -522,6 +523,8 @@ void Zoo::addPurchasedAnimal(int selection) {
 void Zoo::purchaseBalanceUpdate(int selection) {
     double animalCost = animals[selection]->getAnimalCost();
     bankBalance -= animalCost;
+    cout << "Purchased animal cost: $" << animalCost << endl;
+    cout << "Your bank balance is now $" << bankBalance << endl << endl;
 }
 
 void Zoo::dailyFinancialReport() {

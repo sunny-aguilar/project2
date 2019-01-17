@@ -57,13 +57,18 @@ void Zoo::playGame() {
 }
 
 /*********************************************************************
-** Description:     dynamically allocate starting animal amount
+** Description:     dynamically allocate starting animal amount for
+**                  each type of animal
 *********************************************************************/
 void Zoo::initializeAnimals() {
     // initialize starting animals
     animals[0] = new Animal[tigerQty];
     animals[1] = new Animal[penguinQty];
     animals[2] = new Animal[turtleQty];
+
+    for (int index = 0; index < tigerQty; index++) {
+        animals[0][index]
+    }
 
     startUpCosts();
 }
@@ -163,6 +168,16 @@ void Zoo::ageAnimals() {
     for (int index = 0; index < tigerQty; index++) {
         cout << animals[0][index].getAge() << " ";
     }
+    cout << "Penguin Ages: ";
+    for (int index = 0; index < penguinQty; index++) {
+        cout << animals[1][index].getAge() << " ";
+    }
+    cout << "Turtle Ages: ";
+    for (int index = 0; index < turtleQty; index++) {
+        cout << animals[2][index].getAge() << " ";
+    }
+
+
     cout << endl;
 }
 

@@ -41,7 +41,8 @@ public:
     void calculateDailyProfit();
     void purchaseAdultAnimal();
     void addPurchasedAnimal(int selection);
-    void puchaseBalanceUpdate(int selection);
+    void purchaseBalanceUpdate(int selection);
+    void dailyFinancialReport();
     bool keepPlaying();
 
 private:

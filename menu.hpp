@@ -28,8 +28,9 @@ public:
     void initialTurtles();
     void starDayMessage(int day);
     void animalSick();
+    void menuAnimalDead(int num);
     void menuBabyBorn(int num);
-    void menuAttendanceBoom();
+    void menuAttendanceBoom(double bonustigersQty);
     void menuNoRandomEvent();
     void menuBuyNewAnimal();
     void menuBuyAnimalSelectionMade(int select);

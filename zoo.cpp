@@ -67,9 +67,16 @@ void Zoo::initializeAnimals() {
     animals[2] = new Animal[turtleQty];
 
     for (int index = 0; index < tigerQty; index++) {
-        animals[0][index]
+        animals[0][index] = Tiger(0);
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        animals[1][index] = Penguin(0);
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        animals[2][index] = Turtle(0);
     }
 
+    // subtract animal start-up costs
     startUpCosts();
 }
 
@@ -126,13 +133,14 @@ bool Zoo::startDay() {
         purchaseAdultAnimal();
 
         // show daily profit
-        cout << "Daily Profit: $REPORT HERE\n";
+        cout << "Daily Profit: $REPORT HERE\n\n";
 
         // prompt user if keep playing
         continueDay = keepPlaying();
 
-        cout << "press ENTER to continue\n";
-        cin.get();
+        // Debugging Tool
+//        cout << "press ENTER to continue\n";
+//        cin.get();
 
         day++;
     } while (continueDay);
@@ -168,23 +176,23 @@ void Zoo::ageAnimals() {
     for (int index = 0; index < tigerQty; index++) {
         cout << animals[0][index].getAge() << " ";
     }
+    cout << endl;
     cout << "Penguin Ages: ";
     for (int index = 0; index < penguinQty; index++) {
         cout << animals[1][index].getAge() << " ";
     }
+    cout << endl;
     cout << "Turtle Ages: ";
     for (int index = 0; index < turtleQty; index++) {
         cout << animals[2][index].getAge() << " ";
     }
-
-
     cout << endl;
 }
 
 void Zoo::countAnimals() {
     cout << "Total Tigers: " << tigerQty << endl;
     cout << "Total Penguins: " <<  penguinQty << endl;
-    cout << "Total Turtles: " <<  turtleQty << endl;
+    cout << "Total Turtles: " <<  turtleQty << endl << endl;
 }
 
 void Zoo::dailyBudget() {
@@ -200,18 +208,21 @@ void Zoo::dailyBudget() {
 
     cout << std::fixed << std::setprecision(2);
     cout << "Daily Revenues:\n";
-    cout << "Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
-    cout << "Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
-    cout << "Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
-    cout << "Total Revenues: $" << std::setw(10) << totalRevenues << endl;
+    cout << "  Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
+    cout << "  Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
+    cout << "  Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
+    cout << "  Total Revenues: $" << std::setw(10) << totalRevenues << endl;
 
     cout << "\nDaily Expenses:\n";
-    cout << "Tiger Feeding Costs: $" << tigerCosts << endl;
-    cout << "Penguin Feeding Costs: $" << penguinCosts << endl;
-    cout << "Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "Total Expenses: $" << totalFeedExpenses << endl << endl;
+    cout << "  Tiger Feeding Costs: $" << tigerCosts << endl;
+    cout << "  Penguin Feeding Costs: $" << penguinCosts << endl;
+    cout << "  Turtle Feeding Costs: $" << turtleCosts << endl;
+    cout << "  Total Expenses: $" << totalFeedExpenses << endl << endl;
 
-    cout << "Net Profit/(Loss): $" << netIncome << endl << endl;
+    cout << "Daily Net Profit/(Loss):\n"
+         << "  Total Revenues: $" << totalRevenues << endl
+         << "  Total Expenses: $" << totalFeedExpenses << endl
+         << "  Net Profit/(Loss): $" << netIncome << endl << endl;
 }
 
 void Zoo::feedAnimals() {
@@ -258,6 +269,7 @@ void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
     int randomAnimal = rand() % 2;
+    menu.menuAnimalDead(randomAnimal);
     switch (randomAnimal) {
         case 0:
             {
@@ -272,7 +284,7 @@ void Zoo::animalSickness() {
             break;
         case 1:
             {
-                int remaining = penguinQty - 1;
+                int remaining = penguinQty--;
                 Animal *tempAnimal = new Penguin[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -283,7 +295,7 @@ void Zoo::animalSickness() {
             break;
         case 2:
             {
-                int remaining = turtleQty - 1;
+                int remaining = turtleQty--;
                 Animal*tempAnimal = new Turtle[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[2][remaining];
@@ -298,15 +310,14 @@ void Zoo::animalSickness() {
 }
 
 void Zoo::attendanceBoom() {
-    menu.menuAttendanceBoom();
     double bonus = (rand() % (500 - 250 + 1)) + 250;
+    bonus *= tigerQty;
     bankBalance += bonus;
+    cout << "Bonus: $" << bonus << endl;
+    menu.menuAttendanceBoom(bonus);
 }
 
 void Zoo::animalBorn() {
-    bool adultTiger = false;
-    bool adultPenguin = false;
-    bool adultTurtle = false;
     bool selectAnimal = true;
     bool babiesAvailable = false;
     int animalBorn;
@@ -411,11 +422,11 @@ void Zoo::spawnAnimal(int num) {
                 for (int index = 0; index < penguinQty - 5; index++) {
                     tempAnimal[index] = animals[1][index];
                 }
-                delete [] animals[2];
+                delete [] animals[1];
                 animals[1] = tempAnimal;
 
                 for (int index = 0; index < 5; index++) {
-                    animals[0][penguinQty - 5 + index] = Penguin(0);
+                    animals[1][penguinQty - 5 + index] = Penguin(0);
                 }
             }
             break;
@@ -430,7 +441,7 @@ void Zoo::spawnAnimal(int num) {
                 animals[2] = tempAnimal;
 
                 for (int index = 0; index < 10; index++) {
-                    animals[0][index - 10 + index] = Turtle{0};
+                    animals[2][index - 10 + index] = Turtle{0};
                 }
             }
             break;
@@ -497,7 +508,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[0][tigerQty - 1] = Tiger(3);
                 }
             }
-            puchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection);
             break;
         case 2: // add one adult penguin
             {
@@ -507,27 +518,29 @@ void Zoo::addPurchasedAnimal(int selection) {
                     tempAnimal[index] = animals[1][index];
                 }
                 delete [] animals[1];
+                animals[1] = tempAnimal;
 
                 for (int index = 0; index < 1; index++) {
                     animals[1][penguinQty - 1] = Penguin(3);
                 }
             }
-            puchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection);
             break;
         case 3: // add one adult turtle
             {
                 turtleQty++;
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 1; index++) {
-                    tempAnimal[index] = animals[1][index];
+                    tempAnimal[index] = animals[2][index];
                 }
-                delete [] animals[1];
+                delete [] animals[2];
+                animals[2] = tempAnimal;
 
                 for (int index = 0; index < 1; index++) {
-                    animals[0][turtleQty - 1] = Turtle(3);
+                    animals[2][turtleQty - 1] = Turtle(3);
                 }
             }
-            puchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection);
             break;
         default:
             cout << "Unable to add an animal!\n";
@@ -540,9 +553,13 @@ void Zoo::addPurchasedAnimal(int selection) {
 **                  determines the cost, and updates the bank balance
 **                  accordingly
 *********************************************************************/
-void Zoo::puchaseBalanceUpdate(int selection) {
+void Zoo::purchaseBalanceUpdate(int selection) {
     double animalCost = animals[selection]->getAnimalCost();
     bankBalance -= animalCost;
+}
+
+void Zoo::dailyFinancialReport() {
+
 }
 
 

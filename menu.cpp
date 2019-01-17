@@ -84,6 +84,11 @@ void Menu::animalSick() {
 
 }
 
+void Menu::menuAnimalDead(int num) {
+    std::string animal[3] {"tiger", "penguin", "turtle"};
+    cout << "Unfortunately your " << animal[num] << " has died :(\n\n";
+}
+
 void Menu::menuBabyBorn(int num) {
     std::string animalType;
     switch (num) {
@@ -99,11 +104,12 @@ void Menu::menuBabyBorn(int num) {
         default:
             cout << "Unable to determine the type of animal born!\n";
     }
-    cout << "Congrats! Your " << animalType << " had babies!";
+    cout << "Congrats! Your " << animalType << " had babies!\n\n";
 }
 
-void Menu::menuAttendanceBoom() {
-    cout << "Your recent advertisements have caused an attendance boom!\n";
+void Menu::menuAttendanceBoom(double bonus) {
+    cout << "Your recent advertisements have caused an attendance boom!\n"
+         << "You have generated an extra $" << bonus << " for each tiger!\n\n";
 }
 
 void Menu::menuNoRandomEvent() {
@@ -127,7 +133,7 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
                  << ">> ";
             break;
         case 2:
-            cout << "Ok, no animals have been purchased\n";
+            cout << "Ok, no animals have been purchased\n\n";
             break;
         default:
             cout << "Unable to determine selection made!\n";
@@ -135,7 +141,7 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
 }
 
 void Menu::menuKeepPlaying() {
-    cout << "The day is now over, wouldyou like to continue playing?\n"
+    cout << "The day is now over, would you like to continue playing?\n"
          << "1. Yes, keep playing\n"
          << "2. No, stop playing\n"
          << ">> ";

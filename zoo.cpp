@@ -138,10 +138,6 @@ bool Zoo::startDay() {
         // prompt user if keep playing
         continueDay = keepPlaying();
 
-        // Debugging Tool
-//        cout << "press ENTER to continue\n";
-//        cin.get();
-
         day++;
     } while (continueDay);
 
@@ -308,8 +304,7 @@ void Zoo::attendanceBoom() {
 }
 
 void Zoo::animalBorn() {
-    bool selectAnimal = true;
-    bool babiesAvailable = false;
+    bool babiesAvailable;
     int animalBorn;
 
     // first check if there are any adults before randomly choosing

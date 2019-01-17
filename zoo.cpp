@@ -482,6 +482,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[0][tigerQty - 1] = Tiger(3);
                 }
             }
+            puchaseBalanceUpdate(selection);
             break;
         case 2: // add one adult penguin
             {
@@ -496,6 +497,7 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[1][penguinQty - 1] = Penguin(3);
                 }
             }
+            puchaseBalanceUpdate(selection);
             break;
         case 3: // add one adult turtle
             {
@@ -510,14 +512,22 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[0][turtleQty - 1] = Turtle(3);
                 }
             }
+            puchaseBalanceUpdate(selection);
             break;
         default:
             cout << "Unable to add an animal!\n";
     }
 }
 
-void Zoo::purchaseAdultAnimal() {
-    
+/*********************************************************************
+** Description:     functions takes an int parameter that is used to
+**                  select the type of animal that was purchased,
+**                  determines the cost, and updates the bank balance
+**                  accordingly
+*********************************************************************/
+void Zoo::puchaseBalanceUpdate(int selection) {
+    double animalCost = animals[selection]->getAnimalCost();
+    bankBalance -= animalCost;
 }
 
 

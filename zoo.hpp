@@ -41,7 +41,7 @@ public:
     void calculateDailyProfit();
     void purchaseAdultAnimal();
     void addPurchasedAnimal(int selection);
-    void puchaseBalanceUpdate();
+    void puchaseBalanceUpdate(int selection);
 
 private:
     Animal **animals;      // array of pointers

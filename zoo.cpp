@@ -223,6 +223,8 @@ void Zoo::dailyBudget() {
          << "  Total Revenues: $" << totalRevenues << endl
          << "  Total Expenses: $" << totalFeedExpenses << endl
          << "  Net Profit/(Loss): $" << netIncome << endl << endl;
+
+    cout << "Bank Balance $" << bankBalance + netIncome << endl << endl;
 }
 
 void Zoo::feedAnimals() {
@@ -311,9 +313,9 @@ void Zoo::animalSickness() {
 
 void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
+    cout << "Bonus: $" << bonus << endl;
     bonus *= tigerQty;
     bankBalance += bonus;
-    cout << "Bonus: $" << bonus << endl;
     menu.menuAttendanceBoom(bonus);
 }
 
@@ -324,42 +326,52 @@ void Zoo::animalBorn() {
 
     // first check if there are any adults before randomly choosing
     // which animal to have babies
-    babiesAvailable = adultCheck();
+    bool adultAnimals[3] = {false, false, false};
+    babiesAvailable = adultCheck(adultAnimals);
 
     // babies are available
     if (babiesAvailable) {
         // select a random animal to have babies. Not all animal types
         // may have adults therefore do while loop will keep checking
         // until it finds animals with adults
-        do {
+//        do {
             // generate random number from 0 - 2
             animalBorn = rand() % 2;
+            bool findAnimal = true;
 
-            if (animalBorn == 0) {
-                for (int index = 0; index < tigerQty; index++) {
-                    if (animals[0][index].getAge() >= 3) {
-                        selectAnimal = false;
-                        spawnAnimal(animalBorn);
-                    }
+            do {
+                if (adultAnimals[animalBorn]) {
+                    spawnAnimal(animalBorn);
+                    findAnimal = false;
                 }
-            }
-            else if (animalBorn == 1) {
-                for (int index = 0; index < penguinQty; index++) {
-                    if (animals[1][index].getAge() >= 3) {
-                        selectAnimal = false;
-                        spawnAnimal(animalBorn);
-                    }
-                }
-            }
-            else if (animalBorn == 2) {
-                for (int index = 0; index < turtleQty; index++) {
-                    if (animals[2][index].getAge() >= 3) {
-                        selectAnimal = false;
-                        spawnAnimal(animalBorn);
-                    }
-                }
-            }
-        } while (selectAnimal);
+            } while (findAnimal);
+
+
+//            if (animalBorn == 0) {
+//                for (int index = 0; index < tigerQty; index++) {
+//                    if (animals[0][index].getAge() >= 3) {
+//                        selectAnimal = false;
+//                        spawnAnimal(animalBorn);
+//                    }
+//                }
+//            }
+//            else if (animalBorn == 1) {
+//                for (int index = 0; index < penguinQty; index++) {
+//                    if (animals[1][index].getAge() >= 3) {
+//                        selectAnimal = false;
+//                        spawnAnimal(animalBorn);
+//                    }
+//                }
+//            }
+//            else if (animalBorn == 2) {
+//                for (int index = 0; index < turtleQty; index++) {
+//                    if (animals[2][index].getAge() >= 3) {
+//                        selectAnimal = false;
+//                        spawnAnimal(animalBorn);
+//                    }
+//                }
+//            }
+//        } while (selectAnimal);
 
     }
     else {
@@ -368,22 +380,25 @@ void Zoo::animalBorn() {
     }
 }
 
-bool Zoo::adultCheck() {
+bool Zoo::adultCheck(bool adultAnimals[]) {
+    bool adultsPresent = false;
+
     for (int index = 0; index < tigerQty; index++) {
         if (animals[0][index].getAge() >= 3) {
-            return true;
+            adultsPresent = adultAnimals[0] = true;
         }
     }
     for (int index = 0; index < penguinQty; index++) {
         if (animals[1][index].getAge() >= 3) {
-            return true;
+            adultsPresent = adultAnimals[1] = true;
         }
     }
     for (int index = 0; index < turtleQty; index++) {
         if (animals[2][index].getAge() >= 3) {
-            return true;
+            adultsPresent = adultAnimals[2] = true;
         }
     }
+    return adultsPresent;
 }
 
 /*********************************************************************
@@ -540,7 +555,8 @@ void Zoo::addPurchasedAnimal(int selection) {
                     animals[2][turtleQty - 1] = Turtle(3);
                 }
             }
-            purchaseBalanceUpdate(selection);
+            purchaseBalanceUpdate(selection - 1);
+            cout << "Turtle cost subtracted\n";
             break;
         default:
             cout << "Unable to add an animal!\n";

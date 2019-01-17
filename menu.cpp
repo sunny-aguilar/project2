@@ -109,7 +109,7 @@ void Menu::menuBabyBorn(int num) {
 
 void Menu::menuAttendanceBoom(double bonus) {
     cout << "Your recent advertisements have caused an attendance boom!\n"
-         << "You have generated an extra $" << bonus << " for each tiger!\n\n";
+         << "You have generated an extra $" << bonus << endl << endl;
 }
 
 void Menu::menuNoRandomEvent() {
@@ -146,11 +146,6 @@ void Menu::menuKeepPlaying() {
          << "2. No, stop playing\n"
          << ">> ";
 }
-
-
-
-
-
 
 
 void Menu::gameOverMssg() {

@@ -36,7 +36,7 @@ public:
     void animalSickness();
     void attendanceBoom();
     void animalBorn();
-    bool adultCheck();
+    bool adultCheck(bool animalArr[]);
     void spawnAnimal(int num);
     void calculateDailyProfit();
     void purchaseAdultAnimal();

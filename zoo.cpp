@@ -120,10 +120,11 @@ bool Zoo::startDay() {
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
 
-        // prompt user if keep playing
-        keepPlaying();
-
         // show daily profit
+        cout << "Daily Profit: $REPORT HERE\n";
+
+        // prompt user if keep playing
+        continueDay = keepPlaying();
 
         cout << "press ENTER to continue\n";
         cin.get();
@@ -530,15 +531,15 @@ void Zoo::puchaseBalanceUpdate(int selection) {
 }
 
 
-void Zoo::keepPlaying() {
+bool Zoo::keepPlaying() {
     menu.menuKeepPlaying();
     int selection = menu.validateNumber(1,2);
     switch (selection) {
         case 1:
-
+            return true;
             break;
         case 2:
-
+            return false;
             break;
         default:
             cout << "Unable to determine whether to keep playing!\n";

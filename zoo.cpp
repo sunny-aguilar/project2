@@ -21,6 +21,7 @@ Zoo::Zoo() :
     tigerQty{0},
     penguinQty{0},
     turtleQty{0},
+    tigerCap{10},
     baseFoodCost{10} {
 }
 

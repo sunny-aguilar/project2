@@ -34,6 +34,7 @@ public:
     void menuNoRandomEvent();
     void menuBuyNewAnimal();
     void menuBuyAnimalSelectionMade(int select);
+    void menuPurchaseReport(int select, double cost, double balance);
     void menuKeepPlaying();
     void menuBankrupt(double balance);
     void quitGameMssg();

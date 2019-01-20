@@ -523,25 +523,7 @@ void Zoo::addPurchasedAnimal(int selection) {
 void Zoo::purchaseBalanceUpdate(int selection) {
     double animalCost = animals[selection]->getAnimalCost();
     bankBalance -= animalCost;
-    std::string animalType;
-    switch (selection+1) {
-        case 1:
-            animalType = "tiger";
-            break;
-        case 2:
-            animalType = "penguin";
-            break;
-        case 3:
-            animalType = "turtle";
-            break;
-        default:
-            "Unable to determine animal!\n";
-    }
-
-    cout << "Your new " << animalType << " is 3 days old.\n";
-
-    cout << "Purchased animal cost: $" << animalCost << endl;
-    cout << "Your bank balance is now $" << bankBalance << endl << endl;
+    menu.menuPurchaseReport(selection, animalCost, bankBalance);
 }
 
 void Zoo::dailyFinancialReport() {

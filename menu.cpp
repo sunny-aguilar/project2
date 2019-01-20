@@ -140,6 +140,27 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
     }
 }
 
+
+void Menu::menuPurchaseReport(int select, double cost, double bal) {
+    std::string animalType;
+    switch (select) {
+        case 0:
+            animalType = "tiger";
+            break;
+        case 1:
+            animalType = "penguin";
+            break;
+        case 2:
+            animalType = "turtle";
+            break;
+        default:
+            "Unable to determine animal!\n";
+    }
+    cout << "Your new " << animalType << " is 3 days old.\n";
+    cout << "Purchased animal cost: $" << cost << endl;
+    cout << "Your bank balance is now $" << bal << endl << endl;
+}
+
 void Menu::menuKeepPlaying() {
     cout << "The day is now over, would you like to continue playing?\n"
          << "1. Yes, keep playing\n"

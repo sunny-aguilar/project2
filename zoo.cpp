@@ -50,7 +50,6 @@ void Zoo::playGame() {
     while (!startDay()) {
         // while startDay() returns true, game continues
         // if startDay() returns false, end game
-        cout << "while loop in playGame is being activated still\n";
     }
 
     // quit game message

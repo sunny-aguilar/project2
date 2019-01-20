@@ -26,6 +26,7 @@ public:
     ~Zoo();
     void playGame();
     void initializeAnimals();
+    void doubleCapacity(int select);
     void startUpCosts();
     bool startDay();
     void ageAnimals();

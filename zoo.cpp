@@ -62,11 +62,12 @@ void Zoo::playGame() {
 **                  each type of animal
 *********************************************************************/
 void Zoo::initializeAnimals() {
-    // initialize starting animals
-    animals[0] = new Animal[tigerQty];
+    // initialize starting animals to initial cap of 10
+    animals[0] = new Animal[tigerCap];
     animals[1] = new Animal[penguinQty];
     animals[2] = new Animal[turtleQty];
 
+    // create starting animal types
     for (int index = 0; index < tigerQty; index++) {
         animals[0][index] = Tiger(0);
     }
@@ -79,6 +80,42 @@ void Zoo::initializeAnimals() {
 
     // subtract animal start-up costs
     startUpCosts();
+}
+
+/*********************************************************************
+** Description:     this function is called whenever the capacity of
+**                  the arrays holding animals needs to increase
+*********************************************************************/
+void Zoo::doubleCapacity(int select) {
+
+    switch (select) {
+        case 1:
+        {
+            tigerCap += 10;
+            Animal *tempAnimal = new Tiger[tigerCap];
+            for (int index = 0; index < tigerQty; index++) {
+                tempAnimal[index] = animals[0][index];
+            }
+            delete [] animals[0];
+            animals[0] = tempAnimal;
+        }
+            break;
+        case 2:
+        {
+            penguinCap += 10;
+        }
+            break;
+        case 3:
+        {
+            turtleCap += 10;
+        }
+            break;
+        default:
+            cout << "Unable to double the capacity!\n";
+    }
+
+
+
 }
 
 /*********************************************************************
@@ -175,6 +212,8 @@ void Zoo::countAnimals() {
     cout << "Total Tigers: " << tigerQty << endl;
     cout << "Total Penguins: " <<  penguinQty << endl;
     cout << "Total Turtles: " <<  turtleQty << endl << endl;
+
+    // add code here to report total baby animals
 }
 
 void Zoo::dailyBudget() {
@@ -457,6 +496,8 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 1: // add one adult tiger
             {
                 tigerQty++;
+                if (tigerQty > 10) { doubleCapacity(0); }// double capacity
+
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];

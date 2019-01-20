@@ -50,7 +50,7 @@ private:
     int tigerQty;
     int penguinQty;
     int turtleQty;
-    int bearQty;
+    int chickenQty;
     double bankBalance;
     bool continueDay;
     bool gameOver;

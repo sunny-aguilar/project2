@@ -21,6 +21,9 @@ Zoo::Zoo() :
     tigerQty{0},
     penguinQty{0},
     turtleQty{0},
+    tigerCap{10},
+    penguinCap{10},
+    turtleCap{10},
     baseFoodCost{10} {
 }
 
@@ -86,8 +89,11 @@ void Zoo::doubleCapacity(int select) {
     switch (select) {
         case 1:
         {
+            cout << "Tiger capacity increasing an additional 10\n";
             tigerCap += 10;
+            cout << "Variable increased to " << tigerCap << " tigers\n";
             Animal *tempAnimal = new Tiger[tigerCap];
+            cout << "Tiger capacity double\n";
             for (int index = 0; index < tigerQty; index++) {
                 tempAnimal[index] = animals[0][index];
             }
@@ -495,6 +501,7 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 1: // add one adult tiger
             {
                 tigerQty++;
+                cout << "Tiger Quantity is " << tigerQty << endl;
                 if (tigerQty > 10) { doubleCapacity(selection); }
 
                 Animal *tempAnimal = new Tiger[tigerQty];

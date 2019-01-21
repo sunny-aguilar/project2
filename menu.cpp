@@ -168,7 +168,9 @@ void Menu::menuBabyBorn(int sel) {
         default:
             cout << "Unable to determine the type of animal born!\n";
     }
-    cout << "Congrats! Your " << animalType << " had babies!\n\n";
+    cout << "\n RANDOM EVENT - AN ANIMAL IS BORN\n"
+            "+--------------------------------------------------+\n";
+    cout << "    Congrats! Your " << animalType << " had babies!\n\n";
 }
 
 void Menu::menuBabyNotBorn() {

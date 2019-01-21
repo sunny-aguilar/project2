@@ -343,7 +343,7 @@ void Zoo::randomEvents() {
 void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
-    int randomAnimal = rand() % 2;
+    int randomAnimal = rand() % 3;
 
     // end function if the zoo has no animals of the kind chosen to
     // die from disease and display message with this information
@@ -423,7 +423,7 @@ void Zoo::attendanceBoom() {
 *********************************************************************/
 void Zoo::animalBorn() {
     bool babiesAvailable;
-    int animalBorn;
+    int animalBorn = 0;
 
     // first check if there are any adults before randomly choosing
     // which animal to have babies
@@ -437,7 +437,7 @@ void Zoo::animalBorn() {
         bool findAnimal = true;
         do {
             // generate random number from 0 - 2
-            animalBorn = rand() % 2;
+            animalBorn = rand() % 3;
             if (adultAnimals[animalBorn]) {
                 spawnAnimal(animalBorn);
                 findAnimal = false;
@@ -459,6 +459,7 @@ void Zoo::animalBorn() {
 bool Zoo::adultCheck(bool *adultAnimals) {
     bool adultsPresent = false;
     int animalArr[] = {tigerQty, penguinQty, turtleQty};
+
     for (int type = 0; type < 3; type++) {
         for (int total = 0; total < animalArr[type]; total++) {
             if (animals[type][total].getAge() >= 3) {
@@ -466,6 +467,23 @@ bool Zoo::adultCheck(bool *adultAnimals) {
             }
         }
     }
+
+//    for (int index = 0; index <= tigerQty; index++) {
+//        if (animals[0][index].getAge() >= 3) {
+//            adultsPresent = adultAnimals[0] = true;
+//        }
+//    }
+//    for (int index = 0; index <= penguinQty; index++) {
+//        if (animals[1][index].getAge() >= 3) {
+//            adultsPresent = adultAnimals[1] = true;
+//        }
+//    }
+//    for (int index = 0; index <= turtleQty; index++) {
+//        if (animals[2][index].getAge() >= 3) {
+//            adultsPresent = adultAnimals[2] = true;
+//        }
+//    }
+
     return adultsPresent;
 }
 

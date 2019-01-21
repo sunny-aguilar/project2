@@ -387,7 +387,7 @@ void Zoo::animalSickness() {
                 int remaining = turtleQty--;
                 Animal*tempAnimal = new Turtle[remaining];
                 for (int index = 0; index < remaining; index++) {
-                    tempAnimal[index] = animals[2][remaining];
+                    tempAnimal[index] = animals[2][index];
                 }
                 delete [] animals[2];
                 animals[2] = tempAnimal;

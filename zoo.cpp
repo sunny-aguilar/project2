@@ -291,14 +291,23 @@ void Zoo::dailyBudget() {
 //    menu.menuBudget(revenueArr, costsArr, profitsArr);
 }
 
+/*********************************************************************
+** Description:     this function computes the feeding costs for the
+**                  animals and subtracts it from the bank balance.
+*********************************************************************/
 void Zoo::feedAnimals() {
-    double tigerCosts = (10 * 5) * tigerQty;
-    double penguinCosts = 10 * penguinQty;
-    double turtleCosts = (10 * 0.5) * turtleQty;
+    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
+    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
+    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
 
+/*********************************************************************
+** Description:     this function is in charge of generating a random
+**                  event and calling the appropriate function that
+**                  produces the event.
+*********************************************************************/
 void Zoo::randomEvents() {
     // generate a random number 1 - 4
     int randomNumber = rand() % 4 + 1;
@@ -378,6 +387,10 @@ void Zoo::animalSickness() {
     }
 }
 
+/*********************************************************************
+** Description:     generates a random bonus between 250 and 500 per
+**                  tiger
+*********************************************************************/
 void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
     bonus *= tigerQty;
@@ -385,6 +398,13 @@ void Zoo::attendanceBoom() {
     menu.menuAttendanceBoom(bonus);
 }
 
+/*********************************************************************
+** Description:     this function starts the process spawning baby
+**                  animals. It calls other functions to check if
+**                  there are any adult animals to spawn and randomly
+**                  chooses an animal to spawn from the available
+**                  animals.
+*********************************************************************/
 void Zoo::animalBorn() {
     bool babiesAvailable;
     int animalBorn;
@@ -409,11 +429,18 @@ void Zoo::animalBorn() {
         } while (findAnimal);
     }
     else {
+        // menu to display if no adults available for babies
         menu.menuBabyNotBorn();
     }
 }
 
-bool Zoo::adultCheck(bool adultAnimals[]) {
+/*********************************************************************
+** Description:     checks if there are any adults available to have
+**                  babies. The information is saved in the array
+**                  that is passed in as a bool value. Function returns
+**                  true if adults are present.
+*********************************************************************/
+bool Zoo::adultCheck(bool *adultAnimals) {
     bool adultsPresent = false;
     int animalArr[] = {tigerQty, penguinQty, turtleQty};
     for (int type = 0; type < 3; type++) {

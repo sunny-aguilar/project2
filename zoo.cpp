@@ -512,8 +512,11 @@ void Zoo::spawnAnimal(int num) {
 }
 
 /*********************************************************************
-** Description:     increase animal age by 1 day each time this
-**                  function is called
+** Description:     calculates daily profits by computing all revenues
+**                  and expenses to obtain net income, plus any
+**                  boom bonuses received. It calls a menu function
+**                  from the menu class to display this information
+**                  to the player.
 *********************************************************************/
 void Zoo::calculateDailyProfit() {
     // reset daily profits
@@ -557,8 +560,9 @@ void Zoo::calculateDailyProfit() {
 }
 
 /*********************************************************************
-** Description:     a
-**                  function is called
+** Description:     this function starts the process of purchasing a
+**                  new animal by asking the user if they would like
+**                  to buy one.
 *********************************************************************/
 void Zoo::purchaseAdultAnimal() {
     menu.menuBuyNewAnimal();
@@ -577,15 +581,18 @@ void Zoo::purchaseAdultAnimal() {
 /*********************************************************************
 ** Description:     functions takes an int parameter that is used to
 **                  select the type of animal to add and dynamically
- *                  adds the animal to the right category
+**                  adds the animal to the right category. A check is
+**                  made to check if the animal capacity in the array
+**                  needs to be increased first.
 *********************************************************************/
 void Zoo::addPurchasedAnimal(int selection) {
     switch (selection) {
         case 1: // add one adult tiger
             {
                 tigerQty++;
+                // check for capacity
                 if (tigerQty > tigerCap) { doubleCapacity(selection); }
-
+                // add animal
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -602,8 +609,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 2: // add one adult penguin
             {
                 penguinQty++;
+                // check for capacity
                 if (penguinQty > penguinCap) { doubleCapacity(selection); }
-
+                // add animal
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 1; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -620,8 +628,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 3: // add one adult turtle
             {
                 turtleQty++;
+                // check for capacity
                 if (turtleQty > turtleCap) { doubleCapacity(selection); }
-
+                // add animal
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 1; index++) {
                     tempAnimal[index] = animals[2][index];

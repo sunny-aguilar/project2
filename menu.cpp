@@ -10,12 +10,13 @@
 #include "menu.hpp"
 
 void Menu::mainMenu() {
-    cout << "-----------------------------------------\n"
-         << "   (\\ _ /)       /\\__/\\        ^---^\n"
-         << "   (' x ')      (=^.^=)       ( `o`)\n"
-         << "   c(\")(\")       (\")(\")_/     ( uu )\n"
-         << "-----------------------------------------\n"
-         << "--------- Welcome to Zoo Tycoon ---------\n\n"
+    cout << "+-------------------------------------------------+\n"
+         << "|     (\\ _ /)         /\\__/\\          ^---^       |\n"
+         << "|     (' x ')        (=^.^=)         ( `o`)       |\n"
+         << "|     c(\")(\")         (\")(\")_/       ( uu )       |\n"
+         << "+-------------------------------------------------+\n"
+         << "|------------- Welcome to Zoo Tycoon -------------|\n"
+         << "+-------------------------------------------------+\n\n"
          << "Game Rules:\n"
          << "- You are the owner of a zoo!\n"
          << "- Each turn counts as 1 day\n"
@@ -48,7 +49,7 @@ int Menu::getSelection() {
 ** Description:     mask how many initial tigers to start with
 *********************************************************************/
 void Menu::initialTigers() {
-    cout << "-+TIGERS+-\n"
+    cout << "+- TIGERS -------+\n"
          << "How many tigers do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
@@ -58,7 +59,7 @@ void Menu::initialTigers() {
 ** Description:     ask how many initial penguins to start with
 *********************************************************************/
 void Menu::initialPenguins() {
-    cout << "-+Penguins+-\n"
+    cout << "+- Penguins -------+\n"
          << "How many penguins do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
@@ -68,12 +69,27 @@ void Menu::initialPenguins() {
 ** Description:     ask how many initial penguins to start with
 *********************************************************************/
 void Menu::initialTurtles() {
-    cout << "-+Turtles+-\n"
+    cout << "+- Turtles -------+\n"
          << "How many turtles do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     start up costs and remaining bank balance display
+*********************************************************************/
+void Menu::menuStartupCost(double bal, int cost) {
+    cout << "+--------------------------------------------------+\n"
+            "|                                                  |\n";
+    cout << "| Start-up Costs: $ "<< cost << "      Bank Bal: $";
+    cout << bal <<"    |\n"
+            "|                                                  |\n"
+            "+--------------------------------------------------+\n";
+}
+
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::starDayMessage(int day) {
     cout << "\n################  IT'S A NEW DAY!  ################\n";
     cout << "################  ---- DAY " << day << " ----  ################\n";
@@ -164,9 +180,7 @@ void Menu::menuPurchaseReport(int select, double cost, double bal) {
 /*********************************************************************
 ** Description:     this menu display information about the increase
 **                  in size of the animal arrays. Animal arrays are
-**                  increase by 10 each time. This information is
-**                  display here and refers to the array sizes as
- *                  "animal pens".
+**                  increase by 10 each time.
 *********************************************************************/
 void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
     std::string type[] = {"tigers", "penguins", "turtles"};
@@ -176,7 +190,7 @@ void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
             "|  Your zoo keeps growing! You can now keep a    |\n"
             "|  a total of "<< cap << " " << type[sel-1] << "                          |\n"
             "|                                                |\n"
-            "+------------------------------------------------+\n";
+            "+------------------------------------------------+\n\n";
 }
 
 

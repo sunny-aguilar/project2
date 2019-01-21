@@ -26,6 +26,7 @@ public:
     void initialTigers();
     void initialPenguins();
     void initialTurtles();
+    void menuStartupCost(double bal, int cost);
     void starDayMessage(int day);
     void animalSick();
     void menuAnimalDead(int num);

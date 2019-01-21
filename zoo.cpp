@@ -154,9 +154,7 @@ void Zoo::startUpCosts() {
                + (turtleQty     * 100);
 
     bankBalance -= startCosts;
-
-    cout << "Total start up costs $" << startCosts << endl;
-    cout << "Remaining Bank Balance $" << bankBalance << endl;
+    menu.menuStartupCost(bankBalance, startCosts);
 }
 
 /*********************************************************************

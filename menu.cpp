@@ -93,7 +93,7 @@ void Menu::menuStartupCost(double bal, int cost) {
 *********************************************************************/
 void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
-    cout << "\ANIMALS BY AGES INVENTORY\n"
+    cout << "ANIMALS BY AGES INVENTORY\n"
             "+--------------------------------------------------+\n";
     cout << "   Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
     cout << "   Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
@@ -137,22 +137,34 @@ void Menu::starDayMessage(int day) {
     cout << "                  ---- DAY " << day << " ----   \n\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::animalSick() {
     cout << "\n RANDOM EVENT - AN ANIMAL DISEASE IS GOING AROUND\n"
             "+--------------------------------------------------+\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuAnimalSpared(int sel) {
     std::string animal[3] {"tigers", "penguins", "turtles"};
     cout << "    There is disease going around affecting " << animal[sel];
     cout << "\n    and luckily for you, you don't own any!\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuAnimalDead(int sel) {
     std::string animal[3] {"tiger", "penguin", "turtle"};
     cout << "    Unfortunately your " << animal[sel] << " has died :(\n\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuBabyBorn(int sel) {
     std::string animalType;
     switch (sel) {
@@ -173,6 +185,9 @@ void Menu::menuBabyBorn(int sel) {
     cout << "    Congrats! Your " << animalType << " had babies!\n\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuBabyNotBorn() {
     cout << "\n RANDOM EVENT - NO ANIMALS BORN\n"
             "+--------------------------------------------------+\n";
@@ -180,6 +195,9 @@ void Menu::menuBabyNotBorn() {
          << "    animals to have babies\n\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";
@@ -187,12 +205,18 @@ void Menu::menuAttendanceBoom(double bonus) {
          << "You have generated an extra $" << bonus << endl << endl;
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuNoRandomEvent() {
     cout << " DAILY RANDOM EVENT\n"
             "+--------------------------------------------------+\n";
     cout << "    No random event happened today\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuBuyNewAnimal() {
     cout << "Before the day is over, would you like to buy an adult animal?\n"
          << "1. Yes\n"
@@ -200,6 +224,9 @@ void Menu::menuBuyNewAnimal() {
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuBuyAnimalSelectionMade(int select) {
     switch (select) {
         case 1:
@@ -217,7 +244,9 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
     }
 }
 
-
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuPurchaseReport(int select, double cost, double bal) {
     std::string animalType;
     switch (select) {
@@ -256,7 +285,9 @@ void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
             "+------------------------------------------------+\n\n";
 }
 
-
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuKeepPlaying() {
     cout << "The day is now over, would you like to continue playing?\n"
          << "1. Yes, keep playing\n"
@@ -264,11 +295,17 @@ void Menu::menuKeepPlaying() {
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::menuBankrupt(double balance) {
     cout << "YOU HAVE GONE BANKRUPT! YOUR ACCOUNT BALANCE IS $" << balance
          << endl << "It was a good run while it lasted\n";
 }
 
+/*********************************************************************
+** Description:     Display
+*********************************************************************/
 void Menu::quitGameMssg() {
     cout << "Thanks for playing Zoo Tycoon!\n";
 }

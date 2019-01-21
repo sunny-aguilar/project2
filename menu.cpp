@@ -206,8 +206,8 @@ void Menu::menuBabyNotBorn() {
 void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";
-    cout << "Your recent advertisements have caused an attendance boom!\n"
-         << "You have generated an extra $" << bonus << endl;
+    cout << "    Your recent advertisements have caused an attendance boom!\n"
+         << "    You have generated an extra $" << bonus << endl;
 }
 
 /*********************************************************************

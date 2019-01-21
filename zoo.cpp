@@ -547,7 +547,7 @@ void Zoo::spawnAnimal(int num) {
                 animals[2] = tempAnimal;
 
                 for (int index = 0; index < 10; index++) {
-                    animals[2][index - 10 + index] = Turtle{0};
+                    animals[2][turtleQty - 10 + index] = Turtle{0};
                 }
             }
             break;

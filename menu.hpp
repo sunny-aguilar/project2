@@ -31,6 +31,7 @@ public:
     void menuAnimalAges(int, int, int, int, int, int);
     void menuBudget(double salesArr[], double costsArr[], double profitsArr[]);
     void animalSick();
+    void menuAnimalSpared(int sel);
     void menuAnimalDead(int num);
     void menuBabyBorn(int num);
     void menuBabyNotBorn();

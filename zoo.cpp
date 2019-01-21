@@ -332,8 +332,17 @@ void Zoo::animalSickness() {
     // randomly pick an animal to die
     int randomAnimal = rand() % 2;
 
-    // if the animal randomly selected
-    if (tigerQty < 0 || penguinQty < 0 || turtleQty < 0) { return; }
+    // end function if the zoo has no animals of the kind chosen to
+    // die from disease and display message with this information
+    if (tigerQty < 1 && randomAnimal == 0) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
+    if (penguinQty < 1 && randomAnimal == 1) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
+    if (turtleQty < 1 && randomAnimal == 2) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
 
     // display that animal has died
     menu.menuAnimalDead(randomAnimal);
@@ -341,7 +350,6 @@ void Zoo::animalSickness() {
         case 0:
             {
                 int remaining = tigerQty--;
-
                 Animal *tempAnimal = new Tiger[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -353,7 +361,6 @@ void Zoo::animalSickness() {
         case 1:
             {
                 int remaining = penguinQty--;
-
                 Animal *tempAnimal = new Penguin[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -365,7 +372,6 @@ void Zoo::animalSickness() {
         case 2:
             {
                 int remaining = turtleQty--;
-
                 Animal*tempAnimal = new Turtle[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[2][remaining];
@@ -385,6 +391,10 @@ void Zoo::animalSickness() {
 *********************************************************************/
 void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
+    if (tigerQty < 0) {
+        boomBonus = 0;
+        menu.menuAttendanceBoom(bonus);
+    }
     bonus *= tigerQty;
     boomBonus = bonus;
     menu.menuAttendanceBoom(bonus);
@@ -526,16 +536,34 @@ void Zoo::spawnAnimal(int num) {
 void Zoo::dailyFinancialReport() {
     // reset daily profits
     dailyProfit = 0;
+    double tigerRevenues = 0;
+    double penguinRevenues = 0;
+    double turtleRevenues = 0;
+
+    double tigerCosts = 0;
+    double penguinCosts = 0;
+    double turtleCosts = 0;
 
     // calculate revenues for all animals
-    double tigerRevenues = animals[0]->getPayOff() * tigerQty;
-    double penguinRevenues = animals[1]->getPayOff() * penguinQty;
-    double turtleRevenues = animals[2]->getPayOff() * turtleQty;
+    // check animal qty greater than zero
+    for (int index = 0; index < tigerQty; index++) {
+        tigerRevenues = animals[0]->getPayOff() * tigerQty;
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        penguinRevenues = animals[1]->getPayOff() * penguinQty;
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        turtleRevenues = animals[2]->getPayOff() * turtleQty;
+    }
+
+//    tigerRevenues = animals[0]->getPayOff() * tigerQty;
+//    penguinRevenues = animals[1]->getPayOff() * penguinQty;
+//    turtleRevenues = animals[2]->getPayOff() * turtleQty;
 
     // calculate feed expenses for all animals
-    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
-    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
-    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
+    tigerCosts = animals[0]->getFoodCost() * tigerQty;
+    penguinCosts = animals[1]->getFoodCost() * penguinQty;
+    turtleCosts = animals[2]->getFoodCost() * turtleQty;
 
     // calculate net income for the day
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;

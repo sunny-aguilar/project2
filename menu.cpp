@@ -138,20 +138,24 @@ void Menu::starDayMessage(int day) {
 }
 
 void Menu::animalSick() {
-    cout << "\n RANDOM EVENT - AN ANIMAL IS SICK\n"
+    cout << "\n RANDOM EVENT - AN ANIMAL DISEASE IS GOING AROUND\n"
             "+--------------------------------------------------+\n";
-    cout << "    One of your animals has a disease!\n";
-
 }
 
-void Menu::menuAnimalDead(int num) {
+void Menu::menuAnimalSpared(int sel) {
+    std::string animal[3] {"tigers", "penguins", "turtles"};
+    cout << "    There is disease going around affecting " << animal[sel];
+    cout << "\n    and luckily for you, you don't own any!\n";
+}
+
+void Menu::menuAnimalDead(int sel) {
     std::string animal[3] {"tiger", "penguin", "turtle"};
-    cout << "    Unfortunately your " << animal[num] << " has died :(\n\n";
+    cout << "    Unfortunately your " << animal[sel] << " has died :(\n\n";
 }
 
-void Menu::menuBabyBorn(int num) {
+void Menu::menuBabyBorn(int sel) {
     std::string animalType;
-    switch (num) {
+    switch (sel) {
         case 0:
             animalType = "tigers";
             break;

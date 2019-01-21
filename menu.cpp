@@ -123,6 +123,7 @@ void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
 
     cout << " DAILY NET INCOME & BANK BALANCE\n"
             "+--------------------------------------------------+\n";
+    cout << "    $" << profitsArr[3] << " - Prior Bank Balance\n";
     cout << "    $" << profitsArr[0] << " - Boom Bonus\n";
     cout << "    $" << profitsArr[1] << " - Net Income / (Loss)\n";
     cout << "    $" << profitsArr[2] << " - Bank Balance\n\n";
@@ -165,6 +166,8 @@ void Menu::menuBabyBorn(int num) {
 }
 
 void Menu::menuAttendanceBoom(double bonus) {
+    cout << " BOOM BONUS!\n"
+            "+--------------------------------------------------+\n";
     cout << "Your recent advertisements have caused an attendance boom!\n"
          << "You have generated an extra $" << bonus << endl << endl;
 }

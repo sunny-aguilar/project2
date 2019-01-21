@@ -201,9 +201,6 @@ bool Zoo::startDay() {
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
 
-        // show daily profit
-        cout << "Daily Profit: $REPORT HERE\n\n";
-
         // prompt user if keep playing
         continueDay = keepPlaying();
 
@@ -383,7 +380,6 @@ void Zoo::animalSickness() {
 
 void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
-    cout << "Bonus: $" << bonus << endl;
     bonus *= tigerQty;
     boomBonus = bonus;
     menu.menuAttendanceBoom(bonus);
@@ -413,6 +409,8 @@ void Zoo::animalBorn() {
         } while (findAnimal);
     }
     else {
+        cout << "\n NO ANIMALS BORN\n"
+                "+--------------------------------------------------+\n";
         cout << "Spring has come however there are no adult "
              << "animals to have babies\n\n";
     }
@@ -527,13 +525,16 @@ void Zoo::calculateDailyProfit() {
     // set daily profit
     dailyProfit += netIncome + totalFeedExpenses;
 
+    // save prior day bank balance
+    double priorBankBalance = bankBalance + totalFeedExpenses;
+
     // add daily profit to bank balance
     bankBalance += dailyProfit;
 
     // store financial info in arrays to send to menu class for display
     double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
     double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
-    double profitsArr[] = {boomBonus, netIncome, bankBalance};
+    double profitsArr[] = {boomBonus, netIncome, bankBalance, priorBankBalance};
 
     // pass financial information to display on menu
     menu.menuBudget(revenueArr, costsArr, profitsArr);

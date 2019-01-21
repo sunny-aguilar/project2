@@ -88,28 +88,43 @@ void Zoo::doubleCapacity(int select) {
 
     switch (select) {
         case 1:
-        {
-            cout << "Tiger capacity increasing an additional 10\n";
-            tigerCap += 10;
-            cout << "Variable increased to " << tigerCap << " tigers\n";
-            Animal *tempAnimal = new Tiger[tigerCap];
-            cout << "Tiger capacity double\n";
-            for (int index = 0; index < tigerQty; index++) {
-                tempAnimal[index] = animals[0][index];
+            {
+                cout << "Tiger capacity increasing an additional 10\n";
+                tigerCap += 10;
+                cout << "Variable increased to " << tigerCap << " tigers\n";
+                Animal *tempAnimal = new Tiger[tigerCap];
+                for (int index = 0; index < tigerQty; index++) {
+                    tempAnimal[index] = animals[0][index];
+                }
+                delete [] animals[0];
+                animals[0] = tempAnimal;
             }
-            delete [] animals[0];
-            animals[0] = tempAnimal;
-        }
             break;
         case 2:
-        {
-            penguinCap += 10;
-        }
+            {
+                cout << "Penguin capacity increasing an additional 10\n";
+                penguinCap += 10;
+                cout << "Penguins capacity increased to " << penguinCap << " Penguins\n";
+                Animal *tempAnimal = new Penguin[penguinCap];
+                for (int index = 0; index < penguinCap; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                delete [] animals[1];
+                animals[1] = tempAnimal;
+            }
             break;
         case 3:
-        {
-            turtleCap += 10;
-        }
+            {
+                cout << "Turtle capacity increasing an additional 10\n";
+                turtleCap += 10;
+                cout << "Turtle capacity increased to " << turtleCap << " Turtles\n";
+                Animal *tempAnimal = new Tiger[turtleCap];
+                for (int index = 0; index < turtleCap; index++) {
+                    tempAnimal[index] = animals[2][index];
+                }
+                delete [] animals[2];
+                animals[2] = tempAnimal;
+            }
             break;
         default:
             cout << "Unable to double the capacity!\n";
@@ -520,6 +535,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 2: // add one adult penguin
             {
                 penguinQty++;
+                cout << "Penguin Quantity is " << penguinQty << endl;
+                if (penguinQty > 10) { doubleCapacity(selection); }
+
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 1; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -536,6 +554,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 3: // add one adult turtle
             {
                 turtleQty++;
+                cout << "Turtle Quantity is " << turtleQty << endl;
+                if (turtleQty > 10) { doubleCapacity(selection); }
+
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 1; index++) {
                     tempAnimal[index] = animals[2][index];

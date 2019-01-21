@@ -17,6 +17,8 @@ using std::endl;
 Zoo::Zoo() :
     animals(new Animal*[3]),
     bankBalance{100000},
+    boomBonus{0},
+    dailyProfit{0},
     randomEvent{false},
     tigerQty{0},
     penguinQty{0},
@@ -271,25 +273,25 @@ void Zoo::countAnimals() {
 
 void Zoo::dailyBudget() {
     // calculate revenues
-    double tigerRevenues = (10000 * .20) * tigerQty;
-    double penguinRevenues = (1000 * .10 ) * penguinQty;
-    double turtleRevenues = (100 * 0.05) * turtleQty;
-    // calculate feeding costs
-    double tigerCosts = (10 * 5) * tigerQty;
-    double penguinCosts = 10 * penguinQty;
-    double turtleCosts = (10 * 0.5) * turtleQty;
-    // calculate total revenues, expenses, net income, and update bank bal
-    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
-    double netIncome = totalRevenues - totalFeedExpenses;
-    bankBalance += netIncome;
-    // store financial info in arrays to send to menu class for display
-    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
-    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
-    double profitsArr[] = {netIncome, bankBalance};
+//    double tigerRevenues = (10000 * .20) * tigerQty;
+//    double penguinRevenues = (1000 * .10 ) * penguinQty;
+//    double turtleRevenues = (100 * 0.05) * turtleQty;
+//    // calculate feeding costs
+//    double tigerCosts = (10 * 5) * tigerQty;
+//    double penguinCosts = 10 * penguinQty;
+//    double turtleCosts = (10 * 0.5) * turtleQty;
+//    // calculate total revenues, expenses, net income, and update bank bal
+//    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
+//    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+//    double netIncome = totalRevenues - totalFeedExpenses;
+//    bankBalance += netIncome;
+//    // store financial info in arrays to send to menu class for display
+//    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
+//    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
+//    double profitsArr[] = {netIncome, bankBalance};
 
     // pass financial information to display on menu
-    menu.menuBudget(revenueArr, costsArr, profitsArr);
+//    menu.menuBudget(revenueArr, costsArr, profitsArr);
 }
 
 void Zoo::feedAnimals() {
@@ -383,7 +385,7 @@ void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
     cout << "Bonus: $" << bonus << endl;
     bonus *= tigerQty;
-    bankBalance += bonus;
+    boomBonus = bonus;
     menu.menuAttendanceBoom(bonus);
 }
 
@@ -500,6 +502,9 @@ void Zoo::spawnAnimal(int num) {
 }
 
 void Zoo::calculateDailyProfit() {
+    // reset daily profits
+    dailyProfit = 0;
+
     // calculate revenues for all animals
     double tigerRevenues = animals[0]->getPayOff() * tigerQty;
     double penguinRevenues = animals[1]->getPayOff() * penguinQty;
@@ -513,9 +518,25 @@ void Zoo::calculateDailyProfit() {
     // calculate net income for the day
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    // feed expenses are already subtracted by feedAnimals()
     double netIncome = totalRevenues - totalFeedExpenses;
 
-    dailyProfit = netIncome;
+    // add any bonus earned during the round
+    dailyProfit += boomBonus;
+
+    // set daily profit
+    dailyProfit += netIncome + totalFeedExpenses;
+
+    // add daily profit to bank balance
+    bankBalance += dailyProfit;
+
+    // store financial info in arrays to send to menu class for display
+    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
+    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
+    double profitsArr[] = {boomBonus, netIncome, bankBalance};
+
+    // pass financial information to display on menu
+    menu.menuBudget(revenueArr, costsArr, profitsArr);
 }
 
 /*********************************************************************

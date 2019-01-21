@@ -58,6 +58,7 @@ private:
     double bankBalance;
     bool continueDay;
     bool gameOver;
+    double boomBonus;
     double dailyProfit;
     double baseFoodCost;
     bool randomEvent;

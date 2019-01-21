@@ -123,8 +123,9 @@ void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
 
     cout << " DAILY NET INCOME & BANK BALANCE\n"
             "+--------------------------------------------------+\n";
-    cout << "    $" << profitsArr[0] << " - Net Income / (Loss)\n";
-    cout << "    $" << profitsArr[1] << " - Bank Balance\n\n";
+    cout << "    $" << profitsArr[0] << " - Boom Bonus\n";
+    cout << "    $" << profitsArr[1] << " - Net Income / (Loss)\n";
+    cout << "    $" << profitsArr[2] << " - Bank Balance\n\n";
 }
 
 /*********************************************************************
@@ -212,9 +213,11 @@ void Menu::menuPurchaseReport(int select, double cost, double bal) {
         default:
             "Unable to determine animal!\n";
     }
+    cout << " ANIMAL PURCHASE INFO\n"
+            "+--------------------------------------------------+\n";
     cout << "Your new " << animalType << " is 3 days old.\n";
-    cout << "Purchased animal cost: $" << cost << endl;
-    cout << "Your bank balance is now $" << bal << endl << endl;
+    cout << "$" << cost << " - Cost of purchased " << animalType << endl;
+    cout << "$" << bal << " - Bank balance" << endl << endl;
 }
 
 /*********************************************************************

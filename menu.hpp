@@ -33,6 +33,7 @@ public:
     void animalSick();
     void menuAnimalDead(int num);
     void menuBabyBorn(int num);
+    void menuBabyNotBorn();
     void menuAttendanceBoom(double bonustigersQty);
     void menuNoRandomEvent();
     void menuBuyNewAnimal();

@@ -409,10 +409,7 @@ void Zoo::animalBorn() {
         } while (findAnimal);
     }
     else {
-        cout << "\n NO ANIMALS BORN\n"
-                "+--------------------------------------------------+\n";
-        cout << "Spring has come however there are no adult "
-             << "animals to have babies\n\n";
+        menu.menuBabyNotBorn();
     }
 }
 

@@ -165,6 +165,13 @@ void Menu::menuBabyBorn(int num) {
     cout << "Congrats! Your " << animalType << " had babies!\n\n";
 }
 
+void Menu::menuBabyNotBorn() {
+    cout << "\n NO ANIMALS BORN\n"
+            "+--------------------------------------------------+\n";
+    cout << "Spring has come however there are no adult\n"
+         << "animals to have babies\n\n";
+}
+
 void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";

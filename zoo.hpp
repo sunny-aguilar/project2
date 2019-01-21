@@ -31,7 +31,6 @@ public:
     bool startDay();
     void ageAnimals();
     void countAnimals();
-    void dailyBudget();
     void feedAnimals();
     void randomEvents();
     void animalSickness();

@@ -13,7 +13,10 @@
 using std::cout;
 using std::endl;
 
-// initialize starting variable amounts
+/*********************************************************************
+** Description:     default constructor that initializes variables
+**                  and the three animals arrays
+*********************************************************************/
 Zoo::Zoo() :
     animals(new Animal*[3]),
     bankBalance{100000},
@@ -29,6 +32,10 @@ Zoo::Zoo() :
     baseFoodCost{10} {
 }
 
+/*********************************************************************
+** Description:     destructor that de-allocates the 2D array holding
+**                  the three animal arrays
+*********************************************************************/
 Zoo::~Zoo() {
     for (int index = 0; index < 3; index++) {
         delete [] animals[index];
@@ -105,7 +112,7 @@ void Zoo::initializeAnimals() {
 *********************************************************************/
 void Zoo::doubleCapacity(int select) {
     switch (select) {
-        case 1:
+        case 1: // resize tiger array
             {
                 tigerCap += 10;
                 menu.menuCapacityIncrease(select, tigerQty, tigerCap);
@@ -117,7 +124,7 @@ void Zoo::doubleCapacity(int select) {
                 animals[0] = tempAnimal;
             }
             break;
-        case 2:
+        case 2: // resize penguin array
             {
                 penguinCap += 10;
                 menu.menuCapacityIncrease(select, penguinQty, penguinCap);
@@ -129,7 +136,7 @@ void Zoo::doubleCapacity(int select) {
                 animals[1] = tempAnimal;
             }
             break;
-        case 3:
+        case 3: // resize turtle array
             {
                 turtleCap += 10;
                 menu.menuCapacityIncrease(select, turtleQty, turtleCap);
@@ -161,7 +168,9 @@ void Zoo::startUpCosts() {
 }
 
 /*********************************************************************
-** Description:     start each day and repeat
+** Description:     start each day and repeat until user quits or goes
+**                  bankrupt. This function controls the daily
+**                  activities of each turn.
 *********************************************************************/
 bool Zoo::startDay() {
     int day = 1;
@@ -183,9 +192,6 @@ bool Zoo::startDay() {
 
         // display animals
         countAnimals();
-
-        // display daily budget
-        dailyBudget();
 
         // feed the animals and pay feeding costs
         feedAnimals();
@@ -228,6 +234,10 @@ void Zoo::ageAnimals() {
     }
 }
 
+/*********************************************************************
+** Description:     counts baby and adult animals and calls a function
+**                  to display the information
+*********************************************************************/
 void Zoo::countAnimals() {
     int adultTiger = 0;
     int adultPenguin = 0;
@@ -266,29 +276,6 @@ void Zoo::countAnimals() {
 
     // display ages report
     menu.menuAnimalAges(adultTiger, babyTiger, adultPenguin, babyPenguin, adultTurtle, babyTurtle);
-}
-
-void Zoo::dailyBudget() {
-    // calculate revenues
-//    double tigerRevenues = (10000 * .20) * tigerQty;
-//    double penguinRevenues = (1000 * .10 ) * penguinQty;
-//    double turtleRevenues = (100 * 0.05) * turtleQty;
-//    // calculate feeding costs
-//    double tigerCosts = (10 * 5) * tigerQty;
-//    double penguinCosts = 10 * penguinQty;
-//    double turtleCosts = (10 * 0.5) * turtleQty;
-//    // calculate total revenues, expenses, net income, and update bank bal
-//    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-//    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
-//    double netIncome = totalRevenues - totalFeedExpenses;
-//    bankBalance += netIncome;
-//    // store financial info in arrays to send to menu class for display
-//    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
-//    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
-//    double profitsArr[] = {netIncome, bankBalance};
-
-    // pass financial information to display on menu
-//    menu.menuBudget(revenueArr, costsArr, profitsArr);
 }
 
 /*********************************************************************
@@ -454,15 +441,13 @@ bool Zoo::adultCheck(bool *adultAnimals) {
 }
 
 /*********************************************************************
-** Description:     this function randomly chooses which animals gets
-**                  sick and dies. Animal quantity is first reduced
-**                  by one. A temporary animal pointer to an array of
-**                  animals is then dynamically created from the
-**                  remaining animals. The temporary array is then
-**                  assigned the animal objects in the old array
-**                  (except for the one that dies). The old array
-**                  is then de-allocated and assigned the memory
-**                  location of the temporary animal pointer.
+** Description:     this function adds a new animal for that type of
+**                  animal that was chosen to spawn. Before adding a
+**                  new animal, a check is made to see if the array
+**                  capacity needs to be increased before adding a
+**                  new animal. After animal capacity is increased
+**                  (if needed), an animal is added to the animal
+**                  array.
 *********************************************************************/
 void Zoo::spawnAnimal(int num) {
     menu.menuBabyBorn(num);
@@ -470,10 +455,9 @@ void Zoo::spawnAnimal(int num) {
         case 0:
             {
                 tigerQty++;
-                if (tigerQty > tigerCap) {
-                    doubleCapacity(num+1);
-
-                }
+                // check for capacity
+                if (tigerQty > tigerCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -489,7 +473,9 @@ void Zoo::spawnAnimal(int num) {
         case 1:
             {
                 penguinQty += 5;
+                // check for capacity
                 if (penguinQty > penguinCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 5; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -505,7 +491,9 @@ void Zoo::spawnAnimal(int num) {
         case 2:
             {
                 turtleQty += 10;
+                // check for capacity
                 if (turtleQty > turtleCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 10; index++) {
                     tempAnimal[index] = animals[2][index];
@@ -523,6 +511,10 @@ void Zoo::spawnAnimal(int num) {
     }
 }
 
+/*********************************************************************
+** Description:     increase animal age by 1 day each time this
+**                  function is called
+*********************************************************************/
 void Zoo::calculateDailyProfit() {
     // reset daily profits
     dailyProfit = 0;

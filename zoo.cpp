@@ -41,8 +41,9 @@ Zoo::~Zoo() {
  *                  allocates the animal arrays, and then it uses a
  *                  loop to that is used to control and call the
  *                  activities composed in each day. The day ends
- *                  when the function startDay returns false.
- *                  value
+ *                  when the function startDay returns false from
+ *                  the player choosing to quit or the player has
+ *                  gone bankrupt.
 *********************************************************************/
 void Zoo::playGame() {
     // show main menu

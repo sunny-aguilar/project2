@@ -72,7 +72,8 @@ void Zoo::playGame() {
 
 /*********************************************************************
 ** Description:     dynamically allocate starting animal amount for
-**                  each type of animal
+**                  each type of animal. Each animal is set with age
+ *                  of 0 so that the animals are 1 day old on day 1.
 *********************************************************************/
 void Zoo::initializeAnimals() {
     // initialize starting animals
@@ -226,25 +227,54 @@ void Zoo::ageAnimals() {
             animals[type][total].increaseAnimalAge();
         }
     }
-
-    for (int index = 0; index < tigerQty; index++) {
-        cout << "Tiger Age: " << animals[0][index].getAge() << " ";
-    }
-    cout << endl;
-    for (int index = 0; index < penguinQty; index++) {
-        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
-    }
-    cout << endl;
-    for (int index = 0; index < turtleQty; index++) {
-        cout << "Turtle Age: " << animals[2][index].getAge() << " ";
-    }
-    cout << endl;
 }
 
 void Zoo::countAnimals() {
     cout << "Total Tigers: " << tigerQty << endl;
     cout << "Total Penguins: " <<  penguinQty << endl;
     cout << "Total Turtles: " <<  turtleQty << endl << endl;
+    int adultTiger = 0;
+    int adultPenguin = 0;
+    int adultTurtle = 0;
+    int babyTiger = 0;
+    int babyPenguin = 0;
+    int babyTurtle = 0;
+
+    // display ages
+    for (int index = 0; index < tigerQty; index++) {
+        cout << "Tiger Age: " << animals[0][index].getAge() << " ";
+        if (animals[0][index].getAge() >= 3) {
+            adultTiger++;
+        }
+        else if (animals[0][index].getAge() < 3) {
+            babyTiger++;
+        }
+    }
+    cout << endl;
+    for (int index = 0; index < penguinQty; index++) {
+        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
+        if (animals[1][index].getAge() >= 3) {
+            adultPenguin++;
+        }
+        else if (animals[1][index].getAge() < 3) {
+            babyPenguin++;
+        }
+    }
+    cout << endl;
+    for (int index = 0; index < turtleQty; index++) {
+        cout << "Turtle Age: " << animals[2][index].getAge() << " ";
+        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
+        if (animals[2][index].getAge() >= 3) {
+            adultTurtle++;
+        }
+        else if (animals[2][index].getAge() < 3) {
+            babyTurtle++;
+        }
+    }
+    cout << endl;
+
+    // display ages report
+    menu.menuAnimalAges(adultTiger, babyTiger, adultPenguin, babyPenguin, adultTurtle, babyTurtle);
 }
 
 void Zoo::dailyBudget() {

@@ -26,9 +26,8 @@ void Menu::mainMenu() {
          << "- buying an animal cost money\n"
          << "- animals must be fed each day at a cost\n"
          << "- animals can spawn babies\n"
-         << "- animals can die\n"
-         << "- if you balance goes below $0, game ends!\n"
-         << "  GET READY, BEGIN!\n\n";
+         << "- animals can get sick and die\n"
+         << "- if you balance goes below $0, game ends!\n\n";
 }
 
 /*********************************************************************
@@ -81,10 +80,24 @@ void Menu::initialTurtles() {
 void Menu::menuStartupCost(double bal, int cost) {
     cout << "+--------------------------------------------------+\n"
             "|                                                  |\n";
-    cout << "| Start-up Costs: $ "<< cost << "      Bank Bal: $";
-    cout << bal <<"    |\n"
+    cout << "| Start-up Costs: $ "<< cost << "      Bank Bal: $ ";
+    cout << bal <<"   |\n"
             "|                                                  |\n"
             "+--------------------------------------------------+\n";
+    cout << "\nHit ENTER to continue with first day\n";
+    cin.get();
+}
+
+/*********************************************************************
+** Description:     Displays animals ages for all animals
+*********************************************************************/
+void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
+                          int bPenguin, int aTurtle, int bTurtle) {
+    cout << " ANIMALS BY AGES INVENTORY\n"
+            "+--------------------------------------------------+\n";
+    cout << " Adult Tigers: " << aTiger << "Baby Tigers: "<< bTiger << " 12\n";
+    cout << " Adult Penguins: " << aPenguin << "Baby Tigers: "<< bPenguin << " 12\n";
+    cout << " Adult Turtles: " << aTurtle << "Baby Turtles: "<< bTurtle << " 12\n";
 }
 
 /*********************************************************************

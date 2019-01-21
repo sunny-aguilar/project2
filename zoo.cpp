@@ -34,6 +34,16 @@ Zoo::~Zoo() {
     delete []  animals;
 }
 
+/*********************************************************************
+** Description:     this function starts the game play by calling the
+**                  main menu. It then initializes the starting
+ *                  animal amounts, calls a function that dynamically
+ *                  allocates the animal arrays, and then it uses a
+ *                  loop to that is used to control and call the
+ *                  activities composed in each day. The day ends
+ *                  when the function startDay returns false.
+ *                  value
+*********************************************************************/
 void Zoo::playGame() {
     // show main menu
     menu.mainMenu();
@@ -83,9 +93,13 @@ void Zoo::initializeAnimals() {
     startUpCosts();
 }
 
-
+/*********************************************************************
+** Description:     this function takes in an int parameter that is
+**                  used to select which animal capacity needs to be
+**                  increase. Capacity increase is increased by 10
+**                  each time.
+*********************************************************************/
 void Zoo::doubleCapacity(int select) {
-
     switch (select) {
         case 1:
             {
@@ -129,13 +143,11 @@ void Zoo::doubleCapacity(int select) {
         default:
             cout << "Unable to double the capacity!\n";
     }
-
-
-
 }
 
 /*********************************************************************
-** Description:     purchase animals and
+** Description:     purchase animals and determine the costs of the
+**                  animals to subtract from the bank balance
 *********************************************************************/
 void Zoo::startUpCosts() {
     int startCosts = 0;
@@ -156,14 +168,17 @@ bool Zoo::startDay() {
     int day = 1;
 
     do {
+        // show start of day banner
         menu.starDayMessage(day);
-        // check bank balance
+        // check bank balance, game ends if player is bankrupt
         if (bankBalance < 0) {
             gameOver = true;
             continueDay = false;
             menu.menuBankrupt(bankBalance);
             return gameOver;
         }
+
+        /*      DAY ACTIVITIES      */
         // increase animal age by 1 day
         ageAnimals();
 
@@ -196,6 +211,7 @@ bool Zoo::startDay() {
         day++;
     } while (continueDay);
 
+    // if player quits, game ends
     if (!continueDay) {
         return true;
     }

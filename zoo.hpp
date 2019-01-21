@@ -1,11 +1,13 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Zoo class is used to control the game operations.
+**                  Zoo class contains and animal object and menu
+**                  object. The game parameters are first set before
+**                  the game begins. Game operations consist of
+**                  tracking a user's player bank balance, calculating
+**                  profits, adding and subtracting animals, and
+**                  displaying the information to the user.
 *********************************************************************/
 #ifndef ZOO_HPP
 #define ZOO_HPP
@@ -19,9 +21,6 @@
 
 class Zoo {
 public:
-    // menu class
-    Menu menu;
-    // zoo class
     Zoo();
     ~Zoo();
     void playGame();
@@ -38,15 +37,15 @@ public:
     void animalBorn();
     bool adultCheck(bool animalArr[]);
     void spawnAnimal(int num);
-    void calculateDailyProfit();
+    void dailyFinancialReport();
     void purchaseAdultAnimal();
     void addPurchasedAnimal(int selection);
     void purchaseBalanceUpdate(int selection);
-    void dailyFinancialReport();
     bool keepPlaying();
 
 private:
-    Animal **animals;      // array of pointers
+    Menu menu;              // menu class
+    Animal **animals;       // pointer to pointer
     int tigerQty;
     int penguinQty;
     int turtleQty;

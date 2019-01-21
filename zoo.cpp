@@ -1,7 +1,7 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
+** Description:
 **
 **
 **
@@ -202,7 +202,7 @@ bool Zoo::startDay() {
         // calculate daily profit including bonus
         // possibly cout the daily profits here
         // boom revenues, if chosen, are added in randomEvents();
-        calculateDailyProfit();
+        dailyFinancialReport();
 
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
@@ -331,14 +331,17 @@ void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
     int randomAnimal = rand() % 2;
-    // ADD LOGIC HERE SKIP OVER ANIMALS WHERE QTY = 0 AND IT SHOULD
-    // FLOW DOWN BELOW TO THE SWITCH STATEMENT
 
+    // if the animal randomly selected
+    if (tigerQty < 0 || penguinQty < 0 || turtleQty < 0) { return; }
+
+    // display that animal has died
     menu.menuAnimalDead(randomAnimal);
     switch (randomAnimal) {
         case 0:
             {
                 int remaining = tigerQty--;
+
                 Animal *tempAnimal = new Tiger[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -350,6 +353,7 @@ void Zoo::animalSickness() {
         case 1:
             {
                 int remaining = penguinQty--;
+
                 Animal *tempAnimal = new Penguin[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -361,6 +365,7 @@ void Zoo::animalSickness() {
         case 2:
             {
                 int remaining = turtleQty--;
+
                 Animal*tempAnimal = new Turtle[remaining];
                 for (int index = 0; index < remaining; index++) {
                     tempAnimal[index] = animals[2][remaining];
@@ -518,7 +523,7 @@ void Zoo::spawnAnimal(int num) {
 **                  from the menu class to display this information
 **                  to the player.
 *********************************************************************/
-void Zoo::calculateDailyProfit() {
+void Zoo::dailyFinancialReport() {
     // reset daily profits
     dailyProfit = 0;
 
@@ -662,11 +667,11 @@ void Zoo::purchaseBalanceUpdate(int selection) {
     menu.menuPurchaseReport(selection, animalCost, bankBalance);
 }
 
-void Zoo::dailyFinancialReport() {
-
-}
-
-
+/*********************************************************************
+** Description:     this function is used to prompt the user if they
+**                  want to keep playing or if they want to quit the
+**                  game.
+*********************************************************************/
 bool Zoo::keepPlaying() {
     menu.menuKeepPlaying();
     int selection = menu.validateNumber(1,2);

@@ -84,7 +84,7 @@ void Menu::menuStartupCost(double bal, int cost) {
     cout << bal <<"   |\n"
             "|                                                  |\n"
             "+--------------------------------------------------+\n";
-    cout << "\nHit ENTER to continue with first day\n";
+    cout << "\nHit ENTER to start the first day\n";
     cin.get();
 }
 
@@ -93,7 +93,7 @@ void Menu::menuStartupCost(double bal, int cost) {
 *********************************************************************/
 void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
-    cout << "\n ANIMALS BY AGES INVENTORY\n"
+    cout << "\ANIMALS BY AGES INVENTORY\n"
             "+--------------------------------------------------+\n";
     cout << "   Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
     cout << "   Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
@@ -138,13 +138,15 @@ void Menu::starDayMessage(int day) {
 }
 
 void Menu::animalSick() {
-    cout << "One of your animals has a disease!\n";
+    cout << "\n RANDOM EVENT - AN ANIMAL IS SICK\n"
+            "+--------------------------------------------------+\n";
+    cout << "    One of your animals has a disease!\n";
 
 }
 
 void Menu::menuAnimalDead(int num) {
     std::string animal[3] {"tiger", "penguin", "turtle"};
-    cout << "Unfortunately your " << animal[num] << " has died :(\n\n";
+    cout << "    Unfortunately your " << animal[num] << " has died :(\n\n";
 }
 
 void Menu::menuBabyBorn(int num) {
@@ -166,10 +168,10 @@ void Menu::menuBabyBorn(int num) {
 }
 
 void Menu::menuBabyNotBorn() {
-    cout << "\n NO ANIMALS BORN\n"
+    cout << "\n RANDOM EVENT - NO ANIMALS BORN\n"
             "+--------------------------------------------------+\n";
-    cout << "Spring has come however there are no adult\n"
-         << "animals to have babies\n\n";
+    cout << "    Spring has come however there are no adult\n"
+         << "    animals to have babies\n\n";
 }
 
 void Menu::menuAttendanceBoom(double bonus) {
@@ -180,7 +182,9 @@ void Menu::menuAttendanceBoom(double bonus) {
 }
 
 void Menu::menuNoRandomEvent() {
-    cout << "No random event happened today\n";
+    cout << " DAILY RANDOM EVENT\n"
+            "+--------------------------------------------------+\n";
+    cout << "    No random event happened today\n";
 }
 
 void Menu::menuBuyNewAnimal() {

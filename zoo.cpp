@@ -585,8 +585,6 @@ void Zoo::dailyFinancialReport() {
     }
     for (int index = 0; index < turtleQty; index++) {
         turtleRevenues = animals[2]->getPayOff() * turtleQty;
-        cout << "Turtles Owned " << turtleQty << endl;
-        cout << "Turtle Revenue $" << turtleRevenues << endl;
     }
 
     // calculate feed expenses for all animals
@@ -598,7 +596,6 @@ void Zoo::dailyFinancialReport() {
     }
     for (int index = 0; index < turtleQty; index++) {
         turtleCosts = animals[2]->getFoodCost() * turtleQty;
-        cout << "Turtle Costs $" << turtleCosts << endl;
     }
 
     // calculate net income for the day

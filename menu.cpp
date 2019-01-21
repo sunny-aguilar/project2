@@ -1,11 +1,12 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Menu class contains all of the menu and prompts
+**                  that appear during the game. Menu objects lives
+**                  inside of the Game Class. Menu functions may
+**                  receive parameters from the game for display
+**                  purposes. Menu class also contains the input
+**                  validation function.
 *********************************************************************/
 #include "menu.hpp"
 
@@ -95,9 +96,9 @@ void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
     cout << "ANIMALS BY AGES INVENTORY\n"
             "+--------------------------------------------------+\n";
-    cout << "   Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
-    cout << "   Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
-    cout << "   Adult Turtles:  " << aTurtle << "     Baby Turtles:  "<< bTurtle << endl << endl;
+    cout << "    Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
+    cout << "    Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
+    cout << "    Adult Turtles:  " << aTurtle << "     Baby Turtles:  "<< bTurtle << endl << endl;
 }
 
 /*********************************************************************
@@ -133,8 +134,12 @@ void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
 ** Description:     Display
 *********************************************************************/
 void Menu::starDayMessage(int day) {
-    cout << "\n################  IT'S A NEW DAY!  ################\n";
-    cout << "                  ---- DAY " << day << " ----   \n\n";
+    cout << "+--------------------------------------------------+\n"
+            "|                                                  |\n"
+            "|                IT'S A NEW DAY                    |\n";
+    cout << "|                    DAY " << day << "                         |\n";
+    cout << "|                                                  |\n"
+            "+--------------------------------------------------+\n\n";
 }
 
 /*********************************************************************
@@ -202,7 +207,7 @@ void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";
     cout << "Your recent advertisements have caused an attendance boom!\n"
-         << "You have generated an extra $" << bonus << endl << endl;
+         << "You have generated an extra $" << bonus << endl;
 }
 
 /*********************************************************************

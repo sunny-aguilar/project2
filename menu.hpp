@@ -1,11 +1,12 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Menu class contains all of the menu and prompts
+**                  that appear during the game. Menu objects lives
+**                  inside of the Game Class. Menu functions may
+**                  receive parameters from the game for display
+**                  purposes. Menu class also contains the input
+**                  validation function.
 *********************************************************************/
 #ifndef MENU_HPP
 #define MENU_HPP

@@ -283,9 +283,22 @@ void Zoo::countAnimals() {
 **                  animals and subtracts it from the bank balance.
 *********************************************************************/
 void Zoo::feedAnimals() {
-    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
-    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
-    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
+    double tigerCosts = 0;
+    double penguinCosts = 0;
+    double turtleCosts = 0;
+
+    for (int index = 0; index < tigerQty; index++) {
+        tigerCosts = animals[0]->getFoodCost() * tigerQty;
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        penguinCosts = animals[1]->getFoodCost() * penguinQty;
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        turtleCosts = animals[2]->getFoodCost() * turtleQty;
+    }
+//    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
+//    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
+//    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
@@ -383,6 +396,7 @@ void Zoo::animalSickness() {
         default:
             cout << "Unable to randomly choose an animal to die!\n";
     }
+    countAnimals();
 }
 
 /*********************************************************************
@@ -524,6 +538,7 @@ void Zoo::spawnAnimal(int num) {
         default:
             cout << "Unable to create a new baby!\n";
     }
+    countAnimals();
 }
 
 /*********************************************************************
@@ -556,25 +571,28 @@ void Zoo::dailyFinancialReport() {
         turtleRevenues = animals[2]->getPayOff() * turtleQty;
     }
 
-//    tigerRevenues = animals[0]->getPayOff() * tigerQty;
-//    penguinRevenues = animals[1]->getPayOff() * penguinQty;
-//    turtleRevenues = animals[2]->getPayOff() * turtleQty;
-
     // calculate feed expenses for all animals
-    tigerCosts = animals[0]->getFoodCost() * tigerQty;
-    penguinCosts = animals[1]->getFoodCost() * penguinQty;
-    turtleCosts = animals[2]->getFoodCost() * turtleQty;
+    for (int index = 0; index < tigerQty; index++) {
+        tigerCosts = animals[0]->getFoodCost() * tigerQty;
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        penguinCosts = animals[1]->getFoodCost() * penguinQty;
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        turtleCosts = animals[2]->getFoodCost() * turtleQty;
+    }
 
     // calculate net income for the day
-    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    double totalRevenues = tigerRevenues + penguinRevenues + turtleRevenues;
+    double totalFeedExpenses = tigerCosts + penguinCosts + turtleCosts;
+
     // feed expenses are already subtracted by feedAnimals()
     double netIncome = totalRevenues - totalFeedExpenses;
 
     // add any bonus earned during the round
     dailyProfit += boomBonus;
 
-    // set daily profit
+    // set daily profit; add back expenses already subtracted by totalFeedExpenses()
     dailyProfit += netIncome + totalFeedExpenses;
 
     // save prior day bank balance

@@ -29,7 +29,7 @@ Zoo::Zoo() :
     tigerCap{10},
     penguinCap{10},
     turtleCap{10},
-    baseFoodCost{10} {
+    baseFoodCost{1} {
 }
 
 /*********************************************************************
@@ -194,6 +194,7 @@ bool Zoo::startDay() {
         countAnimals();
 
         // feed the animals and pay feeding costs
+        selectFeed();
         feedAnimals();
 
         // random event
@@ -279,6 +280,27 @@ void Zoo::countAnimals() {
 }
 
 /*********************************************************************
+** Description:     Extra Credit - Select feed type
+*********************************************************************/
+void Zoo::selectFeed() {
+    menu.menuSelectFeed();
+    int select = menu.validateNumber(1,3);
+    switch (select) {
+        case 1:
+            baseFoodCost = 2;
+            break;
+        case 2:
+            baseFoodCost = 1;
+            break;
+        case 3:
+            baseFoodCost = 0.50;
+            break;
+        default:
+            cout << "Unable to process the selection made";
+    }
+}
+
+/*********************************************************************
 ** Description:     this function computes the feeding costs for the
 **                  animals and subtracts it from the bank balance.
 *********************************************************************/
@@ -288,13 +310,13 @@ void Zoo::feedAnimals() {
     double turtleCosts = 0;
 
     for (int index = 0; index < tigerQty; index++) {
-        tigerCosts = animals[0]->getFoodCost() * tigerQty;
+        tigerCosts = animals[0]->getFoodCost() * tigerQty * baseFoodCost;
     }
     for (int index = 0; index < penguinQty; index++) {
-        penguinCosts = animals[1]->getFoodCost() * penguinQty;
+        penguinCosts = animals[1]->getFoodCost() * penguinQty * baseFoodCost;
     }
     for (int index = 0; index < turtleQty; index++) {
-        turtleCosts = animals[2]->getFoodCost() * turtleQty;
+        turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
     }
 
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;

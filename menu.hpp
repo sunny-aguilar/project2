@@ -29,6 +29,7 @@ public:
     void initialTurtles();
     void menuStartupCost(double bal, int cost);
     void starDayMessage(int day);
+    void menuSelectFeed();
     void menuAnimalAges(int, int, int, int, int, int);
     void menuBudget(double salesArr[], double costsArr[], double profitsArr[]);
     void animalSick();

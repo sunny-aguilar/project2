@@ -30,6 +30,7 @@ public:
     bool startDay();
     void ageAnimals();
     void countAnimals();
+    void selectFeed();
     void feedAnimals();
     void randomEvents();
     void animalSickness();
@@ -52,7 +53,6 @@ private:
     int tigerCap;
     int penguinCap;
     int turtleCap;
-    int chickenQty;
     double bankBalance;
     bool continueDay;
     bool gameOver;

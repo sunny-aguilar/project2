@@ -177,39 +177,6 @@ void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
             "|  a total of "<< cap << " " << type[sel-1] << "                          |\n"
             "|                                                |\n"
             "+------------------------------------------------+\n";
-
-//    switch (sel) {
-//        case 1:
-////            cout << "Tigers owned " << animalQty << endl;
-////            cout << "Your tigers have grown in numbers so you";
-////            cout << "have constructed a total of " << cap;
-////            cout << "tiger pens\n";
-//            cout << "+------------------------------------------------+\n"
-//                    "|                                                |\n"
-//                    "|  Your zoo keeps growing! You can now keep a    |\n"
-//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
-//                    "|                                                |\n"
-//                    "+------------------------------------------------+";
-//            break;
-//        case 2:
-//            cout << "+------------------------------------------------+\n"
-//                    "|                                                |\n"
-//                    "|  Your zoo keeps growing! You can now keep a    |\n"
-//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
-//                    "|                                                |\n"
-//                    "+------------------------------------------------+";
-//            break;
-//        case 3:
-//            cout << "+------------------------------------------------+\n"
-//                    "|                                                |\n"
-//                    "|  Your zoo keeps growing! You can now keep a    |\n"
-//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
-//                    "|                                                |\n"
-//                    "+------------------------------------------------+\n";
-//            break;
-//        default:
-//            cout << "Unable to display capacity report!\n";
-//    }
 }
 
 

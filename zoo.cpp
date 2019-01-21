@@ -230,9 +230,6 @@ void Zoo::ageAnimals() {
 }
 
 void Zoo::countAnimals() {
-    cout << "Total Tigers: " << tigerQty << endl;
-    cout << "Total Penguins: " <<  penguinQty << endl;
-    cout << "Total Turtles: " <<  turtleQty << endl << endl;
     int adultTiger = 0;
     int adultPenguin = 0;
     int adultTurtle = 0;
@@ -240,9 +237,8 @@ void Zoo::countAnimals() {
     int babyPenguin = 0;
     int babyTurtle = 0;
 
-    // display ages
+    // compute tiger adult and baby ages
     for (int index = 0; index < tigerQty; index++) {
-        cout << "Tiger Age: " << animals[0][index].getAge() << " ";
         if (animals[0][index].getAge() >= 3) {
             adultTiger++;
         }
@@ -250,9 +246,8 @@ void Zoo::countAnimals() {
             babyTiger++;
         }
     }
-    cout << endl;
+    // compute penguin adult and baby ages
     for (int index = 0; index < penguinQty; index++) {
-        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
         if (animals[1][index].getAge() >= 3) {
             adultPenguin++;
         }
@@ -260,10 +255,8 @@ void Zoo::countAnimals() {
             babyPenguin++;
         }
     }
-    cout << endl;
+    // compute turtle adult and baby ages
     for (int index = 0; index < turtleQty; index++) {
-        cout << "Turtle Age: " << animals[2][index].getAge() << " ";
-        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
         if (animals[2][index].getAge() >= 3) {
             adultTurtle++;
         }
@@ -271,43 +264,32 @@ void Zoo::countAnimals() {
             babyTurtle++;
         }
     }
-    cout << endl;
 
     // display ages report
     menu.menuAnimalAges(adultTiger, babyTiger, adultPenguin, babyPenguin, adultTurtle, babyTurtle);
 }
 
 void Zoo::dailyBudget() {
+    // calculate revenues
     double tigerRevenues = (10000 * .20) * tigerQty;
     double penguinRevenues = (1000 * .10 ) * penguinQty;
     double turtleRevenues = (100 * 0.05) * turtleQty;
+    // calculate feeding costs
     double tigerCosts = (10 * 5) * tigerQty;
     double penguinCosts = 10 * penguinQty;
     double turtleCosts = (10 * 0.5) * turtleQty;
+    // calculate total revenues, expenses, net income, and update bank bal
     double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
     double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
     double netIncome = totalRevenues - totalFeedExpenses;
-
-    cout << std::fixed << std::setprecision(2);
-    cout << "Daily Revenues:\n";
-    cout << "  Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
-    cout << "  Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
-    cout << "  Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
-    cout << "  Total Revenues: $" << std::setw(10) << totalRevenues << endl;
-
-    cout << "\nDaily Expenses:\n";
-    cout << "  Tiger Feeding Costs: $" << tigerCosts << endl;
-    cout << "  Penguin Feeding Costs: $" << penguinCosts << endl;
-    cout << "  Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "  Total Expenses: $" << totalFeedExpenses << endl << endl;
-
-    cout << "Daily Net Profit/(Loss):\n"
-         << "  Total Revenues: $" << totalRevenues << endl
-         << "  Total Expenses: $" << totalFeedExpenses << endl
-         << "  Net Profit/(Loss): $" << netIncome << endl << endl;
-
-    cout << "Bank Balance $" << bankBalance + netIncome << endl << endl;
     bankBalance += netIncome;
+    // store financial info in arrays to send to menu class for display
+    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
+    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
+    double profitsArr[] = {netIncome, bankBalance};
+
+    // pass financial information to display on menu
+    menu.menuBudget(revenueArr, costsArr, profitsArr);
 }
 
 void Zoo::feedAnimals() {

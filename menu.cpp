@@ -93,11 +93,38 @@ void Menu::menuStartupCost(double bal, int cost) {
 *********************************************************************/
 void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
-    cout << " ANIMALS BY AGES INVENTORY\n"
+    cout << "\n ANIMALS BY AGES INVENTORY\n"
             "+--------------------------------------------------+\n";
-    cout << " Adult Tigers: " << aTiger << "Baby Tigers: "<< bTiger << " 12\n";
-    cout << " Adult Penguins: " << aPenguin << "Baby Tigers: "<< bPenguin << " 12\n";
-    cout << " Adult Turtles: " << aTurtle << "Baby Turtles: "<< bTurtle << " 12\n";
+    cout << "   Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
+    cout << "   Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
+    cout << "   Adult Turtles:  " << aTurtle << "     Baby Turtles:  "<< bTurtle << endl << endl;
+}
+
+/*********************************************************************
+** Description:     displays daily revenues, expenses, daily net income
+**                  or loss, and bank balance
+*********************************************************************/
+void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
+    cout << "\n DAILY REVENUES\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << salesArr[0] << " - Tiger Revenues\n";
+    cout << "    $" << salesArr[1] << " - Penguin Revenues\n";
+    cout << "    $" << salesArr[2] << " - Turtle Revenues\n";
+    cout << "    $" << salesArr[0] + salesArr[1] + salesArr[2];
+    cout << " - Total Revenues\n\n";
+
+    cout << " DAILY EXPENSES\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << costsArr[0] << " - Tiger Feeding Costs\n";
+    cout << "    $" << costsArr[1] << " - Penguin Feeding Costs\n";
+    cout << "    $" << costsArr[2] << " - Turtle Feeding Costs\n";
+    cout << "    $" << costsArr[0] + costsArr[1] + costsArr[2];
+    cout << " - Total Expenses\n\n";
+
+    cout << " DAILY NET INCOME & BANK BALANCE\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << profitsArr[0] << " - Net Income / (Loss)\n";
+    cout << "    $" << profitsArr[1] << " - Bank Balance\n\n";
 }
 
 /*********************************************************************
@@ -105,7 +132,7 @@ void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
 *********************************************************************/
 void Menu::starDayMessage(int day) {
     cout << "\n################  IT'S A NEW DAY!  ################\n";
-    cout << "################  ---- DAY " << day << " ----  ################\n";
+    cout << "                  ---- DAY " << day << " ----   \n\n";
 }
 
 void Menu::animalSick() {

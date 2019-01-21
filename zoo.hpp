@@ -26,6 +26,7 @@ public:
     ~Zoo();
     void playGame();
     void initializeAnimals();
+    void doubleCapacity(int select);
     void startUpCosts();
     bool startDay();
     void ageAnimals();
@@ -50,6 +51,9 @@ private:
     int tigerQty;
     int penguinQty;
     int turtleQty;
+    int tigerCap;
+    int penguinCap;
+    int turtleCap;
     int chickenQty;
     double bankBalance;
     bool continueDay;

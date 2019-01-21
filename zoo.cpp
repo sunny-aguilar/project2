@@ -80,6 +80,39 @@ void Zoo::initializeAnimals() {
     startUpCosts();
 }
 
+
+void Zoo::doubleCapacity(int select) {
+
+    switch (select) {
+        case 1:
+        {
+            tigerCap += 10;
+            Animal *tempAnimal = new Tiger[tigerCap];
+            for (int index = 0; index < tigerQty; index++) {
+                tempAnimal[index] = animals[0][index];
+            }
+            delete [] animals[0];
+            animals[0] = tempAnimal;
+        }
+            break;
+        case 2:
+        {
+            penguinCap += 10;
+        }
+            break;
+        case 3:
+        {
+            turtleCap += 10;
+        }
+            break;
+        default:
+            cout << "Unable to double the capacity!\n";
+    }
+
+
+
+}
+
 /*********************************************************************
 ** Description:     purchase animals and
 *********************************************************************/
@@ -462,6 +495,8 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 1: // add one adult tiger
             {
                 tigerQty++;
+                if (tigerQty > 10) { doubleCapacity(selection); }
+
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];

@@ -104,9 +104,8 @@ void Zoo::doubleCapacity(int select) {
     switch (select) {
         case 1:
             {
-                cout << "Tigers owned " << tigerQty << endl;
                 tigerCap += 10;
-                cout << "tigerCap increased to " << tigerCap << " tigers\n";
+                menu.menuCapacityIncrease(select, tigerQty, tigerCap);
                 Animal *tempAnimal = new Tiger[tigerCap];
                 for (int index = 0; index < tigerQty; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -117,8 +116,8 @@ void Zoo::doubleCapacity(int select) {
             break;
         case 2:
             {
-                cout << "Penguins owned " << penguinQty << endl;
                 penguinCap += 10;
+                menu.menuCapacityIncrease(select, penguinQty, penguinCap);
                 cout << "penguinCap capacity increased to " << penguinCap << " Penguins\n";
                 Animal *tempAnimal = new Penguin[penguinCap];
                 for (int index = 0; index < penguinCap; index++) {
@@ -130,8 +129,8 @@ void Zoo::doubleCapacity(int select) {
             break;
         case 3:
             {
-                cout << "Turtles owned " << turtleQty << endl;
                 turtleCap += 10;
+                menu.menuCapacityIncrease(select, turtleQty, turtleCap);
                 cout << "turtleCap capacity increased to " << turtleCap << " Turtles\n";
                 Animal *tempAnimal = new Tiger[turtleCap];
                 for (int index = 0; index < turtleCap; index++) {
@@ -460,7 +459,7 @@ void Zoo::spawnAnimal(int num) {
             {
                 penguinQty += 5;
                 cout << "New penguin owned is " << penguinQty << endl;
-                if (tigerQty > tigerCap) { doubleCapacity(num+1); }
+                if (penguinQty > penguinCap) { doubleCapacity(num+1); }
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 5; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -477,7 +476,7 @@ void Zoo::spawnAnimal(int num) {
             {
                 turtleQty += 10;
                 cout << "New turtle owned is " << turtleQty << endl;
-                if (turtleQty > tigerCap) { doubleCapacity(num+1); }
+                if (turtleQty > turtleCap) { doubleCapacity(num+1); }
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 10; index++) {
                     tempAnimal[index] = animals[2][index];
@@ -562,7 +561,7 @@ void Zoo::addPurchasedAnimal(int selection) {
             {
                 penguinQty++;
                 cout << "Penguin Quantity is " << penguinQty << endl;
-                if (penguinQty > tigerCap) { doubleCapacity(selection); }
+                if (penguinQty > turtleCap) { doubleCapacity(selection); }
 
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 1; index++) {
@@ -581,7 +580,7 @@ void Zoo::addPurchasedAnimal(int selection) {
             {
                 turtleQty++;
                 cout << "Turtle Quantity is " << turtleQty << endl;
-                if (turtleQty > tigerCap) { doubleCapacity(selection); }
+                if (turtleQty > turtleCap) { doubleCapacity(selection); }
 
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 1; index++) {

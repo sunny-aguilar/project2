@@ -161,6 +161,58 @@ void Menu::menuPurchaseReport(int select, double cost, double bal) {
     cout << "Your bank balance is now $" << bal << endl << endl;
 }
 
+/*********************************************************************
+** Description:     this menu display information about the increase
+**                  in size of the animal arrays. Animal arrays are
+**                  increase by 10 each time. This information is
+**                  display here and refers to the array sizes as
+ *                  "animal pens".
+*********************************************************************/
+void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
+    std::string type[] = {"tigers", "penguins", "turtles"};
+
+    cout << "+------------------------------------------------+\n"
+            "|                                                |\n"
+            "|  Your zoo keeps growing! You can now keep a    |\n"
+            "|  a total of "<< cap << " " << type[sel-1] << "                          |\n"
+            "|                                                |\n"
+            "+------------------------------------------------+\n";
+
+//    switch (sel) {
+//        case 1:
+////            cout << "Tigers owned " << animalQty << endl;
+////            cout << "Your tigers have grown in numbers so you";
+////            cout << "have constructed a total of " << cap;
+////            cout << "tiger pens\n";
+//            cout << "+------------------------------------------------+\n"
+//                    "|                                                |\n"
+//                    "|  Your zoo keeps growing! You can now keep a    |\n"
+//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
+//                    "|                                                |\n"
+//                    "+------------------------------------------------+";
+//            break;
+//        case 2:
+//            cout << "+------------------------------------------------+\n"
+//                    "|                                                |\n"
+//                    "|  Your zoo keeps growing! You can now keep a    |\n"
+//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
+//                    "|                                                |\n"
+//                    "+------------------------------------------------+";
+//            break;
+//        case 3:
+//            cout << "+------------------------------------------------+\n"
+//                    "|                                                |\n"
+//                    "|  Your zoo keeps growing! You can now keep a    |\n"
+//                    "|  a total of "<< cap << " " << type[sel-1] << "        |\n"
+//                    "|                                                |\n"
+//                    "+------------------------------------------------+\n";
+//            break;
+//        default:
+//            cout << "Unable to display capacity report!\n";
+//    }
+}
+
+
 void Menu::menuKeepPlaying() {
     cout << "The day is now over, would you like to continue playing?\n"
          << "1. Yes, keep playing\n"

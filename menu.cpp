@@ -81,7 +81,7 @@ void Menu::initialTurtles() {
 void Menu::menuStartupCost(double bal, int cost) {
     cout << "+--------------------------------------------------+\n"
             "|                                                  |\n";
-    cout << "| Start-up Costs: $ "<< cost << "      Bank Bal: $ ";
+    cout << "| Start-up Costs: $ " << cost << "      Bank Bal: $ ";
     cout << bal <<"   |\n"
             "|                                                  |\n"
             "+--------------------------------------------------+\n";
@@ -333,7 +333,7 @@ void Menu::quitGameMssg(double bal) {
 
     cout << "                          (o<\n"
             "      _o)  (o_  (o<  (o<  //\\\n"
-            "      (/)_ (/)_ (/)_ (/)_ V_/_\n";
+            "      (/)_ (/)_ (/)_ (/)_ V_/_\n\n";
 }
 
 

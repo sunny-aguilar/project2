@@ -45,7 +45,7 @@ public:
     void menuCapacityIncrease(int sel, int qty, int cap);
     void menuKeepPlaying();
     void menuBankrupt(double balance);
-    void quitGameMssg();
+    void quitGameMssg(double balance);
 
 private:
     int selection;

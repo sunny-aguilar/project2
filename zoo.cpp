@@ -76,7 +76,7 @@ void Zoo::playGame() {
     }
 
     // quit game message
-    menu.quitGameMssg();
+    menu.quitGameMssg(bankBalance);
 }
 
 /*********************************************************************

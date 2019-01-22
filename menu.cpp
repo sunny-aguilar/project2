@@ -11,13 +11,13 @@
 #include "menu.hpp"
 
 void Menu::mainMenu() {
-    cout << "+-------------------------------------------------+\n"
-         << "|     (\\ _ /)         /\\__/\\          ^---^       |\n"
-         << "|     (' x ')        (=^.^=)         ( `o`)       |\n"
-         << "|     c(\")(\")         (\")(\")_/       ( uu )       |\n"
-         << "+-------------------------------------------------+\n"
-         << "|------------- Welcome to Zoo Tycoon -------------|\n"
-         << "+-------------------------------------------------+\n\n"
+    cout << "+-----------------------------------------------------------+\n"
+         << "|     (\\ _ /)         /\\__/\\          ^---^        (O_      |\n"
+         << "|     (' x ')        (=^.^=)         ( `o`)        //\\      |\n"
+         << "|     c(\")(\")         (\")(\")_/       ( uu )        V_/_     |\n"
+         << "+-----------------------------------------------------------+\n"
+         << "|------------------- WELCOME TO ZOO TYCOON -----------------|\n"
+         << "+-----------------------------------------------------------+\n\n"
          << "Game Rules:\n"
          << "- You are the owner of a zoo!\n"
          << "- Each turn counts as 1 day\n"
@@ -85,8 +85,8 @@ void Menu::menuStartupCost(double bal, int cost) {
     cout << bal <<"   |\n"
             "|                                                  |\n"
             "+--------------------------------------------------+\n";
-    cout << "\nHit ENTER to start the first day\n";
-    cin.get();
+//    cout << "\nHit ENTER to start the first day\n";
+//    cin.get();
 }
 
 /*********************************************************************
@@ -216,7 +216,8 @@ void Menu::menuBabyNotBorn() {
 void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";
-    cout << "    Your recent advertisements have caused an attendance boom!\n"
+    cout << "    Your recent advertisements have caused an attendance \n"
+         << "    boom! Each tiger you own will generate extra revenue."
          << "    You have generated an extra $" << bonus << endl;
 }
 
@@ -321,8 +322,17 @@ void Menu::menuBankrupt(double balance) {
 /*********************************************************************
 ** Description:     display thank you message for quitting game
 *********************************************************************/
-void Menu::quitGameMssg() {
-    cout << "Thanks for playing Zoo Tycoon!\n";
+void Menu::quitGameMssg(double bal) {
+    cout << "+------------------------------------------------+\n"
+            "|                                                |\n"
+            "|          Thanks for playing Zoo Tycoon!        |\n"
+            "|          Lifetime Earnings: $" << bal << "            |\n"
+            "|                                                |\n"
+            "+------------------------------------------------+\n\n";
+
+    cout << "                     (o<\n"
+            "      _o)  (o_  (o<  //\\\n"
+            "      (/)_ (/)_ (/)_ V_/_\n";
 }
 
 

@@ -104,7 +104,7 @@ void Menu::menuSelectFeed() {
 *********************************************************************/
 void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
-    cout << "ANIMALS BY AGES INVENTORY\n"
+    cout << "ANIMALS BY AGES REPORT\n"
             "+--------------------------------------------------+\n";
     cout << "    Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
     cout << "    Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;

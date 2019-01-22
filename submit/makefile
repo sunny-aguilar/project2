@@ -65,4 +65,4 @@ debug:
 	valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./Zoo
 
 zip:
-	zip -D Project2_Aguilar_Sandro.zip $(CPPs) $(HPPs) $(TXTS) makefile *.txt
+	zip -D Project2_Aguilar_Sandro.zip $(CPPs) $(HPPs) $(TXTS) makefile *.txt *.pdf

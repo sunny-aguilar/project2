@@ -1,16 +1,22 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Animal class is the base class for Tiger, Penguin
+**                  and Turtle classes.Subclasses inherit publicly.
+**                  Base class holds characteristic that are the same
+**                  of the derived classes such as age, their cost,
+**                  food requirements, and payoff.
 *********************************************************************/
 #include "animal.hpp"
-
+/*********************************************************************
+** Description:     default constructor
+*********************************************************************/
 Animal::Animal() {};
 
+/*********************************************************************
+** Description:     default constructor that initializes variables
+**                  in the base class
+*********************************************************************/
 Animal::Animal(int age, double animalCost, int babies, double foodCost, double payOff) :
     age{age},
     animalCost{animalCost},

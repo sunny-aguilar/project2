@@ -1,11 +1,9 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Turtle class is derived from Animal class. Instances
+**                  of Turtle are initialized with their age. Turtle
+**                  inherits publicly from Animal.
 *********************************************************************/
 #ifndef TURTLE_HPP
 #define TURTLE_HPP

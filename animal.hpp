@@ -1,11 +1,11 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Aniamal class is the base class for Tiger, Penguin
+**                  and Turtle classes.Subclasses inherit publicly.
+**                  Base clas holds characteristic that are the same
+**                  of the derived classes such as age, their cost,
+**                  food requirements, and payoff.
 *********************************************************************/
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
@@ -30,7 +30,6 @@ private:
     int babyPotential;
     double baseFoodCost;
     double payOff;
-
 };
 
 #endif

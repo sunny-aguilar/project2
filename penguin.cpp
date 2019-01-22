@@ -1,11 +1,9 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Penguin class is derived from Animal class. Instances
+**                  of Penguin are initialized with their age. Penguin
+**                  inherits publicly from Animal.
 *********************************************************************/
 #include "penguin.hpp"
 

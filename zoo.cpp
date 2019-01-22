@@ -195,7 +195,6 @@ bool Zoo::startDay() {
 
         // feed the animals and pay feeding costs
         selectFeed();
-        feedAnimals();
 
         // random event
         randomEvents();
@@ -287,17 +286,18 @@ void Zoo::selectFeed() {
     int select = menu.validateNumber(1,3);
     switch (select) {
         case 1:
-            baseFoodCost = 2;
+            baseFoodCost = 0.50;
             break;
         case 2:
             baseFoodCost = 1;
             break;
         case 3:
-            baseFoodCost = 0.50;
+            baseFoodCost = 2;
             break;
         default:
             cout << "Unable to process the selection made";
     }
+    feedAnimals();
 }
 
 /*********************************************************************
@@ -308,6 +308,7 @@ void Zoo::feedAnimals() {
     double tigerCosts = 0;
     double penguinCosts = 0;
     double turtleCosts = 0;
+    double totalFeedExpenses = 0;
 
     for (int index = 0; index < tigerQty; index++) {
         tigerCosts = animals[0]->getFoodCost() * tigerQty * baseFoodCost;
@@ -319,7 +320,7 @@ void Zoo::feedAnimals() {
         turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
     }
 
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    totalFeedExpenses = tigerCosts + penguinCosts + turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
 
@@ -611,13 +612,13 @@ void Zoo::dailyFinancialReport() {
 
     // calculate feed expenses for all animals
     for (int index = 0; index < tigerQty; index++) {
-        tigerCosts = animals[0]->getFoodCost() * tigerQty;
+        tigerCosts = animals[0]->getFoodCost() * tigerQty * baseFoodCost;
     }
     for (int index = 0; index < penguinQty; index++) {
-        penguinCosts = animals[1]->getFoodCost() * penguinQty;
+        penguinCosts = animals[1]->getFoodCost() * penguinQty * baseFoodCost;
     }
     for (int index = 0; index < turtleQty; index++) {
-        turtleCosts = animals[2]->getFoodCost() * turtleQty;
+        turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
     }
 
     // calculate net income for the day

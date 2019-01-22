@@ -93,9 +93,10 @@ void Menu::menuStartupCost(double bal, int cost) {
 ** Description:     prompts user to select feed type
 *********************************************************************/
 void Menu::menuSelectFeed() {
-    cout << "SELECT FEED TYPE\n"
+    cout << "TIME TO FEED THE ANIMALS - SELECT FEED TYPE\n"
             "+--------------------------------------------------+\n";
-    cout << " 1. Cheap   2. Generic   3. Premium";
+    cout << " 1. Cheap   2. Generic   3. Premium\n";
+    cout << ">> ";
 }
 
 /*********************************************************************

@@ -283,8 +283,8 @@ void Zoo::countAnimals() {
 *********************************************************************/
 void Zoo::selectFeed() {
     menu.menuSelectFeed();
-    int select = menu.validateNumber(1,3);
-    switch (select) {
+    feedChosen = menu.validateNumber(1,3);
+    switch (feedChosen) {
         case 1:
             baseFoodCost = 0.50;
             break;
@@ -320,19 +320,49 @@ void Zoo::feedAnimals() {
         turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
     }
 
+    // add up feeding expenses and update bank balance
     totalFeedExpenses = tigerCosts + penguinCosts + turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
 
 /*********************************************************************
-** Description:     this function is in charge of generating a random
-**                  event and calling the appropriate function that
-**                  produces the event.
+** Description:     EXTRA CREDIT - this function is in charge of
+**                  generating a random event and calling the
+**                  appropriate function that produces the event.
+**                  Randomness is created by choosing a value in an
+**                  array where the chances of getting a 1 are
+**                  increase as cheaper food is used.
 *********************************************************************/
 void Zoo::randomEvents() {
-    // generate a random number 1 - 4
-    int randomNumber = rand() % 4 + 1;
-    switch (randomNumber) {
+    // generate a random number 1 - 3
+    int randomNumber = 0;
+    int selection = 0;
+
+    // feed selected affects chance of disease
+    if (feedChosen == 1) {
+        // 1 is for cheap feed
+        // 50% chance of disease
+        int cheapArr[] = {1,1,2,3};
+        randomNumber = rand() % 4;
+        selection = cheapArr[randomNumber];
+    }
+    else if (feedChosen == 2) {
+        // 2 is for generic feed
+        // 33% chance of disease (base line)
+        int cheapArr[] = {1,2,3};
+        randomNumber = rand() % 3;
+        selection = cheapArr[randomNumber];
+    }
+    else if (feedChosen == 3) {
+        // 3 is for premium feed
+        // 20% chance of disease
+        int cheapArr[] = {1,2,2,3,3};
+        randomNumber = rand() % 5;
+        selection = cheapArr[randomNumber];
+    }
+
+    // select random event
+    switch (selection) {
         case 1:
             animalSickness();
             break;

@@ -217,7 +217,7 @@ void Menu::menuAttendanceBoom(double bonus) {
     cout << " BOOM BONUS!\n"
             "+--------------------------------------------------+\n";
     cout << "    Your recent advertisements have caused an attendance \n"
-         << "    boom! Each tiger you own will generate extra revenue."
+         << "    boom! Each tiger you own will generate extra revenue.\n"
          << "    You have generated an extra $" << bonus << endl;
 }
 

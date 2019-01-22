@@ -1,21 +1,23 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
-**
-**
-**
-**
+** Description:     Menu class contains all of the menu and prompts
+**                  that appear during the game. Menu objects lives
+**                  inside of the Game Class. Menu functions may
+**                  receive parameters from the game for display
+**                  purposes. Menu class also contains the input
+**                  validation function.
 *********************************************************************/
 #include "menu.hpp"
 
 void Menu::mainMenu() {
-    cout << "-----------------------------------------\n"
-         << "   (\\ _ /)       /\\__/\\        ^---^\n"
-         << "   (' x ')      (=^.^=)       ( `o`)\n"
-         << "   c(\")(\")       (\")(\")_/     ( uu )\n"
-         << "-----------------------------------------\n"
-         << "--------- Welcome to Zoo Tycoon ---------\n\n"
+    cout << "+-----------------------------------------------------------+\n"
+         << "|     (\\ _ /)         /\\__/\\          ^---^        (O_      |\n"
+         << "|     (' x ')        (=^.^=)         ( `o`)        //\\      |\n"
+         << "|     c(\")(\")         (\")(\")_/       ( uu )        V_/_     |\n"
+         << "+-----------------------------------------------------------+\n"
+         << "|------------------- WELCOME TO ZOO TYCOON -----------------|\n"
+         << "+-----------------------------------------------------------+\n\n"
          << "Game Rules:\n"
          << "- You are the owner of a zoo!\n"
          << "- Each turn counts as 1 day\n"
@@ -25,9 +27,8 @@ void Menu::mainMenu() {
          << "- buying an animal cost money\n"
          << "- animals must be fed each day at a cost\n"
          << "- animals can spawn babies\n"
-         << "- animals can die\n"
-         << "- if you balance goes below $0, game ends!\n"
-         << "  GET READY, BEGIN!\n\n";
+         << "- animals can get sick and die\n"
+         << "- if you balance goes below $0, game ends!\n\n";
 }
 
 /*********************************************************************
@@ -48,7 +49,7 @@ int Menu::getSelection() {
 ** Description:     mask how many initial tigers to start with
 *********************************************************************/
 void Menu::initialTigers() {
-    cout << "-+TIGERS+-\n"
+    cout << "+- TIGERS -------+\n"
          << "How many tigers do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
@@ -58,7 +59,7 @@ void Menu::initialTigers() {
 ** Description:     ask how many initial penguins to start with
 *********************************************************************/
 void Menu::initialPenguins() {
-    cout << "-+Turtles+-\n"
+    cout << "+- Penguins -------+\n"
          << "How many penguins do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
@@ -68,30 +69,120 @@ void Menu::initialPenguins() {
 ** Description:     ask how many initial penguins to start with
 *********************************************************************/
 void Menu::initialTurtles() {
-    cout << "-+Penguins+-\n"
+    cout << "+- Turtles -------+\n"
          << "How many turtles do you want to start out with?\n"
          << "enter 1 or 2\n"
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     start up costs and remaining bank balance display
+*********************************************************************/
+void Menu::menuStartupCost(double bal, int cost) {
+    cout << "+--------------------------------------------------+\n"
+            "|                                                  |\n";
+    cout << "| Start-up Costs: $ "<< cost << "      Bank Bal: $ ";
+    cout << bal <<"   |\n"
+            "|                                                  |\n"
+            "+--------------------------------------------------+\n";
+//    cout << "\nHit ENTER to start the first day\n";
+//    cin.get();
+}
+
+/*********************************************************************
+** Description:     prompts user to select feed type
+*********************************************************************/
+void Menu::menuSelectFeed() {
+    cout << "TIME TO FEED THE ANIMALS - SELECT FEED TYPE\n"
+            "+--------------------------------------------------+\n";
+    cout << " 1. Cheap   2. Generic   3. Premium\n";
+    cout << ">> ";
+}
+
+/*********************************************************************
+** Description:     displays animals ages for all animals
+*********************************************************************/
+void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
+                          int bPenguin, int aTurtle, int bTurtle) {
+    cout << "ANIMALS BY AGES INVENTORY\n"
+            "+--------------------------------------------------+\n";
+    cout << "    Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
+    cout << "    Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
+    cout << "    Adult Turtles:  " << aTurtle << "     Baby Turtles:  "<< bTurtle << endl << endl;
+}
+
+/*********************************************************************
+** Description:     displays daily revenues, expenses, daily net income
+**                  or loss, and bank balance
+*********************************************************************/
+void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
+    cout << "\n DAILY REVENUES\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << salesArr[0] << " - Tiger Revenues\n";
+    cout << "    $" << salesArr[1] << " - Penguin Revenues\n";
+    cout << "    $" << salesArr[2] << " - Turtle Revenues\n";
+    cout << "    $" << salesArr[0] + salesArr[1] + salesArr[2];
+    cout << " - Total Revenues\n\n";
+
+    cout << " DAILY EXPENSES\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << costsArr[0] << " - Tiger Feeding Costs\n";
+    cout << "    $" << costsArr[1] << " - Penguin Feeding Costs\n";
+    cout << "    $" << costsArr[2] << " - Turtle Feeding Costs\n";
+    cout << "    $" << costsArr[0] + costsArr[1] + costsArr[2];
+    cout << " - Total Expenses\n\n";
+
+    cout << " DAILY NET INCOME & BANK BALANCE\n"
+            "+--------------------------------------------------+\n";
+    cout << "    $" << profitsArr[3] << " - Prior Bank Balance\n";
+    cout << "    $" << profitsArr[0] << " - Boom Bonus\n";
+    cout << "    $" << profitsArr[1] << " - Net Income / (Loss)\n";
+    cout << "    $" << profitsArr[2] << " - Bank Balance\n\n";
+}
+
+/*********************************************************************
+** Description:     display the start of a new day
+*********************************************************************/
 void Menu::starDayMessage(int day) {
-    cout << "\n################  IT'S A NEW DAY!  ################\n";
-    cout << "################  ---- DAY " << day << " ----  ################\n";
+    cout << "+--------------------------------------------------+\n"
+            "|                                                  |\n"
+            "|                IT'S A NEW DAY                    |\n";
+    cout << "|                    DAY " << day << "                         |\n";
+    cout << "|                                                  |\n"
+            "+--------------------------------------------------+\n\n";
 }
 
+/*********************************************************************
+** Description:     display banner when animal gets a disease
+*********************************************************************/
 void Menu::animalSick() {
-    cout << "One of your animals has a disease!\n";
-
+    cout << "\n RANDOM EVENT - AN ANIMAL DISEASE IS GOING AROUND\n"
+            "+--------------------------------------------------+\n";
 }
 
-void Menu::menuAnimalDead(int num) {
+/*********************************************************************
+** Description:     display banner when spared from disease
+*********************************************************************/
+void Menu::menuAnimalSpared(int sel) {
+    std::string animal[3] {"tigers", "penguins", "turtles"};
+    cout << "    There is disease going around affecting " << animal[sel];
+    cout << "\n    and luckily for you, you don't own any!\n";
+}
+
+/*********************************************************************
+** Description:     display which animal has ied
+*********************************************************************/
+void Menu::menuAnimalDead(int sel) {
     std::string animal[3] {"tiger", "penguin", "turtle"};
-    cout << "Unfortunately your " << animal[num] << " has died :(\n\n";
+    cout << "    Unfortunately your " << animal[sel] << " has died :(\n\n";
 }
 
-void Menu::menuBabyBorn(int num) {
+/*********************************************************************
+** Description:     display the type of animal has been born
+*********************************************************************/
+void Menu::menuBabyBorn(int sel) {
     std::string animalType;
-    switch (num) {
+    switch (sel) {
         case 0:
             animalType = "tigers";
             break;
@@ -104,18 +195,44 @@ void Menu::menuBabyBorn(int num) {
         default:
             cout << "Unable to determine the type of animal born!\n";
     }
-    cout << "Congrats! Your " << animalType << " had babies!\n\n";
+    cout << "\n RANDOM EVENT - AN ANIMAL IS BORN\n"
+            "+--------------------------------------------------+\n";
+    cout << "    Congrats! Your " << animalType << " had babies!\n\n";
 }
 
+/*********************************************************************
+** Description:     display no animals born banner
+*********************************************************************/
+void Menu::menuBabyNotBorn() {
+    cout << "\n RANDOM EVENT - NO ANIMALS BORN\n"
+            "+--------------------------------------------------+\n";
+    cout << "    Spring has come however there are no adult\n"
+         << "    animals to have babies\n\n";
+}
+
+/*********************************************************************
+** Description:     display bonus banner
+*********************************************************************/
 void Menu::menuAttendanceBoom(double bonus) {
-    cout << "Your recent advertisements have caused an attendance boom!\n"
-         << "You have generated an extra $" << bonus << endl << endl;
+    cout << " BOOM BONUS!\n"
+            "+--------------------------------------------------+\n";
+    cout << "    Your recent advertisements have caused an attendance \n"
+         << "    boom! Each tiger you own will generate extra revenue."
+         << "    You have generated an extra $" << bonus << endl;
 }
 
+/*********************************************************************
+** Description:     display no random event banner
+*********************************************************************/
 void Menu::menuNoRandomEvent() {
-    cout << "No random event happened today\n";
+    cout << " DAILY RANDOM EVENT\n"
+            "+--------------------------------------------------+\n";
+    cout << "    No random event happened today\n";
 }
 
+/*********************************************************************
+** Description:     prompt user to purchase an adult animal
+*********************************************************************/
 void Menu::menuBuyNewAnimal() {
     cout << "Before the day is over, would you like to buy an adult animal?\n"
          << "1. Yes\n"
@@ -123,6 +240,9 @@ void Menu::menuBuyNewAnimal() {
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     prompt user for animal type to purchase
+*********************************************************************/
 void Menu::menuBuyAnimalSelectionMade(int select) {
     switch (select) {
         case 1:
@@ -140,7 +260,9 @@ void Menu::menuBuyAnimalSelectionMade(int select) {
     }
 }
 
-
+/*********************************************************************
+** Description:     display animal purchase report
+*********************************************************************/
 void Menu::menuPurchaseReport(int select, double cost, double bal) {
     std::string animalType;
     switch (select) {
@@ -156,11 +278,32 @@ void Menu::menuPurchaseReport(int select, double cost, double bal) {
         default:
             "Unable to determine animal!\n";
     }
+    cout << " ANIMAL PURCHASE INFO\n"
+            "+--------------------------------------------------+\n";
     cout << "Your new " << animalType << " is 3 days old.\n";
-    cout << "Purchased animal cost: $" << cost << endl;
-    cout << "Your bank balance is now $" << bal << endl << endl;
+    cout << "$" << cost << " - Cost of purchased " << animalType << endl;
+    cout << "$" << bal << " - Bank balance" << endl << endl;
 }
 
+/*********************************************************************
+** Description:     this menu display information about the increase
+**                  in size of the animal arrays. Animal arrays are
+**                  increase by 10 each time.
+*********************************************************************/
+void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
+    std::string type[] = {"tigers", "penguins", "turtles"};
+
+    cout << "+------------------------------------------------+\n"
+            "|                                                |\n"
+            "|  Your zoo keeps growing! You can now keep a    |\n"
+            "|  a total of "<< cap << " " << type[sel-1] << "                          |\n"
+            "|                                                |\n"
+            "+------------------------------------------------+\n\n";
+}
+
+/*********************************************************************
+** Description:     prompt user if they would like to keep playing
+*********************************************************************/
 void Menu::menuKeepPlaying() {
     cout << "The day is now over, would you like to continue playing?\n"
          << "1. Yes, keep playing\n"
@@ -168,13 +311,28 @@ void Menu::menuKeepPlaying() {
          << ">> ";
 }
 
+/*********************************************************************
+** Description:     display bankruptcy banner
+*********************************************************************/
 void Menu::menuBankrupt(double balance) {
     cout << "YOU HAVE GONE BANKRUPT! YOUR ACCOUNT BALANCE IS $" << balance
          << endl << "It was a good run while it lasted\n";
 }
 
-void Menu::quitGameMssg() {
-    cout << "Thanks for playing Zoo Tycoon!\n";
+/*********************************************************************
+** Description:     display thank you message for quitting game
+*********************************************************************/
+void Menu::quitGameMssg(double bal) {
+    cout << "+------------------------------------------------+\n"
+            "|                                                |\n"
+            "|          Thanks for playing Zoo Tycoon!        |\n"
+            "|          Lifetime Earnings: $" << bal << "            |\n"
+            "|                                                |\n"
+            "+------------------------------------------------+\n\n";
+
+    cout << "                     (o<\n"
+            "      _o)  (o_  (o<  //\\\n"
+            "      (/)_ (/)_ (/)_ V_/_\n";
 }
 
 

@@ -20,9 +20,8 @@
 #include <iostream>
 
 int main() {
-    // create random number seed
     auto seed = static_cast<unsigned int>(time(nullptr));
-    srand(seed);
+    srand(seed);        // create random number seed
     Zoo zoo;            // create game object
     zoo.playGame();     // play the game
     return 0;

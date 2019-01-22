@@ -1,7 +1,7 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:     Zoo Tycoon -
+** Description:
 **
 **
 **
@@ -13,17 +13,29 @@
 using std::cout;
 using std::endl;
 
-// initialize starting variable amounts
+/*********************************************************************
+** Description:     default constructor that initializes variables
+**                  and the three animals arrays
+*********************************************************************/
 Zoo::Zoo() :
     animals(new Animal*[3]),
     bankBalance{100000},
+    boomBonus{0},
+    dailyProfit{0},
     randomEvent{false},
     tigerQty{0},
     penguinQty{0},
     turtleQty{0},
-    baseFoodCost{10} {
+    tigerCap{10},
+    penguinCap{10},
+    turtleCap{10},
+    baseFoodCost{1} {
 }
 
+/*********************************************************************
+** Description:     destructor that de-allocates the 2D array holding
+**                  the three animal arrays
+*********************************************************************/
 Zoo::~Zoo() {
     for (int index = 0; index < 3; index++) {
         delete [] animals[index];
@@ -31,6 +43,17 @@ Zoo::~Zoo() {
     delete []  animals;
 }
 
+/*********************************************************************
+** Description:     this function starts the game play by calling the
+**                  main menu. It then initializes the starting
+ *                  animal amounts, calls a function that dynamically
+ *                  allocates the animal arrays, and then it uses a
+ *                  loop to that is used to control and call the
+ *                  activities composed in each day. The day ends
+ *                  when the function startDay returns false from
+ *                  the player choosing to quit or the player has
+ *                  gone bankrupt.
+*********************************************************************/
 void Zoo::playGame() {
     // show main menu
     menu.mainMenu();
@@ -53,12 +76,13 @@ void Zoo::playGame() {
     }
 
     // quit game message
-    menu.quitGameMssg();
+    menu.quitGameMssg(bankBalance);
 }
 
 /*********************************************************************
 ** Description:     dynamically allocate starting animal amount for
-**                  each type of animal
+**                  each type of animal. Each animal is set with age
+ *                  of 0 so that the animals are 1 day old on day 1.
 *********************************************************************/
 void Zoo::initializeAnimals() {
     // initialize starting animals
@@ -81,7 +105,57 @@ void Zoo::initializeAnimals() {
 }
 
 /*********************************************************************
-** Description:     purchase animals and
+** Description:     this function takes in an int parameter that is
+**                  used to select which animal capacity needs to be
+**                  increase. Capacity increase is increased by 10
+**                  each time.
+*********************************************************************/
+void Zoo::doubleCapacity(int select) {
+    switch (select) {
+        case 1: // resize tiger array
+            {
+                tigerCap += 10;
+                menu.menuCapacityIncrease(select, tigerQty, tigerCap);
+                Animal *tempAnimal = new Tiger[tigerCap];
+                for (int index = 0; index < tigerQty; index++) {
+                    tempAnimal[index] = animals[0][index];
+                }
+                delete [] animals[0];
+                animals[0] = tempAnimal;
+            }
+            break;
+        case 2: // resize penguin array
+            {
+                penguinCap += 10;
+                menu.menuCapacityIncrease(select, penguinQty, penguinCap);
+                Animal *tempAnimal = new Penguin[penguinCap];
+                for (int index = 0; index < penguinCap; index++) {
+                    tempAnimal[index] = animals[1][index];
+                }
+                delete [] animals[1];
+                animals[1] = tempAnimal;
+            }
+            break;
+        case 3: // resize turtle array
+            {
+                turtleCap += 10;
+                menu.menuCapacityIncrease(select, turtleQty, turtleCap);
+                Animal *tempAnimal = new Tiger[turtleCap];
+                for (int index = 0; index < turtleCap; index++) {
+                    tempAnimal[index] = animals[2][index];
+                }
+                delete [] animals[2];
+                animals[2] = tempAnimal;
+            }
+            break;
+        default:
+            cout << "Unable to double the capacity!\n";
+    }
+}
+
+/*********************************************************************
+** Description:     purchase animals and determine the costs of the
+**                  animals to subtract from the bank balance
 *********************************************************************/
 void Zoo::startUpCosts() {
     int startCosts = 0;
@@ -90,37 +164,37 @@ void Zoo::startUpCosts() {
                + (turtleQty     * 100);
 
     bankBalance -= startCosts;
-
-    cout << "Total start up costs $" << startCosts << endl;
-    cout << "Remaining Bank Balance $" << bankBalance << endl;
+    menu.menuStartupCost(bankBalance, startCosts);
 }
 
 /*********************************************************************
-** Description:     start each day and repeat
+** Description:     start each day and repeat until user quits or goes
+**                  bankrupt. This function controls the daily
+**                  activities of each turn.
 *********************************************************************/
 bool Zoo::startDay() {
     int day = 1;
 
     do {
+        // show start of day banner
         menu.starDayMessage(day);
-        // check bank balance
+        // check bank balance, game ends if player is bankrupt
         if (bankBalance < 0) {
             gameOver = true;
             continueDay = false;
             menu.menuBankrupt(bankBalance);
             return gameOver;
         }
+
+        /*      DAY ACTIVITIES      */
         // increase animal age by 1 day
         ageAnimals();
 
         // display animals
         countAnimals();
 
-        // display daily budget
-        dailyBudget();
-
         // feed the animals and pay feeding costs
-        feedAnimals();
+        selectFeed();
 
         // random event
         randomEvents();
@@ -128,13 +202,10 @@ bool Zoo::startDay() {
         // calculate daily profit including bonus
         // possibly cout the daily profits here
         // boom revenues, if chosen, are added in randomEvents();
-        calculateDailyProfit();
+        dailyFinancialReport();
 
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
-
-        // show daily profit
-        cout << "Daily Profit: $REPORT HERE\n\n";
 
         // prompt user if keep playing
         continueDay = keepPlaying();
@@ -142,6 +213,7 @@ bool Zoo::startDay() {
         day++;
     } while (continueDay);
 
+    // if player quits, game ends
     if (!continueDay) {
         return true;
     }
@@ -160,72 +232,137 @@ void Zoo::ageAnimals() {
             animals[type][total].increaseAnimalAge();
         }
     }
+}
+
+/*********************************************************************
+** Description:     counts baby and adult animals and calls a function
+**                  to display the information
+*********************************************************************/
+void Zoo::countAnimals() {
+    int adultTiger = 0;
+    int adultPenguin = 0;
+    int adultTurtle = 0;
+    int babyTiger = 0;
+    int babyPenguin = 0;
+    int babyTurtle = 0;
+
+    // compute tiger adult and baby ages
+    for (int index = 0; index < tigerQty; index++) {
+        if (animals[0][index].getAge() >= 3) {
+            adultTiger++;
+        }
+        else if (animals[0][index].getAge() < 3) {
+            babyTiger++;
+        }
+    }
+    // compute penguin adult and baby ages
+    for (int index = 0; index < penguinQty; index++) {
+        if (animals[1][index].getAge() >= 3) {
+            adultPenguin++;
+        }
+        else if (animals[1][index].getAge() < 3) {
+            babyPenguin++;
+        }
+    }
+    // compute turtle adult and baby ages
+    for (int index = 0; index < turtleQty; index++) {
+        if (animals[2][index].getAge() >= 3) {
+            adultTurtle++;
+        }
+        else if (animals[2][index].getAge() < 3) {
+            babyTurtle++;
+        }
+    }
+
+    // display ages report
+    menu.menuAnimalAges(adultTiger, babyTiger, adultPenguin, babyPenguin, adultTurtle, babyTurtle);
+}
+
+/*********************************************************************
+** Description:     Extra Credit - Select feed type
+*********************************************************************/
+void Zoo::selectFeed() {
+    menu.menuSelectFeed();
+    feedChosen = menu.validateNumber(1,3);
+    switch (feedChosen) {
+        case 1:
+            baseFoodCost = 0.50;
+            break;
+        case 2:
+            baseFoodCost = 1;
+            break;
+        case 3:
+            baseFoodCost = 2;
+            break;
+        default:
+            cout << "Unable to process the selection made";
+    }
+    feedAnimals();
+}
+
+/*********************************************************************
+** Description:     this function computes the feeding costs for the
+**                  animals and subtracts it from the bank balance.
+*********************************************************************/
+void Zoo::feedAnimals() {
+    double tigerCosts = 0;
+    double penguinCosts = 0;
+    double turtleCosts = 0;
+    double totalFeedExpenses = 0;
 
     for (int index = 0; index < tigerQty; index++) {
-        cout << "Tiger Age: " << animals[0][index].getAge() << " ";
+        tigerCosts = animals[0]->getFoodCost() * tigerQty * baseFoodCost;
     }
-    cout << endl;
     for (int index = 0; index < penguinQty; index++) {
-        cout << "Penguin Age: " << animals[1][index].getAge() << " ";
+        penguinCosts = animals[1]->getFoodCost() * penguinQty * baseFoodCost;
     }
-    cout << endl;
     for (int index = 0; index < turtleQty; index++) {
-        cout << "Turtle Age: " << animals[2][index].getAge() << " ";
+        turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
     }
-    cout << endl;
-}
 
-void Zoo::countAnimals() {
-    cout << "Total Tigers: " << tigerQty << endl;
-    cout << "Total Penguins: " <<  penguinQty << endl;
-    cout << "Total Turtles: " <<  turtleQty << endl << endl;
-}
-
-void Zoo::dailyBudget() {
-    double tigerRevenues = (10000 * .20) * tigerQty;
-    double penguinRevenues = (1000 * .10 ) * penguinQty;
-    double turtleRevenues = (100 * 0.05) * turtleQty;
-    double tigerCosts = (10 * 5) * tigerQty;
-    double penguinCosts = 10 * penguinQty;
-    double turtleCosts = (10 * 0.5) * turtleQty;
-    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
-    double netIncome = totalRevenues - totalFeedExpenses;
-
-    cout << std::fixed << std::setprecision(2);
-    cout << "Daily Revenues:\n";
-    cout << "  Tiger Revenues: $" << std::setw(10) << tigerRevenues << endl;
-    cout << "  Penguin Revenues: $" << std::setw(10) << penguinRevenues << endl;
-    cout << "  Turtle Revenues: $" << std::setw(10) << turtleRevenues << endl;
-    cout << "  Total Revenues: $" << std::setw(10) << totalRevenues << endl;
-
-    cout << "\nDaily Expenses:\n";
-    cout << "  Tiger Feeding Costs: $" << tigerCosts << endl;
-    cout << "  Penguin Feeding Costs: $" << penguinCosts << endl;
-    cout << "  Turtle Feeding Costs: $" << turtleCosts << endl;
-    cout << "  Total Expenses: $" << totalFeedExpenses << endl << endl;
-
-    cout << "Daily Net Profit/(Loss):\n"
-         << "  Total Revenues: $" << totalRevenues << endl
-         << "  Total Expenses: $" << totalFeedExpenses << endl
-         << "  Net Profit/(Loss): $" << netIncome << endl << endl;
-
-    cout << "Bank Balance $" << bankBalance + netIncome << endl << endl;
-    bankBalance += netIncome;
-}
-
-void Zoo::feedAnimals() {
-    double tigerCosts = (10 * 5) * tigerQty;
-    double penguinCosts = 10 * penguinQty;
-    double turtleCosts = (10 * 0.5) * turtleQty;
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
+    // add up feeding expenses and update bank balance
+    totalFeedExpenses = tigerCosts + penguinCosts + turtleCosts;
     bankBalance -= totalFeedExpenses;
 }
 
+/*********************************************************************
+** Description:     EXTRA CREDIT - this function is in charge of
+**                  generating a random event and calling the
+**                  appropriate function that produces the event.
+**                  Randomness is created by choosing a value in an
+**                  array where the chances of getting a 1 are
+**                  increase as cheaper food is used.
+*********************************************************************/
 void Zoo::randomEvents() {
-    // generate a random number 1 - 4
-    int randomNumber = rand() % 4 + 1;
-    switch (randomNumber) {
+    // generate a random number 1 - 3
+    int randomNumber = 0;
+    int selection = 0;
+
+    // feed selected affects chance of disease
+    if (feedChosen == 1) {
+        // 1 is for cheap feed
+        // 50% chance of disease
+        int cheapArr[] = {1,1,2,3};
+        randomNumber = rand() % 4;
+        selection = cheapArr[randomNumber];
+    }
+    else if (feedChosen == 2) {
+        // 2 is for generic feed
+        // 33% chance of disease (base line)
+        int cheapArr[] = {1,2,3};
+        randomNumber = rand() % 3;
+        selection = cheapArr[randomNumber];
+    }
+    else if (feedChosen == 3) {
+        // 3 is for premium feed
+        // 20% chance of disease
+        int cheapArr[] = {1,2,2,3,3};
+        randomNumber = rand() % 5;
+        selection = cheapArr[randomNumber];
+    }
+
+    // select random event
+    switch (selection) {
         case 1:
             animalSickness();
             break;
@@ -257,10 +394,21 @@ void Zoo::randomEvents() {
 void Zoo::animalSickness() {
     menu.animalSick();
     // randomly pick an animal to die
-    int randomAnimal = rand() % 2;
-    // ADD LOGIC HERE SKIP OVER ANIMALS WHERE QTY = 0 AND IT SHOULD
-    // FLOW DOWN BELOW TO THE SWITCH STATEMENT
+    int randomAnimal = rand() % 3;
 
+    // end function if the zoo has no animals of the kind chosen to
+    // die from disease and display message with this information
+    if (tigerQty < 1 && randomAnimal == 0) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
+    if (penguinQty < 1 && randomAnimal == 1) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
+    if (turtleQty < 1 && randomAnimal == 2) {
+        menu.menuAnimalSpared(randomAnimal); return;
+    }
+
+    // display that animal has died
     menu.menuAnimalDead(randomAnimal);
     switch (randomAnimal) {
         case 0:
@@ -290,7 +438,7 @@ void Zoo::animalSickness() {
                 int remaining = turtleQty--;
                 Animal*tempAnimal = new Turtle[remaining];
                 for (int index = 0; index < remaining; index++) {
-                    tempAnimal[index] = animals[2][remaining];
+                    tempAnimal[index] = animals[2][index];
                 }
                 delete [] animals[2];
                 animals[2] = tempAnimal;
@@ -299,19 +447,34 @@ void Zoo::animalSickness() {
         default:
             cout << "Unable to randomly choose an animal to die!\n";
     }
+    countAnimals();
 }
 
+/*********************************************************************
+** Description:     generates a random bonus between 250 and 500 per
+**                  tiger
+*********************************************************************/
 void Zoo::attendanceBoom() {
     double bonus = (rand() % (500 - 250 + 1)) + 250;
-    cout << "Bonus: $" << bonus << endl;
+    if (tigerQty < 0) {
+        boomBonus = 0;
+        menu.menuAttendanceBoom(bonus);
+    }
     bonus *= tigerQty;
-    bankBalance += bonus;
+    boomBonus = bonus;
     menu.menuAttendanceBoom(bonus);
 }
 
+/*********************************************************************
+** Description:     this function starts the process spawning baby
+**                  animals. It calls other functions to check if
+**                  there are any adult animals to spawn and randomly
+**                  chooses an animal to spawn from the available
+**                  animals.
+*********************************************************************/
 void Zoo::animalBorn() {
     bool babiesAvailable;
-    int animalBorn;
+    int animalBorn = 0;
 
     // first check if there are any adults before randomly choosing
     // which animal to have babies
@@ -325,7 +488,7 @@ void Zoo::animalBorn() {
         bool findAnimal = true;
         do {
             // generate random number from 0 - 2
-            animalBorn = rand() % 2;
+            animalBorn = rand() % 3;
             if (adultAnimals[animalBorn]) {
                 spawnAnimal(animalBorn);
                 findAnimal = false;
@@ -333,14 +496,21 @@ void Zoo::animalBorn() {
         } while (findAnimal);
     }
     else {
-        cout << "Spring has come however there are no adult "
-             << "animals to have babies\n\n";
+        // menu to display if no adults available for babies
+        menu.menuBabyNotBorn();
     }
 }
 
-bool Zoo::adultCheck(bool adultAnimals[]) {
+/*********************************************************************
+** Description:     checks if there are any adults available to have
+**                  babies. The information is saved in the array
+**                  that is passed in as a bool value. Function returns
+**                  true if adults are present.
+*********************************************************************/
+bool Zoo::adultCheck(bool *adultAnimals) {
     bool adultsPresent = false;
     int animalArr[] = {tigerQty, penguinQty, turtleQty};
+
     for (int type = 0; type < 3; type++) {
         for (int total = 0; total < animalArr[type]; total++) {
             if (animals[type][total].getAge() >= 3) {
@@ -348,19 +518,18 @@ bool Zoo::adultCheck(bool adultAnimals[]) {
             }
         }
     }
+    // return adults present bool
     return adultsPresent;
 }
 
 /*********************************************************************
-** Description:     this function randomly chooses which animals gets
-**                  sick and dies. Animal quantity is first reduced
-**                  by one. A temporary animal pointer to an array of
-**                  animals is then dynamically created from the
-**                  remaining animals. The temporary array is then
-**                  assigned the animal objects in the old array
-**                  (except for the one that dies). The old array
-**                  is then de-allocated and assigned the memory
-**                  location of the temporary animal pointer.
+** Description:     this function adds a new animal for that type of
+**                  animal that was chosen to spawn. Before adding a
+**                  new animal, a check is made to see if the array
+**                  capacity needs to be increased before adding a
+**                  new animal. After animal capacity is increased
+**                  (if needed), an animal is added to the animal
+**                  array.
 *********************************************************************/
 void Zoo::spawnAnimal(int num) {
     menu.menuBabyBorn(num);
@@ -368,6 +537,9 @@ void Zoo::spawnAnimal(int num) {
         case 0:
             {
                 tigerQty++;
+                // check for capacity
+                if (tigerQty > tigerCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -383,6 +555,9 @@ void Zoo::spawnAnimal(int num) {
         case 1:
             {
                 penguinQty += 5;
+                // check for capacity
+                if (penguinQty > penguinCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 5; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -398,6 +573,9 @@ void Zoo::spawnAnimal(int num) {
         case 2:
             {
                 turtleQty += 10;
+                // check for capacity
+                if (turtleQty > turtleCap) { doubleCapacity(num+1); }
+                // add animal
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 10; index++) {
                     tempAnimal[index] = animals[2][index];
@@ -406,37 +584,89 @@ void Zoo::spawnAnimal(int num) {
                 animals[2] = tempAnimal;
 
                 for (int index = 0; index < 10; index++) {
-                    animals[2][index - 10 + index] = Turtle{0};
+                    animals[2][turtleQty - 10 + index] = Turtle{0};
                 }
             }
             break;
         default:
             cout << "Unable to create a new baby!\n";
     }
-}
-
-void Zoo::calculateDailyProfit() {
-    // calculate revenues for all animals
-    double tigerRevenues = animals[0]->getPayOff() * tigerQty;
-    double penguinRevenues = animals[1]->getPayOff() * penguinQty;
-    double turtleRevenues = animals[2]->getPayOff() * turtleQty;
-
-    // calculate feed expenses for all animals
-    double tigerCosts = animals[0]->getFoodCost() * tigerQty;
-    double penguinCosts = animals[1]->getFoodCost() * penguinQty;
-    double turtleCosts = animals[2]->getFoodCost() * turtleQty;
-
-    // calculate net income for the day
-    double totalRevenues = tigerRevenues+penguinRevenues+turtleRevenues;
-    double totalFeedExpenses = tigerCosts+penguinCosts+turtleCosts;
-    double netIncome = totalRevenues - totalFeedExpenses;
-
-    dailyProfit = netIncome;
+    countAnimals();
 }
 
 /*********************************************************************
-** Description:     a
-**                  function is called
+** Description:     calculates daily profits by computing all revenues
+**                  and expenses to obtain net income, plus any
+**                  boom bonuses received. It calls a menu function
+**                  from the menu class to display this information
+**                  to the player.
+*********************************************************************/
+void Zoo::dailyFinancialReport() {
+    // reset daily profits
+    dailyProfit = 0;
+    double tigerRevenues = 0;
+    double penguinRevenues = 0;
+    double turtleRevenues = 0;
+
+    double tigerCosts = 0;
+    double penguinCosts = 0;
+    double turtleCosts = 0;
+
+    // calculate revenues for all animals
+    // check animal qty greater than zero
+    for (int index = 0; index < tigerQty; index++) {
+        tigerRevenues = animals[0]->getPayOff() * tigerQty;
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        penguinRevenues = animals[1]->getPayOff() * penguinQty;
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        turtleRevenues = animals[2]->getPayOff() * turtleQty;
+    }
+
+    // calculate feed expenses for all animals
+    for (int index = 0; index < tigerQty; index++) {
+        tigerCosts = animals[0]->getFoodCost() * tigerQty * baseFoodCost;
+    }
+    for (int index = 0; index < penguinQty; index++) {
+        penguinCosts = animals[1]->getFoodCost() * penguinQty * baseFoodCost;
+    }
+    for (int index = 0; index < turtleQty; index++) {
+        turtleCosts = animals[2]->getFoodCost() * turtleQty * baseFoodCost;
+    }
+
+    // calculate net income for the day
+    double totalRevenues = tigerRevenues + penguinRevenues + turtleRevenues;
+    double totalFeedExpenses = tigerCosts + penguinCosts + turtleCosts;
+
+    // feed expenses are already subtracted by feedAnimals()
+    double netIncome = totalRevenues - totalFeedExpenses;
+
+    // add any bonus earned during the round
+    dailyProfit += boomBonus;
+
+    // set daily profit; add back expenses already subtracted by totalFeedExpenses()
+    dailyProfit += netIncome + totalFeedExpenses;
+
+    // save prior day bank balance
+    double priorBankBalance = bankBalance + totalFeedExpenses;
+
+    // add daily profit to bank balance
+    bankBalance += dailyProfit;
+
+    // store financial info in arrays to send to menu class for display
+    double revenueArr[] = {tigerRevenues, penguinRevenues, turtleRevenues};
+    double costsArr[] = {tigerCosts, penguinCosts, turtleCosts};
+    double profitsArr[] = {boomBonus, netIncome, bankBalance, priorBankBalance};
+
+    // pass financial information to display on menu
+    menu.menuBudget(revenueArr, costsArr, profitsArr);
+}
+
+/*********************************************************************
+** Description:     this function starts the process of purchasing a
+**                  new animal by asking the user if they would like
+**                  to buy one.
 *********************************************************************/
 void Zoo::purchaseAdultAnimal() {
     menu.menuBuyNewAnimal();
@@ -455,13 +685,18 @@ void Zoo::purchaseAdultAnimal() {
 /*********************************************************************
 ** Description:     functions takes an int parameter that is used to
 **                  select the type of animal to add and dynamically
- *                  adds the animal to the right category
+**                  adds the animal to the right category. A check is
+**                  made to check if the animal capacity in the array
+**                  needs to be increased first.
 *********************************************************************/
 void Zoo::addPurchasedAnimal(int selection) {
     switch (selection) {
         case 1: // add one adult tiger
             {
                 tigerQty++;
+                // check for capacity
+                if (tigerQty > tigerCap) { doubleCapacity(selection); }
+                // add animal
                 Animal *tempAnimal = new Tiger[tigerQty];
                 for (int index = 0; index < tigerQty - 1; index++) {
                     tempAnimal[index] = animals[0][index];
@@ -478,6 +713,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 2: // add one adult penguin
             {
                 penguinQty++;
+                // check for capacity
+                if (penguinQty > penguinCap) { doubleCapacity(selection); }
+                // add animal
                 Animal *tempAnimal = new Penguin[penguinQty];
                 for (int index = 0; index < penguinQty - 1; index++) {
                     tempAnimal[index] = animals[1][index];
@@ -494,6 +732,9 @@ void Zoo::addPurchasedAnimal(int selection) {
         case 3: // add one adult turtle
             {
                 turtleQty++;
+                // check for capacity
+                if (turtleQty > turtleCap) { doubleCapacity(selection); }
+                // add animal
                 Animal *tempAnimal = new Turtle[turtleQty];
                 for (int index = 0; index < turtleQty - 1; index++) {
                     tempAnimal[index] = animals[2][index];
@@ -525,11 +766,11 @@ void Zoo::purchaseBalanceUpdate(int selection) {
     menu.menuPurchaseReport(selection, animalCost, bankBalance);
 }
 
-void Zoo::dailyFinancialReport() {
-
-}
-
-
+/*********************************************************************
+** Description:     this function is used to prompt the user if they
+**                  want to keep playing or if they want to quit the
+**                  game.
+*********************************************************************/
 bool Zoo::keepPlaying() {
     menu.menuKeepPlaying();
     int selection = menu.validateNumber(1,2);

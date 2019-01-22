@@ -106,9 +106,9 @@ void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
                           int bPenguin, int aTurtle, int bTurtle) {
     cout << "ANIMALS BY AGES REPORT\n"
             "+--------------------------------------------------+\n";
-    cout << "    Adult Tigers:   " << aTiger << "     Baby Tigers:   "<< bTiger << endl;
-    cout << "    Adult Penguins: " << aPenguin << "     Baby Penguins: "<< bPenguin << endl;
-    cout << "    Adult Turtles:  " << aTurtle << "     Baby Turtles:  "<< bTurtle << endl << endl;
+    cout << "    Adult Tigers:   " << std::setw(3) << aTiger << "     Baby Tigers:   "<< std::setw(3) << bTiger << endl;
+    cout << "    Adult Penguins: " << std::setw(3) << aPenguin << "     Baby Penguins: "<< std::setw(3) << bPenguin << endl;
+    cout << "    Adult Turtles:  " << std::setw(3) << aTurtle << "     Baby Turtles:  "<< std::setw(3) << bTurtle << endl << endl;
 }
 
 /*********************************************************************
@@ -116,28 +116,29 @@ void Menu::menuAnimalAges(int aTiger, int bTiger, int aPenguin,
 **                  or loss, and bank balance
 *********************************************************************/
 void Menu::menuBudget(double *salesArr, double *costsArr, double *profitsArr) {
+    cout << std::fixed << std::setprecision(0);
     cout << "\n DAILY REVENUES\n"
             "+--------------------------------------------------+\n";
-    cout << "    $" << salesArr[0] << " - Tiger Revenues\n";
-    cout << "    $" << salesArr[1] << " - Penguin Revenues\n";
-    cout << "    $" << salesArr[2] << " - Turtle Revenues\n";
-    cout << "    $" << salesArr[0] + salesArr[1] + salesArr[2];
+    cout << "    $" << std::setw(7) << salesArr[0] << " - Tiger Revenues\n";
+    cout << "    $" << std::setw(7) << salesArr[1] << " - Penguin Revenues\n";
+    cout << "    $" << std::setw(7) << salesArr[2] << " - Turtle Revenues\n";
+    cout << "    $" << std::setw(7) << salesArr[0] + salesArr[1] + salesArr[2];
     cout << " - Total Revenues\n\n";
 
     cout << " DAILY EXPENSES\n"
             "+--------------------------------------------------+\n";
-    cout << "    $" << costsArr[0] << " - Tiger Feeding Costs\n";
-    cout << "    $" << costsArr[1] << " - Penguin Feeding Costs\n";
-    cout << "    $" << costsArr[2] << " - Turtle Feeding Costs\n";
-    cout << "    $" << costsArr[0] + costsArr[1] + costsArr[2];
+    cout << "    $" << std::setw(7) << costsArr[0] << " - Tiger Feeding Costs\n";
+    cout << "    $" << std::setw(7) << costsArr[1] << " - Penguin Feeding Costs\n";
+    cout << "    $" << std::setw(7) << costsArr[2] << " - Turtle Feeding Costs\n";
+    cout << "    $" << std::setw(7) << costsArr[0] + costsArr[1] + costsArr[2];
     cout << " - Total Expenses\n\n";
 
     cout << " DAILY NET INCOME & BANK BALANCE\n"
             "+--------------------------------------------------+\n";
-    cout << "    $" << profitsArr[3] << " - Prior Bank Balance\n";
-    cout << "    $" << profitsArr[0] << " - Boom Bonus\n";
-    cout << "    $" << profitsArr[1] << " - Net Income / (Loss)\n";
-    cout << "    $" << profitsArr[2] << " - Bank Balance\n\n";
+    cout << "    $" << std::setw(7) << profitsArr[3] << " - Prior Bank Balance\n";
+    cout << "    $" << std::setw(7) << profitsArr[0] << " - Boom Bonus\n";
+    cout << "    $" << std::setw(7) << profitsArr[1] << " - Net Income / (Loss)\n";
+    cout << "    $" << std::setw(7) << profitsArr[2] << " - Bank Balance\n\n";
 }
 
 /*********************************************************************
@@ -147,7 +148,7 @@ void Menu::starDayMessage(int day) {
     cout << "+--------------------------------------------------+\n"
             "|                                                  |\n"
             "|                IT'S A NEW DAY                    |\n";
-    cout << "|                    DAY " << day << "                         |\n";
+    cout << "|                    DAY " << std::setw(3) << day << "                       |\n";
     cout << "|                                                  |\n"
             "+--------------------------------------------------+\n\n";
 }
@@ -296,7 +297,7 @@ void Menu::menuCapacityIncrease(int sel, int animalQty, int cap) {
     cout << "+------------------------------------------------+\n"
             "|                                                |\n"
             "|  Your zoo keeps growing! You can now keep a    |\n"
-            "|  a total of "<< cap << " " << type[sel-1] << "                          |\n"
+            "|  a total of "<< std::setw(3) << cap << " " << type[sel-1] << "                        |\n"
             "|                                                |\n"
             "+------------------------------------------------+\n\n";
 }
@@ -326,13 +327,13 @@ void Menu::quitGameMssg(double bal) {
     cout << "+------------------------------------------------+\n"
             "|                                                |\n"
             "|          Thanks for playing Zoo Tycoon!        |\n"
-            "|          Lifetime Earnings: $" << bal << "            |\n"
+            "|          Lifetime Earnings: $" << std::setw(7) << bal << "           |\n"
             "|                                                |\n"
             "+------------------------------------------------+\n\n";
 
-    cout << "                     (o<\n"
-            "      _o)  (o_  (o<  //\\\n"
-            "      (/)_ (/)_ (/)_ V_/_\n";
+    cout << "                          (o<\n"
+            "      _o)  (o_  (o<  (o<  //\\\n"
+            "      (/)_ (/)_ (/)_ (/)_ V_/_\n";
 }
 
 

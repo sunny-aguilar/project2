@@ -1,11 +1,13 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
 ** Date:            Feb 2019
-** Description:
-**
-**
-**
-**
+** Description:     Zoo class is used to control the game operations.
+**                  Zoo class contains and animal object and menu
+**                  object. The game parameters are first set before
+**                  the game begins. Game operations consist of
+**                  tracking a user's player bank balance, calculating
+**                  profits, adding and subtracting animals, and
+**                  displaying the information to the user.
 *********************************************************************/
 #include "zoo.hpp"
 #include <iostream>

@@ -518,23 +518,7 @@ bool Zoo::adultCheck(bool *adultAnimals) {
             }
         }
     }
-
-//    for (int index = 0; index <= tigerQty; index++) {
-//        if (animals[0][index].getAge() >= 3) {
-//            adultsPresent = adultAnimals[0] = true;
-//        }
-//    }
-//    for (int index = 0; index <= penguinQty; index++) {
-//        if (animals[1][index].getAge() >= 3) {
-//            adultsPresent = adultAnimals[1] = true;
-//        }
-//    }
-//    for (int index = 0; index <= turtleQty; index++) {
-//        if (animals[2][index].getAge() >= 3) {
-//            adultsPresent = adultAnimals[2] = true;
-//        }
-//    }
-
+    // return adults present bool
     return adultsPresent;
 }
 

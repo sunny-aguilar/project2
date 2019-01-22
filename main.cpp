@@ -24,6 +24,6 @@ int main() {
     auto seed = static_cast<unsigned int>(time(nullptr));
     srand(seed);
     Zoo zoo;            // create game object
-    zoo.playGame();     // play the game
+    zoo.playGame();     // play the game s
     return 0;
 }

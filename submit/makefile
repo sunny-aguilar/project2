@@ -19,7 +19,6 @@ OBJECTS += tiger.o
 OBJECTS += penguin.o
 OBJECTS += turtle.o
 
-
 HPPs = zoo.hpp
 HPPs += menu.hpp
 HPPs += animal.hpp
@@ -27,14 +26,13 @@ HPPs += tiger.hpp
 HPPs += penguin.hpp
 HPPs += turtle.hpp
 
-
 CPPs = main.cpp
 CPPs += zoo.cpp
-CPPs += menu.hpp
-CPPs += animal.hpp
-CPPs += tiger.hpp
-CPPs += penguin.hpp
-CPPs += turtle.hpp
+CPPs += menu.cpp
+CPPs += animal.cpp
+CPPs += tiger.cpp
+CPPs += penguin.cpp
+CPPs += turtle.cpp
 
 
 # Targets needed to bring the executable up to date

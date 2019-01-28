@@ -365,7 +365,7 @@ int Menu::validateNumber(int min, int max) {
 
         // check if all characters entered are digits
         isNotDigit = false;
-        for (int i = 0; i < strlen(choice); i++) {
+        for (unsigned i = 0; i < strlen(choice); i++) {
             // if digit is not a digit, then set it true so that
             // loop will repeat
             if (!isdigit(choice[i])) {

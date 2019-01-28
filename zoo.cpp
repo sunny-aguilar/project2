@@ -116,7 +116,7 @@ void Zoo::doubleCapacity(int select) {
     switch (select) {
         case 1: // resize tiger array
             {
-                tigerCap += 10;
+                tigerCap *= 2;
                 menu.menuCapacityIncrease(select, tigerQty, tigerCap);
                 Animal *tempAnimal = new Tiger[tigerCap];
                 for (int index = 0; index < tigerQty; index++) {
@@ -128,7 +128,7 @@ void Zoo::doubleCapacity(int select) {
             break;
         case 2: // resize penguin array
             {
-                penguinCap += 10;
+                penguinCap *= 2;
                 menu.menuCapacityIncrease(select, penguinQty, penguinCap);
                 Animal *tempAnimal = new Penguin[penguinCap];
                 for (int index = 0; index < penguinCap; index++) {
@@ -140,7 +140,7 @@ void Zoo::doubleCapacity(int select) {
             break;
         case 3: // resize turtle array
             {
-                turtleCap += 10;
+                turtleCap *= 2;
                 menu.menuCapacityIncrease(select, turtleQty, turtleCap);
                 Animal *tempAnimal = new Tiger[turtleCap];
                 for (int index = 0; index < turtleCap; index++) {

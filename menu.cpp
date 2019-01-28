@@ -316,8 +316,9 @@ void Menu::menuKeepPlaying() {
 ** Description:     display bankruptcy banner
 *********************************************************************/
 void Menu::menuBankrupt(double balance) {
-    cout << "YOU HAVE GONE BANKRUPT! YOUR ACCOUNT BALANCE IS $" << balance
-         << endl << "It was a good run while it lasted\n";
+    cout << "YOU HAVE GONE BANKRUPT!\n"
+         << "YOUR ACCOUNT BALANCE IS $" << balance << endl
+         << "It was a good run while it lasted\n";
 }
 
 /*********************************************************************

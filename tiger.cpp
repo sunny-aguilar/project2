@@ -16,4 +16,4 @@ Tiger::Tiger() {}
 ** Description:     default constructor that initializes variables
 **                  in the base class
 *********************************************************************/
-Tiger::Tiger(int age) : Animal{age, 10000, 1, 10*5, 2000} {}
+Tiger::Tiger(int age) : Animal{age, 10000, 1, 100*5, 2000} {}

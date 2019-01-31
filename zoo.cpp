@@ -209,7 +209,7 @@ bool Zoo::startDay() {
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
 
-        // prompt user if keep playing
+        // prompt user if keep playing; 1 returns true, 2 returns false
         continueDay = keepPlaying();
 
         day++;

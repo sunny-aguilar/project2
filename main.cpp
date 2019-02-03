@@ -9,6 +9,7 @@
 **                  type of animal and pays expenses for feeding them.
 **                  If the bank balance falls below $0, the player
 **                  goes bankrupt and the game is over.
+**                  EXTRA CREDIT - Different feed types incorporated
 *********************************************************************/
 #include "zoo.hpp"
 #include "menu.hpp"

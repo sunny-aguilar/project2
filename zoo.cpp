@@ -8,6 +8,7 @@
 **                  tracking a user's player bank balance, calculating
 **                  profits, adding and subtracting animals, and
 **                  displaying the information to the user.
+**                  EXTRA CREDIT - Different feed types incorporated
 *********************************************************************/
 #include "zoo.hpp"
 #include <iostream>

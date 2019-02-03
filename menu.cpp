@@ -90,7 +90,7 @@ void Menu::menuStartupCost(double bal, int cost) {
 }
 
 /*********************************************************************
-** Description:     prompts user to select feed type
+** Description:     EXTRA CREDIT - prompts user to select feed type
 *********************************************************************/
 void Menu::menuSelectFeed() {
     cout << "TIME TO FEED THE ANIMALS - SELECT FEED TYPE\n"

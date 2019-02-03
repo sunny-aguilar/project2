@@ -83,21 +83,25 @@ void Zoo::playGame() {
 
 /*********************************************************************
 ** Description:     dynamically allocate starting animal amount for
-**                  each type of animal. Each animal is set with age
- *                  of 0 so that the animals are 1 day old on day 1.
+**                  each type of animal using 3 arrays for each.
+**                  Each animal is set with age  of 0 so that the
+**                   animals are 1 day old on day 1.
 *********************************************************************/
 void Zoo::initializeAnimals() {
-    // initialize starting animals
-    animals[0] = new Animal[tigerQty];
-    animals[1] = new Animal[penguinQty];
-    animals[2] = new Animal[turtleQty];
+    // initialize 3 starting animal ARRAYS
+    animals[0] = new Animal[tigerQty];      // array 1
+    animals[1] = new Animal[penguinQty];    // array 2
+    animals[2] = new Animal[turtleQty];     // array 3
 
+    // allocate tiger array
     for (int index = 0; index < tigerQty; index++) {
         animals[0][index] = Tiger(0);
     }
+    // allocate penguin array
     for (int index = 0; index < penguinQty; index++) {
         animals[1][index] = Penguin(0);
     }
+    // allocate turtle array
     for (int index = 0; index < turtleQty; index++) {
         animals[2][index] = Turtle(0);
     }

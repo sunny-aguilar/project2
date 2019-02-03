@@ -213,7 +213,7 @@ bool Zoo::startDay() {
         // ask user to purchase an adult animal
         purchaseAdultAnimal();
 
-        // prompt user if keep playing
+        // prompt user if keep playing; 1 returns true, 2 returns false
         continueDay = keepPlaying();
 
         day++;
@@ -354,7 +354,7 @@ void Zoo::randomEvents() {
     }
     else if (feedChosen == 2) {
         // 2 is for generic feed
-        // 33% chance of disease (base line)
+        // 33% chance of disease (baseline)
         int cheapArr[] = {1,2,3};
         randomNumber = rand() % 3;
         selection = cheapArr[randomNumber];

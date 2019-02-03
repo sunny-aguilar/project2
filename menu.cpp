@@ -1,6 +1,6 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
-** Date:            Feb 2019
+** Date:            Feb 2, 2019
 ** Description:     Menu class contains all of the menu and prompts
 **                  that appear during the game. Menu objects lives
 **                  inside of the Game Class. Menu functions may

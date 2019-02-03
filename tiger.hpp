@@ -1,6 +1,6 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
-** Date:            Feb 2019
+** Date:            Feb 2, 2019
 ** Description:     Tiger class is derived from Animal class. Instances
 **                  of Tiger are initialized with their age. Tiger
 **                  inherits publicly from Animal.

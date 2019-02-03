@@ -1,6 +1,6 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
-** Date:            Feb 2019
+** Date:            Feb 2, 2019
 ** Description:     Zoo class is used to control the game operations.
 **                  Zoo class contains and animal object and menu
 **                  object. The game parameters are first set before

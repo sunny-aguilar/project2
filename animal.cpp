@@ -1,6 +1,6 @@
 /*********************************************************************
 ** Author:          Sandro Aguilar
-** Date:            Feb 2019
+** Date:            Feb 2, 2019
 ** Description:     Animal class is the base class for Tiger, Penguin
 **                  and Turtle classes.Subclasses inherit publicly.
 **                  Base class holds characteristic that are the same

@@ -31,6 +31,9 @@ int Animal::getAge() {
     return age;
 }
 
+/*********************************************************************
+** Description:     setter increases animal age
+*********************************************************************/
 void Animal::increaseAnimalAge() {
     age++;
 }
@@ -49,10 +52,16 @@ double Animal::getFoodCost() {
     return baseFoodCost;
 }
 
+/*********************************************************************
+** Description:     getter returns animal payoff
+*********************************************************************/
 double Animal::getPayOff() {
     return payOff;
 }
 
+/*********************************************************************
+** Description:     copy constructor for animal object
+*********************************************************************/
 Animal::Animal(const Animal &obj) {
     age = obj.age;
     animalCost = obj.animalCost;
@@ -61,6 +70,10 @@ Animal::Animal(const Animal &obj) {
     payOff = obj.payOff;
 }
 
+/*********************************************************************
+** Description:     overloaded assignment operator function for animal
+**                  objects
+*********************************************************************/
 Animal &Animal::operator=(const Animal &right) {
     if (this != &right) {
         age = right.age;

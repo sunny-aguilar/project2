@@ -24,6 +24,9 @@ Animal::Animal(int age, double animalCost, int babies, double foodCost, double p
     baseFoodCost{foodCost},
     payOff {payOff} {}
 
+/*********************************************************************
+** Description:     getter returns animal age
+*********************************************************************/
 int Animal::getAge() {
     return age;
 }
@@ -32,10 +35,16 @@ void Animal::increaseAnimalAge() {
     age++;
 }
 
+/*********************************************************************
+** Description:     getter returns animal cost
+*********************************************************************/
 double Animal::getAnimalCost() {
     return animalCost;
 }
 
+/*********************************************************************
+** Description:     getter returns animal base food cost
+*********************************************************************/
 double Animal::getFoodCost() {
     return baseFoodCost;
 }
